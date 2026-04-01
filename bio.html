@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kamil Dzieniszewski — Senior Frontend Developer | Warsaw</title>
+  <meta name="description" content="Kamil Dzieniszewski is a Senior/Lead Frontend Developer based in Warsaw, Poland. Community builder, meet.js co-organizer, PADI AOWD diver. Building at the intersection of code, people & ideas.">
+  <meta name="author" content="Kamil Dzieniszewski">
+  <meta name="keywords" content="Kamil Dzieniszewski, frontend developer, React, TypeScript, Next.js, Warsaw, meet.js, community builder, AI developer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://https://dzienko.dev">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <meta property="og:description" content="Senior/Lead Frontend Developer based in Warsaw. Building with React, TypeScript & Next.js. Co-organizer of meet.js. PADI AOWD diver.">
+  <meta property="og:url" content="https://https://dzienko.dev">
+  <meta property="og:site_name" content="kamil.sh">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Kamil">
+  <meta property="profile:last_name" content="Dzieniszewski">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@dzienko">
+  <meta name="twitter:creator" content="@dzienko">
+  <meta name="twitter:title" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <meta name="twitter:description" content="Senior/Lead Frontend Developer based in Warsaw. Building with React, TypeScript & Next.js. Co-organizer of meet.js. PADI AOWD diver.">
+
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kamil Dzieniszewski",
+    "jobTitle": "Senior/Lead Frontend Developer",
+    "url": "https://https://dzienko.dev",
+    "email": "kamil.dzieniszewski@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Warsaw",
+      "addressCountry": "Poland"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/dzieniszewski/",
+      "https://x.com/dzienko"
+    ],
+    "knowsAbout": [
+      "React", "TypeScript", "Next.js", "Frontend Development",
+      "Artificial Intelligence", "Developer Communities", "Web3"
+    ],
+    "description": "Senior/Lead Frontend Developer based in Warsaw, Poland. Community builder, meet.js co-organizer, PADI AOWD certified diver."
+  }
+  </script>
+  <style>
+    :root {
+      --accent: #ff6b35;
+      --glow-a: rgba(255,107,53,0.12);
+      --glow-b: rgba(255,107,53,0.05);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #080808;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Courier New', monospace;
+      overflow: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .terminal {
+      width: 880px;
+      max-width: 98vw;
+      height: 92vh;
+      max-height: 720px;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 1px #1a1a1a,
+        0 0 40px var(--glow-a),
+        0 0 100px var(--glow-b),
+        0 30px 80px rgba(0,0,0,0.8);
+    }
+
+    .titlebar {
+      background: #141414;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #222;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .dot { width: 13px; height: 13px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .titlebar-text {
+      flex: 1;
+      text-align: center;
+      color: #555;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .term-body {
+      flex: 1;
+      background: #0d0d0d;
+      overflow-y: auto;
+      padding: 24px 28px 16px;
+      color: #c8c8c8;
+      font-size: 13px;
+      line-height: 1.65;
+      scrollbar-width: thin;
+      scrollbar-color: #2a2a2a transparent;
+    }
+
+    .term-body::-webkit-scrollbar { width: 5px; }
+    .term-body::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+
+    #cmd {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #e0e0e0;
+      font-family: inherit;
+      font-size: 13px;
+      flex: 1;
+      caret-color: var(--accent);
+    }
+
+    .o { color: var(--accent); }
+    .g { color: #4af626; }
+    .y { color: #ffc947; }
+    .c { color: #00d4ff; }
+    .d { color: #555; }
+    .w { color: #e8e8e8; }
+    .r { color: #ff4c4c; }
+
+    @media (max-width: 640px) {
+      body { align-items: flex-start; }
+      .terminal {
+        width: 100vw; height: 100vh; max-height: 100vh;
+        border-radius: 0; border: none; box-shadow: none;
+      }
+      .term-body { font-size: 11px; padding: 14px 12px 12px; }
+      .ascii-pre { font-size: 6px !important; line-height: 1.1 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Static content for crawlers that don't execute JS -->
+<noscript>
+  <div style="font-family:monospace;max-width:700px;margin:40px auto;padding:20px;color:#ccc;background:#0d0d0d">
+    <h1>Kamil Dzieniszewski</h1>
+    <p>Senior / Lead Frontend Developer — Warsaw, Poland</p>
+    <p>Community builder · PADI AOWD diver · meet.js co-organizer</p>
+    <h2>About</h2>
+    <p>Senior/Lead Frontend Developer and product-oriented technologist. Building at the intersection of software engineering, community, and product thinking. Currently leading frontend at Playsmart.</p>
+    <h2>Skills</h2>
+    <p>React, TypeScript, Next.js, Supabase, PostgreSQL, AI/LLM development, React Native / Expo</p>
+    <h2>Community</h2>
+    <p>Co-organizer of meet.js — one of Poland's longest-running frontend communities. Organizer of Windsurf Meetup Warsaw.</p>
+    <h2>Contact</h2>
+    <p>Email: kamil.dzieniszewski@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/dzieniszewski</p>
+    <p>X: x.com/dzienko</p>
+  </div>
+</noscript>
+
+<div class="terminal">
+  <div class="titlebar">
+    <div class="dot dot-r"></div>
+    <div class="dot dot-y"></div>
+    <div class="dot dot-g"></div>
+    <div class="titlebar-text">dzienko.dev — personal terminal v1.0</div>
+  </div>
+  <div class="term-body" id="tb"></div>
+</div>
+
+<script>
+const ASCII_NAME = `
+ ██╗  ██╗ █████╗ ███╗   ███╗██╗██╗
+ ██║ ██╔╝██╔══██╗████╗ ████║██║██║
+ █████╔╝ ███████║██╔████╔██║██║██║
+ ██╔═██╗ ██╔══██║██║╚██╔╝██║██║██║
+ ██║  ██╗██║  ██║██║ ╚═╝ ██║██║███████╗
+ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚══════╝`;
+
+const HR = `<span class="d">  ${'─'.repeat(56)}</span>`;
+
+// ── THEMES ────────────────────────────────────────────────────────
+const THEMES = {
+  amber:  { a: '#ff6b35', ga: 'rgba(255,107,53,0.12)', gb: 'rgba(255,107,53,0.05)' },
+  green:  { a: '#4af626', ga: 'rgba(74,246,38,0.12)',  gb: 'rgba(74,246,38,0.05)'  },
+  blue:   { a: '#00d4ff', ga: 'rgba(0,212,255,0.12)',  gb: 'rgba(0,212,255,0.05)'  },
+  red:    { a: '#ff4c4c', ga: 'rgba(255,76,76,0.12)',  gb: 'rgba(255,76,76,0.05)'  },
+  purple: { a: '#b57bee', ga: 'rgba(181,123,238,0.12)',gb: 'rgba(181,123,238,0.05)'},
+};
+
+function applyTheme(name) {
+  const t = THEMES[name];
+  if (!t) return false;
+  const r = document.documentElement.style;
+  r.setProperty('--accent', t.a);
+  r.setProperty('--glow-a', t.ga);
+  r.setProperty('--glow-b', t.gb);
+  return true;
+}
+
+// ── FORTUNES ──────────────────────────────────────────────────────
+const FORTUNES = [
+  '"Make it work, make it right, make it fast."  — Kent Beck',
+  '"The best code is no code at all."  — Jeff Atwood',
+  '"First, solve the problem. Then, write the code."  — John Johnson',
+  '"Any fool can write code a computer understands.\n   Good programmers write code humans understand."  — Fowler',
+  '"Premature optimization is the root of all evil."  — Knuth',
+  '"Code is like humor. When you have to explain it, it\'s bad."  — Cory House',
+  '"The ocean is more ancient than the mountains,\n   and freighted with the memories of time."',
+  '"The only way to do great work is to love what you do."  — Steve Jobs',
+  '"Move fast and don\'t break things that matter."',
+  '"The best time to build a community was 10 years ago.\n   The second best time is now."',
+  '"Ship early, learn fast, iterate always."',
+  '"Underwater, everything is quiet.\n   That\'s where good ideas surface."',
+];
+
+// ── COMMANDS ──────────────────────────────────────────────────────
+const COMMANDS = {
+
+  help: `
+${HR}
+  <span class="o">AVAILABLE COMMANDS</span>
+${HR}
+  <span class="y">whoami</span>      short introduction
+  <span class="y">about</span>       full bio
+  <span class="y">skills</span>      technical expertise
+  <span class="y">community</span>   meet.js & events
+  <span class="y">cv</span>          work experience
+  <span class="y">now</span>         what I'm focused on
+  <span class="y">contact</span>     how to reach me
+  <span class="y">theme</span>       change color scheme
+  <span class="y">clear</span>       clear terminal
+${HR}
+  <span class="d">tip: use ↑ ↓ for history · tab to autocomplete</span>
+`,
+
+  whoami: `
+  <span class="o">Kamil Dzieniszewski</span>
+  Senior / Lead Frontend Developer
+  Warsaw, Poland
+  <span class="d">──────────────────────────────────────</span>
+  community builder · product builder · scuba diver
+  building at the intersection of <span class="c">code</span>, <span class="g">people</span> & <span class="y">ideas</span>
+`,
+
+  about: `
+  <span class="o">ABOUT</span>
+${HR}
+
+  Senior/Lead Frontend Developer, community builder,
+  and product-oriented technologist based in Warsaw.
+
+  He combines strong engineering skills with a deep
+  interest in people, communication, and emerging
+  technologies — especially AI.
+
+  Work sits at the intersection of:
+    <span class="g">→</span> software engineering
+    <span class="g">→</span> community building
+    <span class="g">→</span> product thinking
+
+  <span class="d">Current role — Lead Frontend Developer at Playsmart:</span>
+    <span class="d">·</span> leads frontend dev & supports team members
+    <span class="d">·</span> builds with TypeScript, React, Next.js
+    <span class="d">·</span> bridges product, design, and engineering
+
+  <span class="d">Personal traits:</span>
+    <span class="d">·</span> action-oriented and fast-moving
+    <span class="d">·</span> curious and continuously learning
+    <span class="d">·</span> comfortable with risk and experimentation
+    <span class="d">·</span> certified scuba diver (PADI AOWD) · kite surfer
+    <span class="d">·</span> Japan enthusiast · upcoming trip planned
+`,
+
+  skills: `
+  <span class="o">SKILLS</span>
+${HR}
+
+  <span class="c">FRONTEND</span>
+  React         <span class="o">████████████████████</span>  expert
+  TypeScript    <span class="o">████████████████████</span>  expert
+  Next.js       <span class="o">████████████████</span><span class="d">████</span>  advanced
+  Three.js      <span class="o">████████</span><span class="d">████████████</span>  exploratory
+
+  <span class="c">BACKEND</span>
+  Supabase      <span class="o">████████████</span><span class="d">████████</span>  working knowledge
+  PostgreSQL    <span class="o">████████████</span><span class="d">████████</span>  working knowledge
+  REST APIs     <span class="o">████████████████</span><span class="d">████</span>  advanced
+
+  <span class="c">EMERGING</span>
+  AI / LLM      <span class="o">████████████████████</span>  actively exploring
+  Mobile/Expo   <span class="o">████████</span><span class="d">████████████</span>  early stage
+`,
+
+  community: `
+  <span class="o">COMMUNITY</span>
+${HR}
+
+  <span class="y">meet.js</span>  <span class="d">— co-organizer</span>
+  One of Poland's longest-running frontend communities.
+
+  <span class="g">✓</span> 15-year anniversary — celebrated on 4 March 2026
+  Currently working on:
+    <span class="g">→</span> documentary / storytelling project about the community
+
+  <span class="y">Windsurf Meetup Warsaw</span>  <span class="d">— organizer</span>
+  Community meetup around Windsurf — the AI-powered IDE.
+  Connecting developers exploring AI-assisted development.
+
+  <span class="d">"He thrives in environments where he can connect</span>
+  <span class="d"> people, ideas, and opportunities."</span>
+`,
+
+  cv: `
+  <span class="o">WORK EXPERIENCE</span>
+${HR}
+
+  <span class="y">Lead Frontend Developer</span>  <span class="d">·  Playsmart</span>
+  <span class="d">Nov 2025 – Present  ·  current</span>
+  Leading frontend at Playsmart, building and shipping product
+  features using React, Next.js, and TypeScript. Combining
+  engineering, product thinking, and fast execution to deliver
+  real user value.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Developer Advocate</span>  <span class="d">·  Tolgee</span>
+  <span class="d">Aug 2025 – Oct 2025  ·  3 mos  ·  Remote</span>
+  Contributed to Tolgee, an open-source localization platform.
+  Frontend improvements and features that simplify translation
+  workflows. Bridged product needs and developer usability.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Frontend Developer</span>  <span class="d">·  LEOCODE</span>
+  <span class="d">Feb 2025 – Jun 2025  ·  5 mos  ·  Remote</span>
+  Working for Hashgraph Group building backoffice services
+  for a Digital Identification platform (Web3).
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Senior Frontend Developer</span>  <span class="d">·  Lighthouse Growth</span>
+  <span class="d">Oct 2024 – Jan 2025  ·  4 mos  ·  Remote</span>
+  Developed the Lighthouse Growth website.
+  Next.js developer for Telia — rewriting legacy pages
+  (Search & Category) into Next.js.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Frontend Developer</span>  <span class="d">·  AirHelp</span>
+  <span class="d">May 2024 – Sep 2024  ·  5 mos  ·  Hybrid</span>
+  Maintaining the AirHelp application.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Senior Frontend Developer</span>  <span class="d">·  STÖK</span>
+  <span class="d">Nov 2023 – Apr 2024  ·  6 mos  ·  Remote</span>
+  Building ecommerce stores using Centra, Storyblok, and Next.js.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Senior Front-End Software Engineer</span>  <span class="d">·  Teckro</span>
+  <span class="d">Apr 2022 – Oct 2023  ·  1 yr 7 mos</span>
+  Micro-frontend (Single-SPA) medical platform used by global
+  pharmaceutical corporations.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Frontend Chapter Lead</span>  <span class="d">·  Vodeno</span>
+  <span class="d">Sep 2021 – Apr 2022  ·  8 mos  ·  Warsaw</span>
+  Managing frontend team of 15 people.
+  Recruitment (technical interviews).
+  Organising weekly frontend chapter meetings.
+
+  <span class="y">Senior Front-end Developer</span>  <span class="d">·  Vodeno</span>
+  <span class="d">Jul 2019 – Sep 2021  ·  2 yrs 3 mos</span>
+  Micro-frontend architecture (React, Redux).
+  Built ETF Investments and Savings apps for Aion Bank.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Front-end Developer</span>  <span class="d">·  Daftcode</span>
+  <span class="d">May 2018 – Jul 2019  ·  1 yr 3 mos  ·  Warsaw</span>
+  React + Redux apps, Next.js static sites,
+  React Native mobile applications.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Front-end Developer</span>  <span class="d">·  GogoApps</span>
+  <span class="d">Aug 2017 – Apr 2018  ·  9 mos  ·  Warsaw</span>
+  React webapps with MobX. WordPress themes in Timber/Twig.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Front-end Developer</span>  <span class="d">·  Functionite / kodu.je</span>
+  <span class="d">Nov 2016 – Jul 2017  ·  9 mos  ·  Warsaw</span>
+  kodu.je — a frontend coding school.
+  Website, video production, and social media.
+
+  <span class="d">──────────────────────────────────────</span>
+  <span class="y">Editor-in-Chief / Operator</span>  <span class="d">·  Student Internet Television TVPW</span>
+  <span class="d">Oct 2013 – Jun 2016  ·  2 yrs 9 mos  ·  Warsaw</span>
+  Managing an 80-person student organisation.
+  Video production, live streaming, events.
+`,
+
+  now: `
+  <span class="o">NOW</span>
+${HR}
+  What I'm focused on in April 2026:
+
+    <span class="g">→</span> leading frontend at Playsmart
+    <span class="g">→</span> planning a trip to Japan
+    <span class="g">→</span> exploring AI-native product development
+    <span class="g">→</span> planning next dive trip
+    <span class="g">→</span> building and shipping side projects
+
+  <span class="d">last updated: April 2026</span>
+`,
+
+  contact: `
+  <span class="o">CONTACT</span>
+${HR}
+
+  Location    <span class="w">Warsaw, Poland</span>
+  Focus       <span class="w">DevRel · Frontend · AI · Product</span>
+
+  <span class="d">──────────────────────────────────────</span>
+  Email       <a href="mailto:kamil.dzieniszewski@gmail.com" target="_blank" style="color:#00d4ff;text-decoration:none">kamil.dzieniszewski@gmail.com</a>
+  LinkedIn    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">linkedin.com/in/dzieniszewski</a>
+  X           <a href="https://x.com/dzienko" target="_blank" style="color:#00d4ff;text-decoration:none">x.com/dzienko</a>
+  <span class="d">──────────────────────────────────────</span>
+
+  Open to opportunities that combine:
+    <span class="g">→</span> technology
+    <span class="g">→</span> communication
+    <span class="g">→</span> community impact
+`,
+
+  theme: `
+  <span class="o">THEME</span>
+${HR}
+  <span class="y">amber</span>   warm orange   <span style="color:#ff6b35">████</span>  (default)
+  <span class="y">green</span>   matrix green  <span style="color:#4af626">████</span>
+  <span class="y">blue</span>    electric blue <span style="color:#00d4ff">████</span>
+  <span class="y">red</span>     danger red    <span style="color:#ff4c4c">████</span>
+  <span class="y">purple</span>  hacker purple <span style="color:#b57bee">████</span>
+
+  usage: <span class="o">theme green</span>
+`,
+
+  // ── HIDDEN EASTER EGGS ───────────────────────────────────────────
+
+  fortune: () => {
+    const q = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
+    return `\n  <span class="w">${q}</span>\n`;
+  },
+
+  uptime: `
+  <span class="o">SYSTEM UPTIME</span>
+${HR}
+  Process:           kamil.sh
+  Running since:     Warsaw, ~1991
+
+  <span class="d">Professional mode:</span>  active since 2016
+  <span class="d">Frontend commits:</span>   countless
+  <span class="d">Community events:</span>   50+
+  <span class="d">Deepest dive:</span>      18m
+  <span class="d">Coffee consumed:</span>   ∞
+
+  status: <span class="g">all systems nominal</span>
+`,
+
+  date: () => {
+    const n = new Date();
+    const d = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][n.getDay()];
+    const m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][n.getMonth()];
+    const hh = String(n.getHours()).padStart(2,'0');
+    const mm = String(n.getMinutes()).padStart(2,'0');
+    const ss = String(n.getSeconds()).padStart(2,'0');
+    return `\n  <span class="w">${d} ${m} ${String(n.getDate()).padStart(2,'0')} ${hh}:${mm}:${ss} CET ${n.getFullYear()}</span>\n  <span class="d">Warsaw, Poland</span>\n`;
+  },
+
+  'man kamil': `
+  <span class="w">KAMIL(1)              User Commands              KAMIL(1)</span>
+
+  <span class="o">NAME</span>
+      kamil — senior frontend developer, community builder,
+      certified scuba diver (PADI AOWD)
+
+  <span class="o">SYNOPSIS</span>
+      kamil [--react] [--typescript] [--community] [--dive]
+
+  <span class="o">DESCRIPTION</span>
+      A senior/lead frontend developer based in Warsaw, Poland.
+      Leads teams, ships products, builds communities, and
+      occasionally descends 18 metres below sea level.
+
+  <span class="o">OPTIONS</span>
+      --react          preferred framework (required)
+      --typescript     strictly typed, non-negotiable
+      --nextjs         full-stack mode enabled
+      --community      meet.js organiser mode
+      --ai             experimental but exciting
+      --dive           requires PADI AOWD certification
+      --coffee         required at startup
+
+  <span class="o">ENVIRONMENT</span>
+      LOCATION="Warsaw, Poland"
+      TIMEZONE="CET (UTC+1)"
+      COFFEE_REQUIRED="true"
+      OVERENGINEERING="false"
+
+  <span class="o">BUGS</span>
+      Known tendency to start side projects at 11pm.
+      Disappears underwater without warning.
+      May be unreachable at 18m depth.
+
+  <span class="o">SEE ALSO</span>
+      cv(1), about(1), community(1), contact(1)
+
+  <span class="o">AUTHOR</span>
+      Kamil Dzieniszewski &lt;kamil.dzieniszewski@gmail.com&gt;
+
+  <span class="w">KAMIL(1)              April 2026              KAMIL(1)</span>
+`,
+
+  weather: `
+  <span class="o">WEATHER :: WARSAW, POLAND</span>
+${HR}
+
+      \\  /      Partly Cloudy
+    _ /"".-.
+      \\_(   ).  <span class="w">14°C</span>  feels like 11°C
+      /(___(__)
+
+                Wind: WSW 22 km/h
+                Humidity: 68%
+                Pressure: 1018 hPa
+${HR}
+  <span class="d">good day to write code and stay indoors.</span>
+`,
+
+  hack: async () => {
+    const lines = [
+      { t: '> initiating connection...', p: 500 },
+      { t: '> target: your_attention',   p: 400 },
+      { t: '> scanning open ports...',   p: 600 },
+      { t: '>   port 80   [open]  http', p: 180 },
+      { t: '>   port 443  [open]  https',p: 180 },
+      { t: '>   port 3000 [open]  dev_server', p: 300 },
+      { t: '> exploiting CVE-2024-KAMIL...', p: 700 },
+      { t: '> access granted',           p: 400 },
+      { t: '> downloading: curiosity.exe    ████████████ 100%', p: 300 },
+      { t: '> downloading: coffee_pkg       ████████████ 100%', p: 300 },
+      { t: '> installing: kamil_v1.0',   p: 500 },
+      { t: '> ✓ installation complete',  p: 300 },
+      { t: '>',                          p: 200 },
+      { t: '> hint: type "hire" to proceed', p: 0 },
+    ];
+    for (const { t, p } of lines) {
+      const d = el('div');
+      d.style.cssText = 'color:#4af626;font-size:13px;line-height:1.7';
+      tb.appendChild(d);
+      await typewrite(d, t, 22);
+      if (p) await sleep(p);
+      scroll();
+    }
+    return null;
+  },
+
+  matrix: () => {
+    runMatrix();
+    return `  <span class="g">// matrix mode activated</span>\n  <span class="d">// reality is optional</span>`;
+  },
+
+  dive: `
+<span class="c">
+  ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈
+ ≈ ≈  o  o    °°      °°°  ≈ ≈ ≈ ≈ ≈ ≈ ≈
+≈ ≈ ≈  °°      °   °     °   ≈ ≈ ≈ ≈ ≈ ≈
+  ≈ ≈                             ≈ ≈ ≈
+ ≈ ≈ ≈     O  O      ><(((°>      ≈ ≈ ≈
+  ≈ ≈       \O/                   ≈ ≈ ≈
+ ≈ ≈ ≈      =|=    [|||]          ≈ ≈ ≈
+  ≈ ≈       / \                   ≈ ≈ ≈
+ ≈ ≈ ≈                    ><>     ≈ ≈ ≈
+  ≈ ≈  ~~  ~~  ~~  ~~  ~~  ~~  ~  ≈ ≈ ≈
+ ≈ ≈ ≈  ~~~~~~  ~~~~~~  ~~~~~~   ≈ ≈ ≈ ≈
+  ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈ ≈</span>
+  <span class="d">// depth: 18m · visibility: 12m · temp: 24°C</span>
+  <span class="d">// certification: PADI Advanced Open Water Diver</span>
+  <span class="d">// status: fully submerged</span>
+`,
+
+  kite: `
+<span class="y">
+           *
+          /|\\
+         / | \\
+        /  *  \\
+       /  / \\  \\
+      *--/---\\--*
+       \\ \\   / /
+        \\ \\ / /
+         \\   /
+          \\ /
+           *
+           |
+           |  ~
+           | ~ ~
+            ~ ~
+             ~</span>
+  <span class="d">// wind: 24 knots · Baltic coast</span>
+  <span class="d">// also cool, but the ocean is calling</span>
+`,
+
+  sudo: `
+  <span class="r">sudo: permission denied</span>
+  <span class="d">this incident will be reported.</span>
+  <span class="d">... just kidding. but no.</span>
+`,
+
+  ls: `
+  <span class="d">total 42</span>
+  drwxr-xr-x  <span class="c">about.txt</span>
+  drwxr-xr-x  <span class="c">skills.json</span>
+  -rw-r--r--  <span class="c">cv.pdf</span>             <span class="d">→ type "cv" to read</span>
+  -rw-r--r--  <span class="c">ideas.md</span>           <span class="d">always growing</span>
+  drwxr-xr-x  <span class="c">community/</span>
+  -rw-------  <span class="c">dive_logbook.txt</span>   <span class="d">classified</span>
+  -rw-------  <span class="c">secret_projects/</span>   <span class="d">permission denied</span>
+`,
+
+  'git log': `
+  <span class="y">commit a1f3e9b</span>  <span class="d">2 days ago</span>
+  fix: finally understood why it wasn't working
+
+  <span class="y">commit 88c2d04</span>  <span class="d">5 days ago</span>
+  feat: add community · connect people · repeat
+
+  <span class="y">commit 3b7a112</span>  <span class="d">2 weeks ago</span>
+  chore: dive to 18m, pushed boundaries (literally)
+
+  <span class="y">commit f9e0c38</span>  <span class="d">1 month ago</span>
+  feat: co-organize meet.js 15th anniversary
+
+  <span class="y">commit 0000001</span>  <span class="d">Warsaw, ~1991</span>
+  init: Kamil Dzieniszewski
+`,
+
+  hire: `
+  <span class="o">HIRE ME?</span>
+${HR}
+
+  Looking for someone who:
+    <span class="g">✓</span> leads frontend & ships fast
+    <span class="g">✓</span> talks to humans (product, design, users)
+    <span class="g">✓</span> builds community, not just code
+    <span class="g">✓</span> is genuinely excited about AI
+    <span class="g">✓</span> can explain tech to non-tech people
+
+  Bonus: comes with a dive buddy.
+
+  <span class="d">→ type "contact" to reach out</span>
+`,
+
+  vim: `
+  <span class="r">you have entered vim.</span>
+  <span class="d">
+  ~
+  ~
+  ~
+  ~                [No Name]  0,0  All
+  </span>
+  <span class="d">type  :q!  and press Enter to escape</span>
+`,
+
+  ':q!': `  <span class="g">vim closed. you survived.</span>\n`,
+
+  japan: `
+  <span class="o">日本</span>  <span class="d">JAPAN</span>
+${HR}
+<span class="r">
+        ████████████████
+      ████              ████
+    ████    ████████    ████
+   ███    ████████████    ███
+  ███   ██████████████   ███
+  ███   ██████████████   ███
+   ███    ████████████   ███
+    ████    ████████    ████
+      ████              ████
+        ████████████████
+</span>
+  <span class="w">Next destination: Japan</span>
+  <span class="d">──────────────────────────────────────</span>
+  <span class="d">·</span> deep admiration for Japanese culture
+  <span class="d">·</span> aesthetics, precision, and craftsmanship
+  <span class="d">·</span> trip coming soon
+
+  <span class="d">// ようこそ</span>
+`,
+
+  'npm install kamil': `
+  <span class="d">npm warn deprecated ego@0.0.0</span>
+
+  <span class="g">added 1 human (kamil@1.0.0) in 28 years</span>
+
+  <span class="d">packages included:</span>
+    <span class="d">·</span> typescript <span class="g">✓</span>
+    <span class="d">·</span> react <span class="g">✓</span>
+    <span class="d">·</span> community <span class="g">✓</span>
+    <span class="d">·</span> scuba-diving <span class="g">✓</span>
+    <span class="d">·</span> overengineering <span class="r">✗  (not included)</span>
+`,
+};
+
+const KNOWN = ['help','whoami','about','skills','community','cv','now','contact','theme','clear',
+               'fortune','uptime','date','weather','hack','matrix','man kamil'];
+
+// ── UTILS ─────────────────────────────────────────────────────────
+
+const tb = document.getElementById('tb');
+let inputRow, cmdEl;
+
+function scroll() { tb.scrollTop = tb.scrollHeight; }
+
+function el(tag, props = {}) {
+  const e = document.createElement(tag);
+  Object.assign(e, props);
+  return e;
+}
+
+function addHTML(html, style = '') {
+  const d = el('div', { innerHTML: html });
+  if (style) d.style.cssText = style;
+  tb.appendChild(d);
+  scroll();
+}
+
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function typewrite(node, text, speed = 20) {
+  return new Promise(resolve => {
+    let i = 0;
+    (function tick() {
+      if (i < text.length) {
+        node.textContent += text[i++];
+        scroll();
+        setTimeout(tick, speed + Math.random() * 12);
+      } else resolve();
+    })();
+  });
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── MATRIX ────────────────────────────────────────────────────────
+
+function runMatrix() {
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;inset:0;z-index:998;pointer-events:none;transition:opacity 1.2s';
+  document.body.appendChild(canvas);
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const ctx   = canvas.getContext('2d');
+  const size  = 16;
+  const cols  = Math.floor(canvas.width / size);
+  const drops = new Array(cols).fill(1);
+  const chars = 'アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF<>{}[]';
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#ff6b35';
+
+  let frame = 0;
+  const FRAMES = 180;
+
+  (function draw() {
+    ctx.fillStyle = 'rgba(13,13,13,0.06)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = accent;
+    ctx.font = `${size}px monospace`;
+    for (let i = 0; i < drops.length; i++) {
+      ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * size, drops[i] * size);
+      if (drops[i] * size > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    if (++frame < FRAMES) requestAnimationFrame(draw);
+    else { canvas.style.opacity = '0'; setTimeout(() => canvas.remove(), 1200); }
+  })();
+}
+
+// ── KONAMI CODE ───────────────────────────────────────────────────
+
+const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+                'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let ki = 0;
+
+document.addEventListener('keydown', e => {
+  ki = (e.key === KONAMI[ki]) ? ki + 1 : (e.key === KONAMI[0] ? 1 : 0);
+  if (ki === KONAMI.length) {
+    ki = 0;
+    runMatrix();
+    const msg = el('div');
+    msg.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin:10px 0';
+    msg.innerHTML = `
+  <span class="o">★  KONAMI CODE ACTIVATED  ★</span>
+
+  <span class="d">· · · · · · · · · · · · · · · · · · ·</span>
+  <span class="w">  achievement unlocked: true_nerd.exe</span>
+  <span class="d">· · · · · · · · · · · · · · · · · · ·</span>
+
+  <span class="d">you found the secret. respect.</span>
+`;
+    tb.appendChild(msg);
+    scroll();
+  }
+});
+
+// ── BOOT ──────────────────────────────────────────────────────────
+
+const BOOT = [
+  { t: 'BIOS v2.6.1  Copyright (C) Kamil Systems', color: '#333', delay: 0   },
+  { t: '',                                           delay: 80  },
+  { t: 'Initializing boot sequence...',             color: '#666', delay: 200 },
+  { t: '',                                           delay: 60  },
+  { t: 'Loading modules:',                          color: '#666', delay: 160 },
+  { t: 'frontend.module',   ok: true, delay: 180 },
+  { t: 'typescript.module', ok: true, delay: 150 },
+  { t: 'react.module',      ok: true, delay: 130 },
+  { t: 'nextjs.module',     ok: true, delay: 160 },
+  { t: 'ai.module',         ok: true, delay: 140 },
+  { t: 'community.module',  ok: true, delay: 170 },
+  { t: 'scuba.module',      ok: true, delay: 220 },
+  { t: '',                                           delay: 80  },
+  { t: 'All systems nominal. Launching kamil.sh...', color: '#888', delay: 350 },
+  { t: '',                                           delay: 80  },
+];
+
+async function boot() {
+  for (const line of BOOT) {
+    await sleep(line.delay);
+    if (!line.t) { tb.appendChild(el('br')); continue; }
+    const d = el('div');
+    d.style.cssText = 'font-size:12px;line-height:1.85';
+    if (line.ok) {
+      d.innerHTML = `  <span style="color:#333">[</span><span style="color:#4af626">  OK  </span><span style="color:#333">]</span> <span style="color:#666">${line.t}</span>`;
+    } else {
+      d.style.color = line.color;
+      d.textContent = line.t;
+    }
+    tb.appendChild(d);
+    scroll();
+  }
+
+  const pb = el('div');
+  pb.style.cssText = 'font-size:12px;color:var(--accent);line-height:2';
+  tb.appendChild(pb);
+  const N = 32;
+  for (let i = 0; i <= N; i++) {
+    pb.textContent = `  [${'█'.repeat(i)}${'░'.repeat(N-i)}] ${Math.round(i/N*100)}%`;
+    scroll();
+    await sleep(28 + Math.random() * 18);
+  }
+  await sleep(500);
+  tb.innerHTML = '';
+  await launchMain();
+}
+
+// ── MAIN ──────────────────────────────────────────────────────────
+
+let history = [];
+let histIdx  = -1;
+
+async function launchMain() {
+  const pre = el('pre');
+  pre.className = 'ascii-pre';
+  pre.style.cssText = 'color:var(--accent);font-size:12px;line-height:1.22;margin-bottom:10px';
+  pre.textContent = ASCII_NAME;
+  tb.appendChild(pre);
+
+  const name = el('div');
+  name.style.cssText = 'color:#e8e8e8;font-size:15px;letter-spacing:3px;margin-bottom:6px';
+  name.textContent = '  DZIENISZEWSKI';
+  tb.appendChild(name);
+
+  const tag = el('div');
+  tag.style.cssText = 'color:#888;font-size:13px;margin-bottom:4px';
+  tb.appendChild(tag);
+  await typewrite(tag, '  Senior/Lead Frontend Developer  ·  Warsaw, Poland  ·  PADI AOWD diver', 20);
+  await sleep(150);
+
+  addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:18px');
+  addHTML(`  <span style="color:#222">${'─'.repeat(58)}</span>`, 'margin-bottom:14px');
+  mkInput();
+}
+
+function mkInput() {
+  inputRow = el('div');
+  inputRow.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:6px';
+
+  const ps1 = el('span', { textContent: 'kamil@sh:~$' });
+  ps1.style.cssText = 'color:var(--accent);white-space:nowrap;user-select:none';
+
+  cmdEl = el('input');
+  cmdEl.type = 'text';
+  cmdEl.autocomplete = 'off';
+  cmdEl.spellcheck = false;
+  cmdEl.style.cssText = 'background:transparent;border:none;outline:none;color:#e0e0e0;font-family:inherit;font-size:13px;flex:1;caret-color:var(--accent)';
+
+  inputRow.append(ps1, cmdEl);
+  tb.appendChild(inputRow);
+  cmdEl.focus();
+  scroll();
+  cmdEl.addEventListener('keydown', onKey);
+  tb.addEventListener('click', () => cmdEl.focus());
+}
+
+function onKey(e) {
+  if (e.key === 'Enter') {
+    submit(cmdEl.value.trim().toLowerCase());
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (histIdx < history.length - 1) { histIdx++; cmdEl.value = history[history.length - 1 - histIdx]; }
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (histIdx > 0) { histIdx--; cmdEl.value = history[history.length - 1 - histIdx]; }
+    else { histIdx = -1; cmdEl.value = ''; }
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    const p = cmdEl.value.toLowerCase();
+    const m = KNOWN.find(k => k.startsWith(p) && k !== p);
+    if (m) cmdEl.value = m;
+  }
+}
+
+async function submit(cmd) {
+  if (!cmd) return;
+  history.push(cmd);
+  histIdx = -1;
+
+  const frozen = el('div');
+  frozen.style.cssText = 'display:flex;gap:10px;margin-top:6px';
+  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:~$</span><span style="color:#e0e0e0"> ${esc(cmd)}</span>`;
+  tb.replaceChild(frozen, inputRow);
+
+  if (cmd === 'clear') { tb.innerHTML = ''; mkInput(); return; }
+
+  if (cmd.startsWith('theme ')) {
+    const name = cmd.split(' ')[1];
+    const ok = applyTheme(name);
+    const msg = el('div');
+    msg.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    msg.innerHTML = ok
+      ? `  <span class="g">theme set to: ${name}</span>`
+      : `  <span class="r">unknown theme: ${name}</span>  <span class="d">(try: amber green blue red purple)</span>`;
+    tb.appendChild(msg);
+    mkInput();
+    return;
+  }
+
+  const handler = COMMANDS[cmd];
+  if (handler !== undefined) {
+    const result = typeof handler === 'function' ? await handler() : handler;
+    if (result) {
+      const out = el('div');
+      out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      out.innerHTML = result;
+      tb.appendChild(out);
+    }
+  } else {
+    const err = el('div', { textContent: `  command not found: ${cmd}  (try "help")` });
+    err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+    tb.appendChild(err);
+  }
+
+  mkInput();
+}
+
+boot();
+</script>
+</body>
+</html>

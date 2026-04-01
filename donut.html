@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASCII Donut</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: monospace;
+    }
+    pre {
+      color: #ff6b35;
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px #ff6b3588;
+      user-select: none;
+    }
+    p {
+      color: #444;
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 24px;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <pre id="canvas"></pre>
+  <p>press space to pause</p>
+
+  <script>
+    const W = 70, H = 40;
+    let A = 0, B = 0;
+    let paused = false;
+    let rafId;
+
+    // luminance palette — brighter chars = more lit
+    const CHARS = '.,-~:;=!*#$@';
+
+    function frame() {
+      const buf  = new Array(W * H).fill(' ');
+      const zbuf = new Array(W * H).fill(0);
+
+      const cosA = Math.cos(A), sinA = Math.sin(A);
+      const cosB = Math.cos(B), sinB = Math.sin(B);
+
+      // parameterise torus surface
+      for (let theta = 0; theta < 2 * Math.PI; theta += 0.07) {
+        const cosTheta = Math.cos(theta), sinTheta = Math.sin(theta);
+
+        for (let phi = 0; phi < 2 * Math.PI; phi += 0.02) {
+          const cosPhi = Math.cos(phi), sinPhi = Math.sin(phi);
+
+          // circle in xz-plane, then revolve around z-axis
+          const cx = cosTheta + 2;   // torus center offset
+          const cy = sinTheta;
+
+          // 3D point on torus surface after two rotations
+          const x = cx * (cosB * cosPhi + sinA * sinB * sinPhi) - cy * cosA * sinB;
+          const y = cx * (sinB * cosPhi - sinA * cosB * sinPhi) + cy * cosA * cosB;
+          const z = 5 + cosA * cx * sinPhi + cy * sinA;
+          const ooz = 1 / z;  // one over z (perspective)
+
+          // project to screen
+          const px = Math.floor(W / 2 + 28 * ooz * x);
+          const py = Math.floor(H / 2 - 12 * ooz * y);
+
+          if (px >= 0 && px < W && py >= 0 && py < H) {
+            const idx = py * W + px;
+
+            // luminance from dot product with light direction (0.6, 0.5, -0.6)
+            const L = cosPhi * cosTheta * sinB
+                    - cosA * cosTheta * sinPhi
+                    - sinA * sinTheta
+                    + cosB * (cosA * sinTheta - cosTheta * sinA * sinPhi);
+
+            if (ooz > zbuf[idx]) {
+              zbuf[idx] = ooz;
+              const charIdx = Math.max(0, Math.floor(L * 8));
+              buf[idx] = CHARS[charIdx] ?? CHARS[0];
+            }
+          }
+        }
+      }
+
+      // write rows into <pre>
+      let out = '';
+      for (let row = 0; row < H; row++) {
+        out += buf.slice(row * W, row * W + W).join('') + '\n';
+      }
+      document.getElementById('canvas').textContent = out;
+
+      A += 0.04;
+      B += 0.02;
+    }
+
+    function loop() {
+      if (!paused) frame();
+      rafId = requestAnimationFrame(loop);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        paused = !paused;
+      }
+    });
+
+    loop();
+  </script>
+</body>
+</html>
