@@ -971,6 +971,7 @@ async function submit(cmd) {
   if (!cmd) return;
   history.push(cmd);
   histIdx = -1;
+  if (typeof umami !== 'undefined') umami.track('command', { cmd });
 
   const frozen = el('div');
   frozen.style.cssText = 'display:flex;gap:10px;margin-top:6px';
