@@ -262,14 +262,18 @@ const COMMANDS = {
 ${HR}
   <span class="o">AVAILABLE COMMANDS</span>
 ${HR}
+  <span class="d">not a terminal person? type</span> <span class="o">tour</span> <span class="d">for a guided experience</span>
+${HR}
   <span class="y">whoami</span>      short introduction
   <span class="y">about</span>       full bio
   <span class="y">skills</span>      technical expertise
   <span class="y">community</span>   meet.js & events
   <span class="y">projects</span>    side projects & content
   <span class="y">cv</span>          work experience
+  <span class="y">hire</span>        am I available?
   <span class="y">now</span>         what I'm focused on
   <span class="y">contact</span>     how to reach me
+  <span class="y">ls</span>          explore files & folders
   <span class="y">theme</span>       change color scheme
   <span class="y">clear</span>       clear terminal
 ${HR}
@@ -791,9 +795,75 @@ ${HR}
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
                'fortune','uptime','date','weather','hack','matrix','man kamil',
-               'ls','hire','hello','sudo su','vim skills.json',
+               'ls','hire','hello','sudo su','vim skills.json','tour',
                'cd about','cd skills','cd projects','cd community','cd ..','cd ~',
                'cat cv.pdf','cat skills.json','cat contact.txt'];
+
+// ── CONTEXTUAL HINTS ──────────────────────────────────────────────
+const HINTS = {
+  ls:          `  <span class="d">tip: try <span class="o">cd projects</span> · <span class="o">cat cv.pdf</span> · <span class="o">cd about</span></span>`,
+  'cd about':  `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat bio.txt</span></span>`,
+  'cd skills': `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat skills.json</span></span>`,
+  'cd projects':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat nowinki.md</span></span>`,
+  'cd community':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat meetjs.txt</span></span>`,
+  hire:        `  <span class="d">tip: type <span class="o">contact</span> to reach out or <span class="o">cat cv.pdf</span> to download CV</span>`,
+  whoami:      `  <span class="d">tip: type <span class="o">about</span> for full bio or <span class="o">skills</span> for tech stack</span>`,
+};
+
+function showHint(cmd) {
+  const hint = HINTS[cmd];
+  if (!hint) return;
+  const d = el('div', { innerHTML: hint });
+  d.style.cssText = 'font-size:11px;margin:-6px 0 10px;opacity:0.7';
+  tb.appendChild(d);
+  scroll();
+}
+
+// ── IDLE HINT ─────────────────────────────────────────────────────
+let idleTimer = null;
+
+function resetIdleTimer() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    const d = el('div');
+    d.style.cssText = 'font-size:11px;color:#555;margin:8px 0;';
+    d.innerHTML = `  <span class="d">not sure where to start? type <span class="o">tour</span> for a guided experience or <span class="o">help</span> for all commands</span>`;
+    tb.appendChild(d);
+    scroll();
+  }, 15000);
+}
+
+// ── TOUR ──────────────────────────────────────────────────────────
+async function runTour() {
+  const steps = ['whoami', 'skills', 'projects', 'hire', 'contact'];
+  for (const cmd of steps) {
+    await sleep(600);
+    // simulate typing
+    const row = el('div');
+    row.style.cssText = 'display:flex;gap:10px;margin-top:6px';
+    row.innerHTML = `<span style="color:var(--accent)">kamil@sh:~$</span><span style="color:#e0e0e0"> ${cmd}</span>`;
+    tb.appendChild(row);
+    scroll();
+    await sleep(300);
+    const handler = COMMANDS[cmd];
+    if (handler) {
+      const result = typeof handler === 'function' ? await handler() : handler;
+      if (result) {
+        const out = el('div');
+        out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+        out.innerHTML = result;
+        tb.appendChild(out);
+        scroll();
+      }
+    }
+    await sleep(1200);
+  }
+  const done = el('div');
+  done.style.cssText = 'font-size:12px;margin:8px 0 14px';
+  done.innerHTML = `  <span class="g">end of tour.</span>  <span class="d">type <span class="o">help</span> to explore more or <span class="o">contact</span> to reach out.</span>`;
+  tb.appendChild(done);
+  scroll();
+}
 
 // ── UTILS ─────────────────────────────────────────────────────────
 
@@ -1001,9 +1071,10 @@ async function launchMain() {
   await typewrite(tag, '  Senior/Lead Frontend Developer  ·  Warsaw, Poland  ·  PADI AOWD diver', 20);
   await sleep(150);
 
-  addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:18px');
+  addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">tour</span> for guided walkthrough · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:18px');
   addHTML(`  <span style="color:#222">${'─'.repeat(58)}</span>`, 'margin-bottom:14px');
   mkInput();
+  resetIdleTimer();
 }
 
 function mkInput() {
@@ -1056,34 +1127,44 @@ async function submit(cmd) {
   frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:${cwd}$</span><span style="color:#e0e0e0"> ${esc(cmd)}</span>`;
   tb.replaceChild(frozen, inputRow);
 
-  if (cmd === 'clear') { tb.innerHTML = ''; cwd = '~'; mkInput(); return; }
+  clearTimeout(idleTimer);
+
+  if (cmd === 'tour') {
+    await runTour();
+    mkInput();
+    resetIdleTimer();
+    return;
+  }
+
+  if (cmd === 'clear') { tb.innerHTML = ''; cwd = '~'; mkInput(); resetIdleTimer(); return; }
 
   // ── cd ──
   if (cmd === 'cd' || cmd === 'cd ~') {
-    cwd = '~'; mkInput(); return;
+    cwd = '~'; mkInput(); resetIdleTimer(); return;
   }
   if (cmd.startsWith('cd ')) {
     const target = cmd.slice(3).trim().replace(/\/$/, '');
     if (target === '..') {
-      cwd = '~'; mkInput(); return;
+      cwd = '~'; mkInput(); resetIdleTimer(); return;
     }
     if (target === 'secret_projects') {
       const out = el('div');
       out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
       out.innerHTML = `\n  <span class="g">kamil@sh:~/secret_projects$</span>\n  <span class="d">──────────────────────────────────────</span>\n  <span class="d">·</span> <span class="o">playsmart</span>         [in progress]\n  <span class="d">·</span> <span class="o">???</span>               [classified]\n  <span class="d">·</span> <span class="o">???</span>               [classified]\n  <span class="d">──────────────────────────────────────</span>\n  <span class="r">permission denied: secret_projects/unreleased</span>\n`;
       tb.appendChild(out);
-      mkInput(); return;
+      mkInput(); resetIdleTimer(); return;
     }
     const dir = FS[cwd];
     if (dir && dir.dirs.includes(target)) {
       cwd = `${cwd}/${target}`;
-      mkInput(); return;
+      showHint(cmd);
+      mkInput(); resetIdleTimer(); return;
     }
     const err = el('div');
     err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
     err.textContent = `  cd: ${target}: No such file or directory`;
     tb.appendChild(err);
-    mkInput(); return;
+    mkInput(); resetIdleTimer(); return;
   }
 
   // ── cat ──
@@ -1103,7 +1184,7 @@ async function submit(cmd) {
       err.textContent = `  cat: ${filename}: No such file or directory`;
       tb.appendChild(err);
     }
-    mkInput(); return;
+    mkInput(); resetIdleTimer(); return;
   }
 
   if (cmd.startsWith('theme ')) {
@@ -1134,7 +1215,9 @@ async function submit(cmd) {
     tb.appendChild(err);
   }
 
+  showHint(cmd);
   mkInput();
+  resetIdleTimer();
 }
 
 boot();
