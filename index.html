@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Kamil Dzieniszewski — Senior Frontend Developer | Warsaw</title>
-  <meta name="description" content="Kamil Dzieniszewski is a Senior/Lead Frontend Developer based in Warsaw, Poland. Community builder, meet.js co-organizer, PADI AOWD diver. Building at the intersection of code, people & ideas.">
+  <meta name="description" content="Kamil Dzieniszewski — Senior/Lead Frontend Developer based in Warsaw, Poland. Open to new opportunities. React, TypeScript, Next.js, AI. Community builder, meet.js co-organizer, PADI AOWD diver.">
   <meta name="author" content="Kamil Dzieniszewski">
-  <meta name="keywords" content="Kamil Dzieniszewski, frontend developer, React, TypeScript, Next.js, Warsaw, meet.js, community builder, AI developer">
+  <meta name="keywords" content="Kamil Dzieniszewski, frontend developer, React, TypeScript, Next.js, Warsaw, meet.js, community builder, AI developer, open to work, available for hire">
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://dzienko.dev/">
@@ -49,9 +49,11 @@
       "addressLocality": "Warsaw",
       "addressCountry": "Poland"
     },
+    "telephone": "+48725999744",
     "sameAs": [
       "https://www.linkedin.com/in/dzieniszewski/",
-      "https://x.com/dzienko"
+      "https://x.com/dzienko",
+      "https://github.com/dzienisz"
     ],
     "knowsAbout": [
       "React", "TypeScript", "Next.js", "Frontend Development",
@@ -271,8 +273,11 @@ ${HR}
   <span class="y">projects</span>    side projects & content
   <span class="y">cv</span>          work experience
   <span class="y">hire</span>        am I available?
+  <span class="y">status</span>      availability & what I'm looking for
   <span class="y">now</span>         what I'm focused on
   <span class="y">contact</span>     how to reach me
+  <span class="y">email</span>       open email client directly
+  <span class="y">github</span>      open github profile
   <span class="y">ls</span>          explore files & folders
   <span class="y">theme</span>       change color scheme
   <span class="y">clear</span>       clear terminal
@@ -467,6 +472,7 @@ ${HR}
     <span class="g">→</span> exploring AI-native product development
     <span class="g">→</span> planning next dive trip
     <span class="g">→</span> building and shipping side projects
+    <span class="g">→</span> <span class="g">open to new opportunities</span>
 
   <span class="d">last updated: April 2026</span>
 `,
@@ -477,10 +483,12 @@ ${HR}
 
   Location    <span class="w">Warsaw, Poland</span>
   Focus       <span class="w">DevRel · Frontend · AI · Product</span>
+  Status      <span class="g">● open to new opportunities</span>
 
   <span class="d">──────────────────────────────────────</span>
   Email       <a href="mailto:kamil.dzieniszewski@gmail.com" target="_blank" style="color:#00d4ff;text-decoration:none">kamil.dzieniszewski@gmail.com</a>
   LinkedIn    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">linkedin.com/in/dzieniszewski</a>
+  GitHub      <a href="https://github.com/dzienisz" target="_blank" style="color:#00d4ff;text-decoration:none">github.com/dzienisz</a>
   X           <a href="https://x.com/dzienko" target="_blank" style="color:#00d4ff;text-decoration:none">x.com/dzienko</a>
   <span class="d">──────────────────────────────────────</span>
 
@@ -705,7 +713,8 @@ ${HR}
   hire: `
   <span class="o">HIRE ME?</span>
 ${HR}
-
+  Status      <span class="g">● open to new opportunities</span>
+  <span class="d">──────────────────────────────────────</span>
   Looking for someone who:
     <span class="g">✓</span> leads frontend & ships fast
     <span class="g">✓</span> talks to humans (product, design, users)
@@ -715,8 +724,10 @@ ${HR}
 
   Bonus: comes with a dive buddy.
 
-  <span class="d">→ type "contact" to reach out</span>
-  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>
+  <span class="d">──────────────────────────────────────</span>
+  <a href="mailto:kamil.dzieniszewski@gmail.com" style="color:#4af626;text-decoration:none">✉  kamil.dzieniszewski@gmail.com</a>
+  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
+  <a href="/cv.pdf" download style="color:#e0e0e0;text-decoration:none">⬇  download cv.pdf</a>
 `,
 
   vim: `
@@ -939,6 +950,25 @@ ${HR}
 
   uname: `  <span class="w">KamilOS 12.0.0 Warsaw-kernel #1 SMP React/TypeScript x86_64</span>\n`,
 
+  status: `
+  <span class="o">AVAILABILITY</span>
+${HR}
+  <span class="g">● currently open to new opportunities</span>
+
+  Looking for:
+    <span class="g">→</span> Senior / Lead Frontend roles
+    <span class="g">→</span> product-focused teams
+    <span class="g">→</span> remote or Warsaw-based
+    <span class="g">→</span> work at the intersection of tech & people
+
+  <a href="mailto:kamil.dzieniszewski@gmail.com" style="color:#4af626;text-decoration:none">✉  kamil.dzieniszewski@gmail.com</a>
+  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
+`,
+
+  email: () => { window.location.href = 'mailto:kamil.dzieniszewski@gmail.com'; return `  <span class="g">opening email client...</span>\n`; },
+
+  github: () => { window.open('https://github.com/dzienisz', '_blank'); return `  <span class="g">opening github.com/dzienisz...</span>\n`; },
+
   claude: `
   <span class="o">Claude?</span>
   <span class="d">──────────────────────────────────────</span>
@@ -960,7 +990,7 @@ const KNOWN = ['help','whoami','about','skills','community','projects','cv','now
                'backdoor','login -n root','who are you?','kim jestes',
                'htop','man','co jest','powiedz zart','allyourbasearebelongtous',
                'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname',
-               'claude','dupa','chuj'];
+               'claude','dupa','chuj','status','email','github'];
 
 // ── CONTEXTUAL HINTS ──────────────────────────────────────────────
 const HINTS = {
