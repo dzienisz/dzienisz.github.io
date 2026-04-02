@@ -977,8 +977,10 @@ ${HR}
   <span class="d">// anthropic would be proud</span>
 `,
 
-  dupa:  `  <span class="d">to też polecenie.</span>  <span class="y">¯\\_(ツ)_/¯</span>\n`,
-  chuj:  `  <span class="d">kreatywne. ale nie ma takiego polecenia.</span>  <span class="d">spróbuj <span class="o">help</span>.</span>\n`,
+  dupa:   `  <span class="d">to też polecenie.</span>  <span class="y">¯\\_(ツ)_/¯</span>\n`,
+  chuj:   `  <span class="d">kreatywne. ale nie ma takiego polecenia.</span>  <span class="d">spróbuj <span class="o">help</span>.</span>\n`,
+  dawaj:  `  <span class="g">no to dawaj!</span>  wpisz <span class="o">tour</span> albo <span class="o">help</span> — zaczynamy.\n`,
+  'open .': `  <span class="d">to nie jest Finder.</span>  <span class="d">ale spróbuj <span class="o">ls</span> — działa podobnie.</span>\n`,
 
 };
 
@@ -990,7 +992,7 @@ const KNOWN = ['help','whoami','about','skills','community','projects','cv','now
                'backdoor','login -n root','who are you?','kim jestes',
                'htop','man','co jest','powiedz zart','allyourbasearebelongtous',
                'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname',
-               'claude','dupa','chuj','status','email','github'];
+               'claude','dupa','chuj','dawaj','open .','status','email','github'];
 
 // ── CONTEXTUAL HINTS ──────────────────────────────────────────────
 const HINTS = {
@@ -1344,8 +1346,25 @@ async function submit(cmd) {
   }
 
   // ── aliases & redirects ──
-  if (cmd === '/help') { submit('help'); return; }
+  if (cmd === '/help' || cmd === '?') { submit('help'); return; }
+  if (cmd === 'hi') { submit('hello'); return; }
+  if (cmd === 'l') { submit('ls'); return; }
+  if (cmd === 'ls -l' || cmd === 'ls -la' || cmd === 'ls -a') { submit('ls'); return; }
+  if (cmd === 'rm -r /') { submit('rm -rf /'); return; }
   if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
+
+  // ── typing a filename directly ──
+  if (['cv.pdf','skills.json','contact.txt'].includes(cmd)) { submit(`cat ${cwd}/${cmd}`); return; }
+
+  // ── vim <any file> ──
+  if (cmd.startsWith('vim ') && cmd !== 'vim skills.json') {
+    const f = cmd.slice(4).trim();
+    const out = el('div');
+    out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+    out.innerHTML = `\n  <span class="r">you have entered vim.</span>\n  <span class="d">\n  ~\n  ~\n  ~\n  ~                [${f}]  0,0  All\n  </span>\n  <span class="d">type  :q!  and press Enter to escape</span>\n`;
+    tb.appendChild(out);
+    mkInput(); resetIdleTimer(); return;
+  }
 
   // ── ls <dir> ──
   if (cmd.startsWith('ls ')) {
@@ -1369,7 +1388,7 @@ async function submit(cmd) {
   }
 
   // ── typo detection ──
-  const TYPOS = { hep:'help', helpo:'help', htlp:'help', hrlp:'help', hlep:'help', vimn:'vim', 'vi':'vim' };
+  const TYPOS = { hep:'help', helpo:'help', htlp:'help', hrlp:'help', hlep:'help', vimn:'vim', 'vi':'vim', ',,':'..', 'cd ,,':'cd ..' };
   if (TYPOS[cmd]) {
     const sug = el('div');
     sug.style.cssText = 'color:#ffc947;margin:4px 0 4px';
@@ -1395,7 +1414,7 @@ async function submit(cmd) {
       tb.appendChild(err);
       mkInput(); resetIdleTimer(); return;
     }
-    if (target === '..') {
+    if (target === '..' || target === ',,') {
       cwd = '~'; mkInput(); resetIdleTimer(); return;
     }
     if (target === 'node_modules') {
@@ -1419,9 +1438,15 @@ async function submit(cmd) {
       showHint(cmd);
       mkInput(); resetIdleTimer(); return;
     }
+    const dir2 = FS[cwd];
+    const isFile = dir2 && dir2.files.includes(target);
     const err = el('div');
-    err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
-    err.textContent = `  cd: ${target}: No such file or directory`;
+    err.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    if (isFile) {
+      err.innerHTML = `  <span class="r">cd: ${target}: not a directory</span>  <span class="d">— try <span class="o">cat ${target}</span> to read it</span>`;
+    } else {
+      err.innerHTML = `  <span class="r">cd: ${target}: No such file or directory</span>`;
+    }
     tb.appendChild(err);
     mkInput(); resetIdleTimer(); return;
   }
