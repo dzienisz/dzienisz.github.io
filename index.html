@@ -902,6 +902,40 @@ ${HR}
   <span class="d">──────────────────────────────────────</span>
   <span class="d">// easter egg unlocked 🏆</span>
 `,
+
+  shrug:   `  <span class="w">¯\\_(ツ)_/¯</span>\n`,
+  flip:    `  <span class="w">(╯°□°）╯︵ ┻━┻</span>\n`,
+  unflip:  `  <span class="w">┬─┬ ノ( ゜-゜ノ)</span>\n`,
+
+  'rm -rf /': `
+  <span class="r">rm: cannot remove '/':</span> nice try.
+  <span class="d">this terminal and its contents are protected by</span>
+  <span class="d">sheer force of personality.</span>
+`,
+
+  reboot: async () => {
+    addHTML(`  <span class="d">rebooting kamil.sh...</span>`);
+    await sleep(800);
+    tb.innerHTML = '';
+    cwd = '~';
+    await boot();
+    return null;
+  },
+
+  'ping kamil.dev': async () => {
+    let out = `\n  <span class="d">PING kamil.dev (185.199.108.153)</span>\n`;
+    for (let i = 0; i < 4; i++) {
+      await sleep(600);
+      const ms = (18 + Math.random() * 8).toFixed(3);
+      out += `  64 bytes from kamil.dev: icmp_seq=${i+1} ttl=64 <span class="g">time=${ms} ms</span>\n`;
+      addHTML(out);
+      out = '';
+    }
+    await sleep(400);
+    return `  <span class="d">--- kamil.dev ping statistics ---</span>\n  4 packets transmitted, 4 received, <span class="g">0% packet loss</span>\n`;
+  },
+
+  uname: `  <span class="w">KamilOS 12.0.0 Warsaw-kernel #1 SMP React/TypeScript x86_64</span>\n`,
 };
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
@@ -910,7 +944,8 @@ const KNOWN = ['help','whoami','about','skills','community','projects','cv','now
                'cd about','cd skills','cd projects','cd community','cd ..','cd ~',
                'cat cv.pdf','cat skills.json','cat contact.txt',
                'backdoor','login -n root','who are you?','kim jestes',
-               'htop','man','co jest','powiedz zart','allyourbasearebelongtous'];
+               'htop','man','co jest','powiedz zart','allyourbasearebelongtous',
+               'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname'];
 
 // ── CONTEXTUAL HINTS ──────────────────────────────────────────────
 const HINTS = {
@@ -1252,6 +1287,15 @@ async function submit(cmd) {
   if (cmd === 'clear') { tb.innerHTML = ''; cwd = '~'; mkInput(); resetIdleTimer(); return; }
 
   // ── cd ──
+  // ── echo ──
+  if (cmd.startsWith('echo ')) {
+    const out = el('div');
+    out.style.cssText = 'font-size:13px;margin:4px 0 12px;color:#e0e0e0';
+    out.textContent = `  ${cmd.slice(5)}`;
+    tb.appendChild(out);
+    mkInput(); resetIdleTimer(); return;
+  }
+
   // ── aliases & redirects ──
   if (cmd === '/help') { submit('help'); return; }
   if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
