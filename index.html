@@ -1420,6 +1420,27 @@ function onKey(e) {
 
 async function submit(cmd) {
   if (!cmd) return;
+
+  // ── resolve simple aliases before anything else ──
+  const SIMPLE_ALIASES = {
+    'dir': 'ls', 'l': 'ls', 'll': 'ls',
+    'hi': 'hello', 'cześć': 'hello', 'czesc': 'hello', 'elo': 'hello', 'elo morelo': 'hello',
+    '/help': 'help', '?': 'help', 'help --help': 'help',
+    'rm -r /': 'rm -rf /', 'rm -rf *': 'rm -rf /', 'rm -rf *.*': 'rm -rf /',
+    'ls -l': 'ls', 'ls -la': 'ls', 'ls -a': 'ls',
+    'theme urple': 'theme purple',
+    'cs skills': 'cd skills', 'cs about': 'cd about', 'cs projects': 'cd projects',
+    'amber': 'theme amber', 'green': 'theme green', 'blue': 'theme blue',
+    'red': 'theme red', 'purple': 'theme purple',
+  };
+  if (SIMPLE_ALIASES[cmd]) cmd = SIMPLE_ALIASES[cmd];
+
+  // ── - goes to previous command ──
+  if (cmd === '-') {
+    const prev = history.filter(c => c !== '-').slice(-1)[0];
+    if (prev) { cmd = prev; } else { cmd = 'ls'; }
+  }
+
   history.push(cmd);
   histIdx = -1;
   if (typeof umami !== 'undefined') umami.track('command', { cmd });
@@ -1451,13 +1472,6 @@ async function submit(cmd) {
   }
 
   // ── aliases & redirects ──
-  if (cmd === '/help' || cmd === '?' || cmd === 'help --help') { submit('help'); return; }
-  if (cmd === 'hi' || cmd === 'cześć' || cmd === 'czesc' || cmd === 'elo' || cmd === 'elo morelo') { submit('hello'); return; }
-  if (cmd === 'l' || cmd === 'dir') { submit('ls'); return; }
-  if (cmd === 'ls -l' || cmd === 'ls -la' || cmd === 'ls -a') { submit('ls'); return; }
-  if (cmd === 'rm -r /' || cmd === 'rm -rf *' || cmd === 'rm -rf *.*' || cmd === 'rm -rf */**') { submit('rm -rf /'); return; }
-  if (cmd === '-') { const prev = history[history.length - 2]; if (prev) { submit(prev); return; } }
-  if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
   if (cmd === 'how are you?' || cmd === 'whats up?' || cmd === "what's up?" || cmd === 'jak sie masz') {
     const d = el('div', { innerHTML: `  <span class="g">doing great, thanks for asking!</span>  <span class="d">shipping code, organizing meet.js, planning Japan. you?</span>` });
     d.style.cssText = 'font-size:13px;margin:4px 0 12px';
