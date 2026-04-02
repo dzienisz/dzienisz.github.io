@@ -680,7 +680,7 @@ ${HR}
     const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
     let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
     const base = cwd;
-    for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cd ${d}')">${d}/</span>\n`;
+    for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cd ${base}/${d}')">${d}/</span>\n`;
     for (const f of dir.files) out += `  <span class="d">-rw-r--r--</span>  <span class="w" style="${style}" onclick="submit('cat ${base}/${f}')">${f}</span>\n`;
     return out;
   },
@@ -1353,7 +1353,17 @@ async function submit(cmd) {
     cwd = '~'; mkInput(); resetIdleTimer(); return;
   }
   if (cmd.startsWith('cd ')) {
-    const target = cmd.slice(3).trim().replace(/\/$/, '');
+    let target = cmd.slice(3).trim().replace(/\/$/, '');
+    // support absolute paths like ~/projects
+    if (target.startsWith('~/')) {
+      const abs = target;
+      if (FS[abs]) { cwd = abs; mkInput(); resetIdleTimer(); return; }
+      const err = el('div');
+      err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+      err.textContent = `  cd: ${target.slice(2)}: No such file or directory`;
+      tb.appendChild(err);
+      mkInput(); resetIdleTimer(); return;
+    }
     if (target === '..') {
       cwd = '~'; mkInput(); resetIdleTimer(); return;
     }
