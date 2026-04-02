@@ -712,6 +712,7 @@ ${HR}
   Bonus: comes with a dive buddy.
 
   <span class="d">→ type "contact" to reach out</span>
+  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>
 `,
 
   vim: `
@@ -776,7 +777,7 @@ ${HR}
   <span class="d">hint: try  cat cv.pdf  or  cat skills.json</span>
 `,
 
-  'cat cv.pdf': () => `  <span class="d">// cat cv.pdf</span>\n` + COMMANDS.cv,
+  'cat cv.pdf': () => `  <span class="d">// cat cv.pdf</span>\n` + COMMANDS.cv + `\n  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>\n`,
 
   'cat skills.json': () => `  <span class="d">// cat skills.json</span>\n` + COMMANDS.skills,
 
