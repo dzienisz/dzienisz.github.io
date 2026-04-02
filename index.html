@@ -1210,8 +1210,15 @@ async function submit(cmd) {
       tb.appendChild(out);
     }
   } else {
-    const err = el('div', { textContent: `  command not found: ${cmd}  (try "help")` });
-    err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+    const notFound = [
+      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— are you okay?  (try <span class="o">help</span>)</span>`,
+      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— impressive creativity though  (try <span class="o">help</span>)</span>`,
+      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— this isn't that kind of terminal  (try <span class="o">help</span>)</span>`,
+      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— I admire the confidence  (try <span class="o">help</span>)</span>`,
+      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— nice try  (try <span class="o">help</span>)</span>`,
+    ];
+    const err = el('div', { innerHTML: notFound[Math.floor(Math.random() * notFound.length)] });
+    err.style.cssText = 'font-size:13px;margin:4px 0 12px';
     tb.appendChild(err);
   }
 
