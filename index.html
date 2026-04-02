@@ -1265,7 +1265,8 @@ async function launchMain() {
   await typewrite(tag, '  Senior/Lead Frontend Developer  ·  Warsaw, Poland  ·  PADI AOWD diver', 20);
   await sleep(150);
 
-  addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">tour</span> for guided walkthrough · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:18px');
+  addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">tour</span> for guided walkthrough · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:6px');
+  addHTML(`  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none;font-size:12px">in  linkedin.com/in/dzieniszewski</a>`, 'margin-bottom:18px');
   addHTML(`  <span style="color:#222">${'─'.repeat(58)}</span>`, 'margin-bottom:14px');
   mkInput();
   resetIdleTimer();
