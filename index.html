@@ -1171,7 +1171,8 @@ let cwd      = '~';
 
 // ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
 const FS = {
-  '~':           { dirs: ['about','skills','projects','community'], files: ['cv.pdf','skills.json','contact.txt'] },
+  '~':           { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt'] },
+  '~/node_modules': { dirs: ['react','lodash','left-pad','is-odd','is-even','is-array','is-number','is-string','is-boolean','is-null','is-undefined','is-object','is-function','moment','jquery','colors','chalk','debug','ms','semver','minimist','yargs','commander','glob','rimraf','mkdirp','async','bluebird','axios','express','webpack','babel-core','babel-loader','babel-preset-env','eslint','prettier','typescript','ts-node','jest','mocha','chai','sinon','nyc','cross-env','dotenv','nodemon','concurrently'], files: ['package.json','.package-lock.json'] },
   '~/about':     { dirs: [], files: ['bio.txt','whoami.txt'] },
   '~/skills':    { dirs: [], files: ['skills.json','frontend.txt','backend.txt'] },
   '~/projects':  { dirs: [], files: ['nowinki.md','prasowka.md'] },
@@ -1340,6 +1341,14 @@ async function submit(cmd) {
     const target = cmd.slice(3).trim().replace(/\/$/, '');
     if (target === '..') {
       cwd = '~'; mkInput(); resetIdleTimer(); return;
+    }
+    if (target === 'node_modules') {
+      const warn = el('div');
+      warn.style.cssText = 'font-size:12px;color:#555;margin:4px 0 8px';
+      warn.innerHTML = `  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`;
+      tb.appendChild(warn);
+      cwd = '~/node_modules';
+      mkInput(); resetIdleTimer(); return;
     }
     if (target === 'secret_projects') {
       const out = el('div');
