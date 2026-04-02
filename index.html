@@ -838,6 +838,55 @@ ${HR}
   <span class="d">try <span class="o">contact</span> instead — much friendlier.</span>
 `,
 
+  htop: () => {
+    const uptime = Math.floor((Date.now() - performance.now()) / 1000 + 28 * 365.25 * 24 * 3600);
+    return `
+  <span class="g">kamil@sh</span>  -  <span class="w">Tasks: 12 total</span>  -  <span class="o">Load avg: 0.42</span>
+  <span class="d">──────────────────────────────────────────────────────</span>
+  <span class="d"> PID  USER     CPU%  MEM%  COMMAND</span>
+  <span class="d">──────────────────────────────────────────────────────</span>
+    <span class="g">1</span>   kamil    <span class="o">42.0</span>   3.2  react-dev-server
+    <span class="g">2</span>   kamil    <span class="o">18.5</span>   2.1  typescript-compiler
+    <span class="g">3</span>   kamil     <span class="y">9.3</span>   1.8  next.js
+    <span class="g">4</span>   kamil     <span class="y">7.1</span>   1.2  community-building
+    <span class="g">5</span>   kamil     <span class="y">6.4</span>   0.9  meetjs-organizer
+    <span class="g">6</span>   kamil     <span class="y">4.2</span>   0.7  side-projects
+    <span class="g">7</span>   kamil     <span class="y">3.8</span>   0.6  scuba-diving
+    <span class="g">8</span>   kamil     <span class="y">2.9</span>   0.4  japan-trip-planning
+    <span class="g">9</span>   kamil     <span class="y">2.1</span>   0.3  ai-exploration
+   <span class="g">10</span>   kamil     <span class="d">1.4</span>   0.2  coffee-consumption
+   <span class="g">11</span>   kamil     <span class="d">1.1</span>   0.1  overengineering    <span class="r">[KILLED]</span>
+   <span class="g">12</span>   kamil     <span class="d">0.2</span>   0.1  this-terminal
+  <span class="d">──────────────────────────────────────────────────────</span>
+  <span class="d">press q to quit</span>  <span class="d">(just type another command)</span>
+`; },
+
+  man: `
+  <span class="w">What manual page do you want?</span>
+  <span class="d">try:  <span class="o">man kamil</span></span>
+`,
+
+  'co jest': `
+  <span class="o">Kamil Dzieniszewski</span>
+  Senior / Lead Frontend Developer
+  Warszawa, Polska
+  <span class="d">──────────────────────────────────────</span>
+  To jest moje osobiste portfolio w formie terminala.
+  Wpisz <span class="o">help</span> żeby zobaczyć co tu można robić.
+  Albo po prostu <span class="o">tour</span> — samo się pokaże.
+  <span class="d">// miło, że zajrzałeś!</span>
+`,
+
+  'powiedz zart': `
+  <span class="o">a frontend dev joke:</span>
+  <span class="d">──────────────────────────────────────</span>
+  Dlaczego frontend developer poszedł do terapeuty?
+
+  <span class="w">Bo nie mógł poradzić sobie ze swoimi <span class="r">issues</span>.</span>
+
+  <span class="d">// ba dum tss 🥁</span>
+`,
+
   allyourbasearebelongtous: `
   <span class="g">ALL YOUR BASE ARE BELONG TO US</span>
   <span class="d">──────────────────────────────────────</span>
@@ -860,7 +909,8 @@ const KNOWN = ['help','whoami','about','skills','community','projects','cv','now
                'ls','ll','hire','hello','sudo su','vim','vim skills.json','tour',
                'cd about','cd skills','cd projects','cd community','cd ..','cd ~',
                'cat cv.pdf','cat skills.json','cat contact.txt',
-               'backdoor','login -n root','who are you?','kim jestes'];
+               'backdoor','login -n root','who are you?','kim jestes',
+               'htop','man','co jest','powiedz zart','allyourbasearebelongtous'];
 
 // ── CONTEXTUAL HINTS ──────────────────────────────────────────────
 const HINTS = {
