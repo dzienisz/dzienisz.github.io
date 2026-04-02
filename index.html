@@ -679,8 +679,9 @@ ${HR}
     if (!dir) return `  <span class="r">cannot access '${cwd}': No such directory</span>`;
     const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
     let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
+    const base = cwd;
     for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cd ${d}')">${d}/</span>\n`;
-    for (const f of dir.files) out += `  <span class="d">-rw-r--r--</span>  <span class="w" style="${style}" onclick="submit('cat ${f}')">${f}</span>\n`;
+    for (const f of dir.files) out += `  <span class="d">-rw-r--r--</span>  <span class="w" style="${style}" onclick="submit('cat ${base}/${f}')">${f}</span>\n`;
     return out;
   },
 
@@ -1387,7 +1388,7 @@ async function submit(cmd) {
   // ── cat ──
   if (cmd.startsWith('cat ')) {
     const filename = cmd.slice(4).trim();
-    const path = `${cwd}/${filename}`;
+    const path = filename.startsWith('~') ? filename : `${cwd}/${filename}`;
     const fileHandler = FS_FILES[path];
     if (fileHandler) {
       const result = typeof fileHandler === 'function' ? fileHandler() : fileHandler;
