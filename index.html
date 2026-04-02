@@ -677,9 +677,10 @@ ${HR}
   ls: () => {
     const dir = FS[cwd];
     if (!dir) return `  <span class="r">cannot access '${cwd}': No such directory</span>`;
+    const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
     let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
-    for (const d of dir.dirs) out += `  drwxr-xr-x  <span class="c">${d}/</span>\n`;
-    for (const f of dir.files) out += `  -rw-r--r--  <span class="w">${f}</span>\n`;
+    for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cd ${d}')">${d}/</span>\n`;
+    for (const f of dir.files) out += `  <span class="d">-rw-r--r--</span>  <span class="w" style="${style}" onclick="submit('cat ${f}')">${f}</span>\n`;
     return out;
   },
 
