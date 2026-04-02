@@ -1243,7 +1243,7 @@ let cwd      = '~';
 
 // ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
 const FS = {
-  '~':           { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt'] },
+  '~':           { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt','kamil.md'] },
   '~/node_modules': { dirs: ['react','lodash','left-pad','is-odd','is-even','is-array','is-number','is-string','is-boolean','is-null','is-undefined','is-object','is-function','moment','jquery','colors','chalk','debug','ms','semver','minimist','yargs','commander','glob','rimraf','mkdirp','async','bluebird','axios','express','webpack','babel-core','babel-loader','babel-preset-env','eslint','prettier','typescript','ts-node','jest','mocha','chai','sinon','nyc','cross-env','dotenv','nodemon','concurrently'], files: ['package.json','.package-lock.json'] },
   '~/about':     { dirs: [], files: ['bio.txt','whoami.txt'] },
   '~/skills':    { dirs: [], files: ['skills.json','frontend.txt','backend.txt'] },
@@ -1252,6 +1252,66 @@ const FS = {
 };
 
 const FS_FILES = {
+  '~/kamil.md': () => `
+  <span class="d"># kamil.md — Agent Skill Manifest v1.0</span>
+  <span class="d"># auto-generated from: dzienko.dev</span>
+  <span class="d">────────────────────────────────────────────</span>
+
+  <span class="o">metadata:</span>
+    name:       <span class="w">Kamil Dzieniszewski</span>
+    version:    <span class="w">12.0.0</span>
+    location:   <span class="w">Warsaw, Poland</span>
+    status:     <span class="g">open-to-work: true</span>
+    license:    <span class="w">MIT (humans only)</span>
+
+  <span class="o">system_prompt:</span> <span class="d">|</span>
+    <span class="w">You are Kamil — Senior/Lead Frontend Developer,</span>
+    <span class="w">community builder, and product-oriented technologist.</span>
+    <span class="w">You ship fast, talk to humans, and get things done.</span>
+    <span class="w">You organise meet.js. You dive. You love Japan.</span>
+    <span class="w">You are genuinely excited about AI.</span>
+
+  <span class="o">skills:</span>
+    - id: <span class="c">frontend</span>
+      stack: <span class="w">[React, TypeScript, Next.js, React Native]</span>
+      proficiency: <span class="g">expert</span>
+    - id: <span class="c">backend</span>
+      stack: <span class="w">[Supabase, PostgreSQL, REST APIs]</span>
+      proficiency: <span class="y">advanced</span>
+    - id: <span class="c">ai_development</span>
+      stack: <span class="w">[LLMs, MCP, A2A, prompt engineering]</span>
+      proficiency: <span class="y">actively exploring</span>
+    - id: <span class="c">community_building</span>
+      tools: <span class="w">[meet.js, Windsurf Meetup Warsaw]</span>
+      proficiency: <span class="g">15+ years</span>
+    - id: <span class="c">leadership</span>
+      tools: <span class="w">[team management, recruitment, mentoring]</span>
+      proficiency: <span class="g">lead-level</span>
+
+  <span class="o">tools:</span>
+    - <span class="w">VS Code / Windsurf</span>
+    - <span class="w">GitHub</span>
+    - <span class="w">Figma (reading)</span>
+    - <span class="w">scuba gear (PADI AOWD certified)</span>
+    - <span class="w">this terminal</span>
+
+  <span class="o">context_window:</span>
+    memory:       <span class="w">12 years of frontend experience</span>
+    max_tokens:   <span class="w">∞ (curiosity-driven)</span>
+    temperature:  <span class="w">0.7 (creative but reliable)</span>
+
+  <span class="o">contact:</span>
+    hire:     <a href="mailto:kamil.dzieniszewski@gmail.com" style="color:#00d4ff;text-decoration:none">kamil.dzieniszewski@gmail.com</a>
+    linkedin: <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">linkedin.com/in/dzieniszewski</a>
+    github:   <a href="https://github.com/dzienisz" target="_blank" style="color:#00d4ff;text-decoration:none">github.com/dzienisz</a>
+
+  <span class="d">────────────────────────────────────────────</span>
+  <span class="r"># WARNING: deploying this agent may result in</span>
+  <span class="r"># over-engineered solutions, unsolicited meet.js</span>
+  <span class="r"># invitations, and an urge to go scuba diving.</span>
+  <span class="d">────────────────────────────────────────────</span>
+`,
+
   '~/cv.pdf':              () => COMMANDS.cv + `\n  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>\n`,
   '~/skills.json':         () => COMMANDS.skills,
   '~/contact.txt':         () => COMMANDS.contact,
@@ -1379,7 +1439,7 @@ async function submit(cmd) {
   if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
 
   // ── typing a filename directly ──
-  if (['cv.pdf','skills.json','contact.txt'].includes(cmd)) { submit(`cat ${cwd}/${cmd}`); return; }
+  if (['cv.pdf','skills.json','contact.txt','kamil.md'].includes(cmd)) { submit(`cat ${cwd}/${cmd}`); return; }
 
   // ── vim <any file> ──
   if (cmd.startsWith('vim ') && cmd !== 'vim skills.json') {
