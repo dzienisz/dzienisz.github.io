@@ -982,6 +982,26 @@ ${HR}
   dawaj:  `  <span class="g">no to dawaj!</span>  wpisz <span class="o">tour</span> albo <span class="o">help</span> — zaczynamy.\n`,
   'open .': `  <span class="d">to nie jest Finder.</span>  <span class="d">ale spróbuj <span class="o">ls</span> — działa podobnie.</span>\n`,
 
+  pwd: () => `  <span class="w">/home/kamil${cwd === '~' ? '' : cwd.slice(1)}</span>\n`,
+
+  exit: `
+  <span class="d">there is no escape.</span>
+  <span class="d">this terminal lives in your browser tab.</span>
+  <span class="d">close the tab if you must — but you'll be back.</span>
+`,
+
+  wykształcenie: `
+  <span class="o">EDUCATION</span>
+${HR}
+  <span class="y">Master of Engineering</span>
+  <span class="d">Polish-Japanese Academy of Information Technology</span>
+  <span class="d">2017 – 2019  ·  Warsaw</span>
+
+  <span class="y">Bachelor of Engineering</span>
+  <span class="d">Warsaw University of Technology</span>
+  <span class="d">2012 – 2016  ·  Warsaw</span>
+`,
+
   f1: `
   <span style="color:#ff8000">█████████████████████████████████████</span>
   <span style="color:#ff8000">  McLaren Formula 1 Team</span>
@@ -1431,22 +1451,50 @@ async function submit(cmd) {
   }
 
   // ── aliases & redirects ──
-  if (cmd === '/help' || cmd === '?') { submit('help'); return; }
-  if (cmd === 'hi') { submit('hello'); return; }
-  if (cmd === 'l') { submit('ls'); return; }
+  if (cmd === '/help' || cmd === '?' || cmd === 'help --help') { submit('help'); return; }
+  if (cmd === 'hi' || cmd === 'cześć' || cmd === 'czesc' || cmd === 'elo' || cmd === 'elo morelo') { submit('hello'); return; }
+  if (cmd === 'l' || cmd === 'dir') { submit('ls'); return; }
   if (cmd === 'ls -l' || cmd === 'ls -la' || cmd === 'ls -a') { submit('ls'); return; }
-  if (cmd === 'rm -r /') { submit('rm -rf /'); return; }
+  if (cmd === 'rm -r /' || cmd === 'rm -rf *' || cmd === 'rm -rf *.*' || cmd === 'rm -rf */**') { submit('rm -rf /'); return; }
+  if (cmd === '-') { const prev = history[history.length - 2]; if (prev) { submit(prev); return; } }
   if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
+  if (cmd === 'how are you?' || cmd === 'whats up?' || cmd === "what's up?" || cmd === 'jak sie masz') {
+    const d = el('div', { innerHTML: `  <span class="g">doing great, thanks for asking!</span>  <span class="d">shipping code, organizing meet.js, planning Japan. you?</span>` });
+    d.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    tb.appendChild(d); mkInput(); resetIdleTimer(); return;
+  }
+  if (cmd === 'nice' || cmd === 'bonus') {
+    const d = el('div', { innerHTML: `  <span class="y">¯\\_(ツ)_/¯</span>  <span class="d">thanks! type <span class="o">hire</span> if you mean it.</span>` });
+    d.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    tb.appendChild(d); mkInput(); resetIdleTimer(); return;
+  }
 
   // ── typing a filename directly ──
   if (['cv.pdf','skills.json','contact.txt','kamil.md'].includes(cmd)) { submit(`cat ${cwd}/${cmd}`); return; }
 
-  // ── vim <any file> ──
-  if (cmd.startsWith('vim ') && cmd !== 'vim skills.json') {
-    const f = cmd.slice(4).trim();
+  // ── ./file ──
+  if (cmd.startsWith('./')) {
+    const d = el('div', { innerHTML: `  <span class="r">permission denied:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— this is a portfolio, not a runtime.</span>` });
+    d.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    tb.appendChild(d); mkInput(); resetIdleTimer(); return;
+  }
+
+  // ── download cv.pdf ──
+  if (cmd === 'download cv.pdf' || cmd === 'download cv') {
+    const a = document.createElement('a'); a.href = '/cv.pdf'; a.download = 'cv.pdf'; a.click();
+    const d = el('div', { innerHTML: `  <span class="g">downloading cv.pdf...</span>` });
+    d.style.cssText = 'font-size:13px;margin:4px 0 12px';
+    tb.appendChild(d); mkInput(); resetIdleTimer(); return;
+  }
+
+  // ── vim / nano <any file> ──
+  if ((cmd.startsWith('vim ') || cmd.startsWith('nano ')) && cmd !== 'vim skills.json') {
+    const f = cmd.slice(cmd.indexOf(' ')+1).trim();
     const out = el('div');
     out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
-    out.innerHTML = `\n  <span class="r">you have entered vim.</span>\n  <span class="d">\n  ~\n  ~\n  ~\n  ~                [${f}]  0,0  All\n  </span>\n  <span class="d">type  :q!  and press Enter to escape</span>\n`;
+    const editor = cmd.startsWith('nano') ? 'nano' : 'vim';
+    const hint = editor === 'nano' ? 'Ctrl+X to exit' : 'type  :q!  and press Enter to escape';
+    out.innerHTML = `\n  <span class="r">you have entered ${editor}.</span>\n  <span class="d">\n  ~\n  ~\n  ~\n  ~                [${f}]  0,0  All\n  </span>\n  <span class="d">${hint}</span>\n`;
     tb.appendChild(out);
     mkInput(); resetIdleTimer(); return;
   }
@@ -1473,7 +1521,7 @@ async function submit(cmd) {
   }
 
   // ── typo detection ──
-  const TYPOS = { hep:'help', helpo:'help', htlp:'help', hrlp:'help', hlep:'help', vimn:'vim', 'vi':'vim', ',,':'..', 'cd ,,':'cd ..' };
+  const TYPOS = { hep:'help', helpo:'help', htlp:'help', hrlp:'help', hlep:'help', vimn:'vim', 'vi':'vim', ',,':'..', 'cd ,,':'cd ..', 'cs skills':'cd skills', 'cs about':'cd about', 'cs projects':'cd projects', 'theme urple':'theme purple' };
   if (TYPOS[cmd]) {
     const sug = el('div');
     sug.style.cssText = 'color:#ffc947;margin:4px 0 4px';
@@ -1489,6 +1537,8 @@ async function submit(cmd) {
   }
   if (cmd.startsWith('cd ')) {
     let target = cmd.slice(3).trim().replace(/\/$/, '');
+    // normalize /projects → ~/projects
+    if (target.startsWith('/') && !target.startsWith('~/')) target = '~' + target;
     // support absolute paths like ~/projects
     if (target.startsWith('~/')) {
       const abs = target;
