@@ -763,10 +763,66 @@ ${HR}
     <span class="d">·</span> scuba-diving <span class="g">✓</span>
     <span class="d">·</span> overengineering <span class="r">✗  (not included)</span>
 `,
+
+  ls: `
+  <span class="d">total 7</span>
+  drwxr-xr-x  <span class="c">about/</span>
+  drwxr-xr-x  <span class="c">skills/</span>
+  drwxr-xr-x  <span class="c">projects/</span>
+  drwxr-xr-x  <span class="c">community/</span>
+  -rw-r--r--  <span class="w">cv.pdf</span>
+  -rw-r--r--  <span class="w">skills.json</span>
+  -rw-r--r--  <span class="w">contact.txt</span>
+  <span class="d">hint: try  cat cv.pdf  or  cat skills.json</span>
+`,
+
+  'cat cv.pdf': () => `  <span class="d">// cat cv.pdf</span>\n` + COMMANDS.cv,
+
+  'cat skills.json': () => `  <span class="d">// cat skills.json</span>\n` + COMMANDS.skills,
+
+  'cat contact.txt': () => `  <span class="d">// cat contact.txt</span>\n` + COMMANDS.contact,
+
+  'vim skills.json': `
+  <span class="r">you have entered vim.</span>
+  <span class="d">
+  ~
+  ~
+  ~
+  ~                [skills.json]  0,0  All
+  </span>
+  <span class="d">type  :q!  and press Enter to escape</span>
+`,
+
+  'cd secret_projects/': `
+  <span class="g">kamil@sh:~/secret_projects$</span>
+  <span class="d">──────────────────────────────────────</span>
+  <span class="d">·</span> <span class="o">playsmart</span>         [in progress]
+  <span class="d">·</span> <span class="o">???</span>               [classified]
+  <span class="d">·</span> <span class="o">???</span>               [classified]
+  <span class="d">──────────────────────────────────────</span>
+  <span class="d">access level insufficient for full listing.</span>
+  <span class="r">permission denied: secret_projects/unreleased</span>
+`,
+
+  hello: `
+  <span class="g">Hello!</span>  👋
+  <span class="d">Welcome to dzienko.dev — glad you're here.</span>
+  <span class="d">Type  <span class="o">help</span>  to explore.</span>
+`,
+
+  'sudo su': `
+  <span class="r">[sudo] password for visitor:</span>
+  <span class="r">Sorry, try again.</span>
+  <span class="r">Sorry, try again.</span>
+  <span class="r">sudo: 3 incorrect password attempts</span>
+  <span class="d">nice try though.</span>
+`,
 };
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
-               'fortune','uptime','date','weather','hack','matrix','man kamil'];
+               'fortune','uptime','date','weather','hack','matrix','man kamil',
+               'ls','hire','hello','cat cv.pdf','cat skills.json','cat contact.txt',
+               'vim skills.json','cd secret_projects/','sudo su'];
 
 // ── UTILS ─────────────────────────────────────────────────────────
 
