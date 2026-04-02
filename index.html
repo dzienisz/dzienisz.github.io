@@ -791,13 +791,60 @@ ${HR}
   <span class="r">sudo: 3 incorrect password attempts</span>
   <span class="d">nice try though.</span>
 `,
+
+  vim: `
+  <span class="r">you have entered vim.</span>
+  <span class="d">
+  ~
+  ~
+  ~
+  ~                [No Name]  0,0  All
+  </span>
+  <span class="d">type  :q!  and press Enter to escape</span>
+`,
+
+  ll: () => COMMANDS.ls(),
+
+  'who are you?': () => COMMANDS.whoami,
+
+  'kim jestes': `
+  <span class="o">Kamil Dzieniszewski</span>
+  Senior / Lead Frontend Developer
+  Warszawa, Polska
+  <span class="d">──────────────────────────────────────</span>
+  budowniczy społeczności · twórca produktów · nurek
+  buduję na styku <span class="c">kodu</span>, <span class="g">ludzi</span> i <span class="y">pomysłów</span>
+  <span class="d">// hej, miło że wpadłeś!</span>
+`,
+
+  backdoor: `
+  <span class="g">connecting to mainframe...</span>
+  <span class="d">resolving host: mainframe.dzienko.dev</span>
+  <span class="g">connection established.</span>
+  <span class="d">──────────────────────────────────────</span>
+  <span class="r">ACCESS DENIED</span>
+  <span class="d">there is no backdoor.</span>
+  <span class="d">but I respect the attempt.</span>
+  <span class="d">──────────────────────────────────────</span>
+  <span class="d">your IP has been logged.</span>
+  <span class="d">just kidding. but no.</span>
+`,
+
+  'login -n root': `
+  <span class="d">login: root</span>
+  <span class="r">Password:</span>
+  <span class="r">Login incorrect</span>
+  <span class="d">this is a personal terminal, not a server.</span>
+  <span class="d">try <span class="o">contact</span> instead — much friendlier.</span>
+`,
 };
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
                'fortune','uptime','date','weather','hack','matrix','man kamil',
-               'ls','hire','hello','sudo su','vim skills.json','tour',
+               'ls','ll','hire','hello','sudo su','vim','vim skills.json','tour',
                'cd about','cd skills','cd projects','cd community','cd ..','cd ~',
-               'cat cv.pdf','cat skills.json','cat contact.txt'];
+               'cat cv.pdf','cat skills.json','cat contact.txt',
+               'backdoor','login -n root','who are you?','kim jestes'];
 
 // ── CONTEXTUAL HINTS ──────────────────────────────────────────────
 const HINTS = {
@@ -1139,6 +1186,43 @@ async function submit(cmd) {
   if (cmd === 'clear') { tb.innerHTML = ''; cwd = '~'; mkInput(); resetIdleTimer(); return; }
 
   // ── cd ──
+  // ── aliases & redirects ──
+  if (cmd === '/help') { submit('help'); return; }
+  if (['amber','green','blue','red','purple'].includes(cmd)) { submit(`theme ${cmd}`); return; }
+
+  // ── ls <dir> ──
+  if (cmd.startsWith('ls ')) {
+    const target = cmd.slice(3).trim().replace(/\/$/, '');
+    const path = `~/${target}`;
+    const dir = FS[path];
+    if (dir) {
+      let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
+      for (const d of dir.dirs) out += `  drwxr-xr-x  <span class="c">${d}/</span>\n`;
+      for (const f of dir.files) out += `  -rw-r--r--  <span class="w">${f}</span>\n`;
+      const d = el('div', { innerHTML: out });
+      d.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      tb.appendChild(d);
+    } else {
+      const err = el('div');
+      err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+      err.textContent = `  ls: ${target}: No such file or directory`;
+      tb.appendChild(err);
+    }
+    mkInput(); resetIdleTimer(); return;
+  }
+
+  // ── typo detection ──
+  const TYPOS = { hep:'help', helpo:'help', htlp:'help', hrlp:'help', hlep:'help', vimn:'vim', 'vi':'vim' };
+  if (TYPOS[cmd]) {
+    const sug = el('div');
+    sug.style.cssText = 'color:#ffc947;margin:4px 0 4px';
+    sug.innerHTML = `  <span class="y">did you mean <span class="o">${TYPOS[cmd]}</span>?</span>`;
+    tb.appendChild(sug);
+    await sleep(300);
+    await submit(TYPOS[cmd]);
+    return;
+  }
+
   if (cmd === 'cd' || cmd === 'cd ~') {
     cwd = '~'; mkInput(); resetIdleTimer(); return;
   }
