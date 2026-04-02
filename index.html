@@ -670,16 +670,14 @@ ${HR}
   <span class="d">... just kidding. but no.</span>
 `,
 
-  ls: `
-  <span class="d">total 42</span>
-  drwxr-xr-x  <span class="c">about.txt</span>
-  drwxr-xr-x  <span class="c">skills.json</span>
-  -rw-r--r--  <span class="c">cv.pdf</span>             <span class="d">→ type "cv" to read</span>
-  -rw-r--r--  <span class="c">ideas.md</span>           <span class="d">always growing</span>
-  drwxr-xr-x  <span class="c">community/</span>
-  -rw-------  <span class="c">dive_logbook.txt</span>   <span class="d">classified</span>
-  -rw-------  <span class="c">secret_projects/</span>   <span class="d">permission denied</span>
-`,
+  ls: () => {
+    const dir = FS[cwd];
+    if (!dir) return `  <span class="r">cannot access '${cwd}': No such directory</span>`;
+    let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
+    for (const d of dir.dirs) out += `  drwxr-xr-x  <span class="c">${d}/</span>\n`;
+    for (const f of dir.files) out += `  -rw-r--r--  <span class="w">${f}</span>\n`;
+    return out;
+  },
 
   'git log': `
   <span class="y">commit a1f3e9b</span>  <span class="d">2 days ago</span>
@@ -765,24 +763,6 @@ ${HR}
     <span class="d">·</span> overengineering <span class="r">✗  (not included)</span>
 `,
 
-  ls: `
-  <span class="d">total 7</span>
-  drwxr-xr-x  <span class="c">about/</span>
-  drwxr-xr-x  <span class="c">skills/</span>
-  drwxr-xr-x  <span class="c">projects/</span>
-  drwxr-xr-x  <span class="c">community/</span>
-  -rw-r--r--  <span class="w">cv.pdf</span>
-  -rw-r--r--  <span class="w">skills.json</span>
-  -rw-r--r--  <span class="w">contact.txt</span>
-  <span class="d">hint: try  cat cv.pdf  or  cat skills.json</span>
-`,
-
-  'cat cv.pdf': () => `  <span class="d">// cat cv.pdf</span>\n` + COMMANDS.cv + `\n  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>\n`,
-
-  'cat skills.json': () => `  <span class="d">// cat skills.json</span>\n` + COMMANDS.skills,
-
-  'cat contact.txt': () => `  <span class="d">// cat contact.txt</span>\n` + COMMANDS.contact,
-
   'vim skills.json': `
   <span class="r">you have entered vim.</span>
   <span class="d">
@@ -792,17 +772,6 @@ ${HR}
   ~                [skills.json]  0,0  All
   </span>
   <span class="d">type  :q!  and press Enter to escape</span>
-`,
-
-  'cd secret_projects/': `
-  <span class="g">kamil@sh:~/secret_projects$</span>
-  <span class="d">──────────────────────────────────────</span>
-  <span class="d">·</span> <span class="o">playsmart</span>         [in progress]
-  <span class="d">·</span> <span class="o">???</span>               [classified]
-  <span class="d">·</span> <span class="o">???</span>               [classified]
-  <span class="d">──────────────────────────────────────</span>
-  <span class="d">access level insufficient for full listing.</span>
-  <span class="r">permission denied: secret_projects/unreleased</span>
 `,
 
   hello: `
@@ -822,8 +791,9 @@ ${HR}
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
                'fortune','uptime','date','weather','hack','matrix','man kamil',
-               'ls','hire','hello','cat cv.pdf','cat skills.json','cat contact.txt',
-               'vim skills.json','cd secret_projects/','sudo su'];
+               'ls','hire','hello','sudo su','vim skills.json',
+               'cd about','cd skills','cd projects','cd community','cd ..','cd ~',
+               'cat cv.pdf','cat skills.json','cat contact.txt'];
 
 // ── UTILS ─────────────────────────────────────────────────────────
 
@@ -979,6 +949,39 @@ async function boot() {
 
 let history = [];
 let histIdx  = -1;
+let cwd      = '~';
+
+// ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
+const FS = {
+  '~':           { dirs: ['about','skills','projects','community'], files: ['cv.pdf','skills.json','contact.txt'] },
+  '~/about':     { dirs: [], files: ['bio.txt','whoami.txt'] },
+  '~/skills':    { dirs: [], files: ['skills.json','frontend.txt','backend.txt'] },
+  '~/projects':  { dirs: [], files: ['nowinki.md','prasowka.md'] },
+  '~/community': { dirs: [], files: ['meetjs.txt','windsurf.txt'] },
+};
+
+const FS_FILES = {
+  '~/cv.pdf':              () => COMMANDS.cv + `\n  <a href="/cv.pdf" download style="color:#4af626;text-decoration:none">⬇  download cv.pdf</a>\n`,
+  '~/skills.json':         () => COMMANDS.skills,
+  '~/contact.txt':         () => COMMANDS.contact,
+  '~/about/bio.txt':       () => COMMANDS.about,
+  '~/about/whoami.txt':    () => COMMANDS.whoami,
+  '~/skills/skills.json':  () => COMMANDS.skills,
+  '~/skills/frontend.txt': () => COMMANDS.skills,
+  '~/skills/backend.txt':  () => COMMANDS.skills,
+  '~/projects/nowinki.md': () => `
+  <span class="o">Web Nowinki</span>
+  Weekly web development news show in Polish.
+    <span class="g">→</span> <a href="https://www.youtube.com/watch?v=AYFjUU2AonA&list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" style="color:#00d4ff;text-decoration:none">youtube.com · Web Nowinki playlist</a>
+`,
+  '~/projects/prasowka.md': () => `
+  <span class="o">Web Prasówka</span>
+  Podcast about web development news and trends.
+    <span class="g">→</span> <a href="https://www.youtube.com/watch?v=c0fEjnqSnmQ&list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" style="color:#00d4ff;text-decoration:none">youtube.com · Web Prasówka playlist</a>
+`,
+  '~/community/meetjs.txt':    () => COMMANDS.community,
+  '~/community/windsurf.txt':  () => COMMANDS.community,
+};
 
 async function launchMain() {
   const pre = el('pre');
@@ -1007,7 +1010,7 @@ function mkInput() {
   inputRow = el('div');
   inputRow.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:6px';
 
-  const ps1 = el('span', { textContent: 'kamil@sh:~$' });
+  const ps1 = el('span', { textContent: `kamil@sh:${cwd}$` });
   ps1.style.cssText = 'color:var(--accent);white-space:nowrap;user-select:none';
 
   cmdEl = el('input');
@@ -1050,10 +1053,58 @@ async function submit(cmd) {
 
   const frozen = el('div');
   frozen.style.cssText = 'display:flex;gap:10px;margin-top:6px';
-  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:~$</span><span style="color:#e0e0e0"> ${esc(cmd)}</span>`;
+  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:${cwd}$</span><span style="color:#e0e0e0"> ${esc(cmd)}</span>`;
   tb.replaceChild(frozen, inputRow);
 
-  if (cmd === 'clear') { tb.innerHTML = ''; mkInput(); return; }
+  if (cmd === 'clear') { tb.innerHTML = ''; cwd = '~'; mkInput(); return; }
+
+  // ── cd ──
+  if (cmd === 'cd' || cmd === 'cd ~') {
+    cwd = '~'; mkInput(); return;
+  }
+  if (cmd.startsWith('cd ')) {
+    const target = cmd.slice(3).trim().replace(/\/$/, '');
+    if (target === '..') {
+      cwd = '~'; mkInput(); return;
+    }
+    if (target === 'secret_projects') {
+      const out = el('div');
+      out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      out.innerHTML = `\n  <span class="g">kamil@sh:~/secret_projects$</span>\n  <span class="d">──────────────────────────────────────</span>\n  <span class="d">·</span> <span class="o">playsmart</span>         [in progress]\n  <span class="d">·</span> <span class="o">???</span>               [classified]\n  <span class="d">·</span> <span class="o">???</span>               [classified]\n  <span class="d">──────────────────────────────────────</span>\n  <span class="r">permission denied: secret_projects/unreleased</span>\n`;
+      tb.appendChild(out);
+      mkInput(); return;
+    }
+    const dir = FS[cwd];
+    if (dir && dir.dirs.includes(target)) {
+      cwd = `${cwd}/${target}`;
+      mkInput(); return;
+    }
+    const err = el('div');
+    err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+    err.textContent = `  cd: ${target}: No such file or directory`;
+    tb.appendChild(err);
+    mkInput(); return;
+  }
+
+  // ── cat ──
+  if (cmd.startsWith('cat ')) {
+    const filename = cmd.slice(4).trim();
+    const path = `${cwd}/${filename}`;
+    const fileHandler = FS_FILES[path];
+    if (fileHandler) {
+      const result = typeof fileHandler === 'function' ? fileHandler() : fileHandler;
+      const out = el('div');
+      out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      out.innerHTML = result;
+      tb.appendChild(out);
+    } else {
+      const err = el('div');
+      err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+      err.textContent = `  cat: ${filename}: No such file or directory`;
+      tb.appendChild(err);
+    }
+    mkInput(); return;
+  }
 
   if (cmd.startsWith('theme ')) {
     const name = cmd.split(' ')[1];
