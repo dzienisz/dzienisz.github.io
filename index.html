@@ -948,16 +948,6 @@ ${HR}
   dupa:  `  <span class="d">to też polecenie.</span>  <span class="y">¯\\_(ツ)_/¯</span>\n`,
   chuj:  `  <span class="d">kreatywne. ale nie ma takiego polecenia.</span>  <span class="d">spróbuj <span class="o">help</span>.</span>\n`,
 
-  'jestem rekruterka i nie umiem tym gownem sie poslugiwac': `
-  <span class="g">hej!</span> 👋
-  <span class="d">──────────────────────────────────────</span>
-  rozumiem w 100%.
-
-  wpisz <span class="o">tour</span> i naciśnij Enter —
-  terminal sam się obsłuży, nie musisz nic wiedzieć.
-
-  <span class="d">// właśnie dla Ciebie to zbudowałem 🙂</span>
-`,
 };
 
 const KNOWN = ['help','whoami','about','skills','community','projects','cv','now','contact','theme','clear',
@@ -1436,14 +1426,20 @@ async function submit(cmd) {
       tb.appendChild(out);
     }
   } else {
-    const notFound = [
-      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— are you okay?  (try <span class="o">help</span>)</span>`,
-      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— impressive creativity though  (try <span class="o">help</span>)</span>`,
-      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— this isn't that kind of terminal  (try <span class="o">help</span>)</span>`,
-      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— I admire the confidence  (try <span class="o">help</span>)</span>`,
-      `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— nice try  (try <span class="o">help</span>)</span>`,
-    ];
-    const err = el('div', { innerHTML: notFound[Math.floor(Math.random() * notFound.length)] });
+    let msg;
+    if (cmd.split(' ').length >= 4) {
+      msg = `  <span class="g">hey!</span> 👋  <span class="d">looks like you typed a sentence — this is a terminal, not a chat.</span>\n  <span class="d">type <span class="o">tour</span> and press Enter — it'll guide you through everything.</span>`;
+    } else {
+      const notFound = [
+        `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— are you okay?  (try <span class="o">help</span>)</span>`,
+        `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— impressive creativity though  (try <span class="o">help</span>)</span>`,
+        `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— this isn't that kind of terminal  (try <span class="o">help</span>)</span>`,
+        `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— I admire the confidence  (try <span class="o">help</span>)</span>`,
+        `  <span class="r">command not found:</span> <span class="w">${esc(cmd)}</span>  <span class="d">— nice try  (try <span class="o">help</span>)</span>`,
+      ];
+      msg = notFound[Math.floor(Math.random() * notFound.length)];
+    }
+    const err = el('div', { innerHTML: msg });
     err.style.cssText = 'font-size:13px;margin:4px 0 12px';
     tb.appendChild(err);
   }
