@@ -67,12 +67,31 @@
       --accent: #ff6b35;
       --glow-a: rgba(255,107,53,0.12);
       --glow-b: rgba(255,107,53,0.05);
+      --bg-body: #080808;
+      --bg-term: #0d0d0d;
+      --bg-title: #141414;
+      --border: #2a2a2a;
+      --border2: #222;
+      --text: #c8c8c8;
+      --text-bright: #e0e0e0;
+      --scrollbar: #2a2a2a;
+    }
+
+    :root.light {
+      --bg-body: #f0ede8;
+      --bg-term: #faf8f5;
+      --bg-title: #e8e4de;
+      --border: #c8c0b4;
+      --border2: #d4cdc4;
+      --text: #3a3530;
+      --text-bright: #1a1510;
+      --scrollbar: #c8c0b4;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #080808;
+      background: var(--bg-body);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -98,25 +117,25 @@
       max-width: 98vw;
       height: 92vh;
       max-height: 720px;
-      border: 1px solid #2a2a2a;
+      border: 1px solid var(--border);
       border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       box-shadow:
-        0 0 0 1px #1a1a1a,
+        0 0 0 1px var(--border),
         0 0 40px var(--glow-a),
         0 0 100px var(--glow-b),
-        0 30px 80px rgba(0,0,0,0.8);
+        0 30px 80px rgba(0,0,0,0.15);
     }
 
     .titlebar {
-      background: #141414;
+      background: var(--bg-title);
       padding: 11px 16px;
       display: flex;
       align-items: center;
       gap: 8px;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--border2);
       flex-shrink: 0;
       user-select: none;
     }
@@ -129,31 +148,31 @@
     .titlebar-text {
       flex: 1;
       text-align: center;
-      color: #555;
+      color: var(--text);
       font-size: 12px;
       letter-spacing: 1px;
     }
 
     .term-body {
       flex: 1;
-      background: #0d0d0d;
+      background: var(--bg-term);
       overflow-y: auto;
       padding: 24px 28px 16px;
-      color: #c8c8c8;
+      color: var(--text);
       font-size: 13px;
       line-height: 1.65;
       scrollbar-width: thin;
-      scrollbar-color: #2a2a2a transparent;
+      scrollbar-color: var(--scrollbar) transparent;
     }
 
     .term-body::-webkit-scrollbar { width: 5px; }
-    .term-body::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+    .term-body::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 3px; }
 
     #cmd {
       background: transparent;
       border: none;
       outline: none;
-      color: #e0e0e0;
+      color: var(--text-bright);
       font-family: inherit;
       font-size: 13px;
       flex: 1;
@@ -224,11 +243,13 @@ const HR = `<span class="d">  ${'─'.repeat(56)}</span>`;
 
 // ── THEMES ────────────────────────────────────────────────────────
 const THEMES = {
-  amber:  { a: '#ff6b35', ga: 'rgba(255,107,53,0.12)', gb: 'rgba(255,107,53,0.05)' },
-  green:  { a: '#4af626', ga: 'rgba(74,246,38,0.12)',  gb: 'rgba(74,246,38,0.05)'  },
-  blue:   { a: '#00d4ff', ga: 'rgba(0,212,255,0.12)',  gb: 'rgba(0,212,255,0.05)'  },
-  red:    { a: '#ff4c4c', ga: 'rgba(255,76,76,0.12)',  gb: 'rgba(255,76,76,0.05)'  },
-  purple: { a: '#b57bee', ga: 'rgba(181,123,238,0.12)',gb: 'rgba(181,123,238,0.05)'},
+  amber:  { a: '#ff6b35', ga: 'rgba(255,107,53,0.12)', gb: 'rgba(255,107,53,0.05)', light: false },
+  green:  { a: '#4af626', ga: 'rgba(74,246,38,0.12)',  gb: 'rgba(74,246,38,0.05)',  light: false },
+  blue:   { a: '#00d4ff', ga: 'rgba(0,212,255,0.12)',  gb: 'rgba(0,212,255,0.05)',  light: false },
+  red:    { a: '#ff4c4c', ga: 'rgba(255,76,76,0.12)',  gb: 'rgba(255,76,76,0.05)',  light: false },
+  purple: { a: '#b57bee', ga: 'rgba(181,123,238,0.12)',gb: 'rgba(181,123,238,0.05)',light: false },
+  light:  { a: '#cc4400', ga: 'rgba(204,68,0,0.08)',   gb: 'rgba(204,68,0,0.03)',   light: true  },
+  dark:   { a: '#ff6b35', ga: 'rgba(255,107,53,0.12)', gb: 'rgba(255,107,53,0.05)', light: false },
 };
 
 function applyTheme(name) {
@@ -238,8 +259,13 @@ function applyTheme(name) {
   r.setProperty('--accent', t.a);
   r.setProperty('--glow-a', t.ga);
   r.setProperty('--glow-b', t.gb);
+  document.documentElement.classList.toggle('light', t.light);
   return true;
 }
+
+// auto-detect browser preference
+if (window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => applyTheme(e.matches ? 'light' : 'dark'));
 
 // ── FORTUNES ──────────────────────────────────────────────────────
 const FORTUNES = [
@@ -506,8 +532,10 @@ ${HR}
   <span class="y">blue</span>    electric blue <span style="color:#00d4ff">████</span>
   <span class="y">red</span>     danger red    <span style="color:#ff4c4c">████</span>
   <span class="y">purple</span>  hacker purple <span style="color:#b57bee">████</span>
+  <span class="y">light</span>   paper & ink   <span style="color:#cc4400">████</span>
+  <span class="y">dark</span>    back to dark  <span style="color:#ff6b35">████</span>
 
-  usage: <span class="o">theme green</span>
+  usage: <span class="o">theme light</span>
 `,
 
   // ── HIDDEN EASTER EGGS ───────────────────────────────────────────
@@ -1081,7 +1109,7 @@ async function runTour() {
     // simulate typing
     const row = el('div');
     row.style.cssText = 'display:flex;gap:10px;margin-top:6px';
-    row.innerHTML = `<span style="color:var(--accent)">kamil@sh:~$</span><span style="color:#e0e0e0"> ${cmd}</span>`;
+    row.innerHTML = `<span style="color:var(--accent)">kamil@sh:~$</span><span style="color:var(--text-bright)"> ${cmd}</span>`;
     tb.appendChild(row);
     scroll();
     await sleep(300);
@@ -1390,7 +1418,7 @@ function mkInput() {
   cmdEl.type = 'text';
   cmdEl.autocomplete = 'off';
   cmdEl.spellcheck = false;
-  cmdEl.style.cssText = 'background:transparent;border:none;outline:none;color:#e0e0e0;font-family:inherit;font-size:13px;flex:1;caret-color:var(--accent)';
+  cmdEl.style.cssText = 'background:transparent;border:none;outline:none;color:var(--text-bright);font-family:inherit;font-size:13px;flex:1;caret-color:var(--accent)';
 
   inputRow.append(ps1, cmdEl);
   tb.appendChild(inputRow);
@@ -1431,7 +1459,7 @@ async function submit(cmd) {
     'theme urple': 'theme purple',
     'cs skills': 'cd skills', 'cs about': 'cd about', 'cs projects': 'cd projects',
     'amber': 'theme amber', 'green': 'theme green', 'blue': 'theme blue',
-    'red': 'theme red', 'purple': 'theme purple',
+    'red': 'theme red', 'purple': 'theme purple', 'light': 'theme light', 'dark': 'theme dark',
   };
   if (SIMPLE_ALIASES[cmd]) cmd = SIMPLE_ALIASES[cmd];
 
@@ -1447,7 +1475,7 @@ async function submit(cmd) {
 
   const frozen = el('div');
   frozen.style.cssText = 'display:flex;gap:10px;margin-top:6px';
-  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:${cwd}$</span><span style="color:#e0e0e0"> ${esc(cmd)}</span>`;
+  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:${cwd}$</span><span style="color:var(--text-bright)"> ${esc(cmd)}</span>`;
   tb.replaceChild(frozen, inputRow);
 
   clearTimeout(idleTimer);
@@ -1627,7 +1655,7 @@ async function submit(cmd) {
     msg.style.cssText = 'font-size:13px;margin:4px 0 12px';
     msg.innerHTML = ok
       ? `  <span class="g">theme set to: ${name}</span>`
-      : `  <span class="r">unknown theme: ${name}</span>  <span class="d">(try: amber green blue red purple)</span>`;
+      : `  <span class="r">unknown theme: ${name}</span>  <span class="d">(try: amber green blue red purple light dark)</span>`;
     tb.appendChild(msg);
     mkInput();
     return;
