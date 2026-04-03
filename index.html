@@ -97,7 +97,6 @@
       justify-content: center;
       min-height: 100vh;
       font-family: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Courier New', monospace;
-      overflow: hidden;
     }
 
     body::after {
@@ -195,6 +194,7 @@
       }
       .term-body { font-size: 11px; padding: 14px 12px 12px; }
       .ascii-pre { font-size: 6px !important; line-height: 1.1 !important; }
+      #bg-canvas { display: none; }
     }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24"></script>
@@ -220,11 +220,13 @@
   </div>
 </noscript>
 
-<div class="terminal">
+<canvas id="bg-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+
+<div class="terminal" style="position:relative;z-index:1">
   <div class="titlebar">
-    <div class="dot dot-r"></div>
-    <div class="dot dot-y"></div>
-    <div class="dot dot-g"></div>
+    <div class="dot dot-r" id="dot-r" title="rm -rf /" style="cursor:pointer"></div>
+    <div class="dot dot-y" id="dot-y" title="toggle light/dark" style="cursor:pointer"></div>
+    <div class="dot dot-g" id="dot-g" title="matrix" style="cursor:pointer"></div>
     <div class="titlebar-text">dzienko.dev — personal terminal v1.0</div>
   </div>
   <div class="term-body" id="tb"></div>

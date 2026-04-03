@@ -1487,6 +1487,81 @@ async function _submit(cmd) {
   resetIdleTimer();
 }
 
+// ── BACKGROUND PARTICLES ──────────────────────────────────────────
+function startBgParticles() {
+  const cv = document.getElementById('bg-canvas');
+  if (!cv) return;
+  cv.width  = window.innerWidth;
+  cv.height = window.innerHeight;
+  window.addEventListener('resize', () => { cv.width = window.innerWidth; cv.height = window.innerHeight; });
+
+  const ctx = cv.getContext('2d');
+
+  const POOL = [
+    { text: 'React',           color: '#ff6b35', weight: 4 },
+    { text: 'TypeScript',      color: '#ff6b35', weight: 4 },
+    { text: 'Next.js',         color: '#ff6b35', weight: 3 },
+    { text: 'Node.js',         color: '#ff6b35', weight: 2 },
+    { text: 'Supabase',        color: '#ff6b35', weight: 2 },
+    { text: 'REST APIs',       color: '#ff6b35', weight: 2 },
+    { text: 'AI / LLM',       color: '#ff6b35', weight: 2 },
+    { text: 'Senior',          color: '#4af626', weight: 3 },
+    { text: 'Lead Frontend',   color: '#4af626', weight: 3 },
+    { text: 'open to work',    color: '#4af626', weight: 3 },
+    { text: 'Warsaw / remote', color: '#4af626', weight: 2 },
+    { text: '10y+ exp',        color: '#4af626', weight: 2 },
+    { text: 'ship fast',       color: '#4af626', weight: 2 },
+    { text: 'product-minded',  color: '#4af626', weight: 2 },
+    { text: 'team lead',       color: '#4af626', weight: 2 },
+    { text: 'meet.js',         color: '#00d4ff', weight: 2 },
+    { text: 'organizer',       color: '#00d4ff', weight: 1 },
+    { text: 'PADI AOWD',       color: '#00d4ff', weight: 1 },
+    { text: 'F1 fan',          color: '#00d4ff', weight: 1 },
+    { text: 'community',       color: '#00d4ff', weight: 2 },
+    { text: 'Japan',           color: '#00d4ff', weight: 1 },
+  ];
+
+  const weighted = POOL.flatMap(p => Array(p.weight).fill(p));
+  function pick() { return weighted[Math.floor(Math.random() * weighted.length)]; }
+
+  const particles = Array.from({ length: 55 }, () => {
+    const p = pick();
+    return {
+      x: Math.random() * cv.width,
+      y: Math.random() * cv.height,
+      vy: -(0.25 + Math.random() * 0.45),
+      vx: (Math.random() - 0.5) * 0.15,
+      text:  p.text,
+      color: p.color,
+      alpha: 0.1 + Math.random() * 0.13,
+      size:  p.color === '#ff6b35' ? 13 : p.color === '#4af626' ? 12 : 11,
+    };
+  });
+
+  (function draw() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (const p of particles) {
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle   = p.color;
+      ctx.font        = `${p.size}px monospace`;
+      ctx.fillText(p.text, p.x, p.y);
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -20) {
+        const next = pick();
+        p.y = cv.height + 10;
+        p.x = Math.random() * cv.width;
+        p.text  = next.text;
+        p.color = next.color;
+        p.size  = next.color === '#ff6b35' ? 13 : next.color === '#4af626' ? 12 : 11;
+        p.alpha = 0.1 + Math.random() * 0.13;
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  })();
+}
+
 // ── DOM INIT ──────────────────────────────────────────────────────
 if (typeof document !== 'undefined') {
   tb = document.getElementById('tb');
@@ -1494,6 +1569,15 @@ if (typeof document !== 'undefined') {
   // Theme: auto-detect and watch system preference
   if (window.matchMedia('(prefers-color-scheme: light)').matches) applyTheme('light');
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => applyTheme(e.matches ? 'light' : 'dark'));
+
+  // Titlebar dot clicks
+  document.getElementById('dot-y').addEventListener('click', () => {
+    applyTheme(document.documentElement.classList.contains('light') ? 'dark' : 'light');
+  });
+  document.getElementById('dot-r').addEventListener('click', () => {
+    if (inputRow && inputRow.parentNode === tb) submit('rm -rf /');
+  });
+  document.getElementById('dot-g').addEventListener('click', () => runMatrix());
 
   // Konami code
   const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
@@ -1520,5 +1604,6 @@ if (typeof document !== 'undefined') {
     }
   });
 
+  startBgParticles();
   boot();
 }
