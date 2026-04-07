@@ -570,6 +570,8 @@ ${HR}
     Open to AI-native product roles
 
   <span class="d">──────────────────────────────────────</span>
+  <span class="d">try Windsurf — AI-powered IDE I use daily:</span>
+  <a href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" style="color:#4af626;text-decoration:none">→  windsurf.com/refer?referral_code=b506a23128</a>
   <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
 `,
 
