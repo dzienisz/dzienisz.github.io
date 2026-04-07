@@ -81,7 +81,7 @@ export const KNOWN = [
   'backdoor','login -n root','who are you?','kim jestes',
   'htop','man','co jest','powiedz zart','allyourbasearebelongtous',
   'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname',
-  'claude','dupa','chuj','dawaj','open .','status','email','github','f1',
+  'claude','dupa','chuj','dawaj','open .','status','email','github','f1','ai',
 ];
 
 // ── HINTS ─────────────────────────────────────────────────────────
@@ -93,6 +93,7 @@ export const HINTS = {
   'cd community':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat meetjs.txt</span></span>`,
   hire:         `  <span class="d">tip: type <span class="o">contact</span> to reach out or <span class="o">cat cv.pdf</span> to download CV</span>`,
   whoami:       `  <span class="d">tip: type <span class="o">about</span> for full bio or <span class="o">skills</span> for tech stack</span>`,
+  skills:       `  <span class="d">tip: type <span class="o">ai</span> to see full AI profile & certifications</span>`,
 };
 
 // ── PURE FUNCTIONS ────────────────────────────────────────────────
@@ -314,28 +315,26 @@ ${HR}
 
   whoami: `
   <span class="o">Kamil Dzieniszewski</span>
-  Senior / Lead Frontend Developer
+  AI-first Frontend Developer · Builder
   Warsaw, Poland
   <span class="d">──────────────────────────────────────</span>
   community builder · product builder · scuba diver
-  building at the intersection of <span class="c">code</span>, <span class="g">people</span> & <span class="y">ideas</span>
+  building at the intersection of <span class="c">code</span>, <span class="g">AI</span> & <span class="y">people</span>
+  <span class="d">→ type <span class="o">ai</span> to see my AI profile</span>
 `,
 
   about: `
   <span class="o">ABOUT</span>
 ${HR}
 
-  Senior/Lead Frontend Developer, community builder,
-  and product-oriented technologist based in Warsaw.
+  AI-first Frontend Developer and builder based in Warsaw.
+  Not just a frontend dev who tried ChatGPT —
+  deep in AI since GPT-3 launch in 2022.
 
-  He combines strong engineering skills with a deep
-  interest in people, communication, and emerging
-  technologies — especially AI.
-
-  Work sits at the intersection of:
-    <span class="g">→</span> software engineering
+  Ships products at the intersection of:
+    <span class="g">→</span> frontend engineering
+    <span class="g">→</span> AI / LLM development
     <span class="g">→</span> community building
-    <span class="g">→</span> product thinking
 
   <span class="d">Current role — Lead Frontend Developer at Playsmart:</span>
     <span class="d">·</span> leads frontend dev & supports team members
@@ -354,6 +353,13 @@ ${HR}
   <span class="o">SKILLS</span>
 ${HR}
 
+  <span class="c">AI / LLM</span>  <span class="d">← yes, this comes first now</span>
+  LLM APIs      <span class="o">████████████████████</span>  advanced
+  RAG           <span class="o">████████████████</span><span class="d">████</span>  advanced
+  Prompt Eng.   <span class="o">████████████████████</span>  advanced
+  Agents / MCP  <span class="o">████████████</span><span class="d">████████</span>  building
+  AI Devs cert  <span class="g">✓ lvl 2  ✓ lvl 3  ⟳ lvl 4</span>
+
   <span class="c">FRONTEND</span>
   React         <span class="o">████████████████████</span>  expert
   TypeScript    <span class="o">████████████████████</span>  expert
@@ -365,9 +371,8 @@ ${HR}
   PostgreSQL    <span class="o">████████████</span><span class="d">████████</span>  working knowledge
   REST APIs     <span class="o">████████████████</span><span class="d">████</span>  advanced
 
-  <span class="c">EMERGING</span>
-  AI / LLM      <span class="o">████████████████████</span>  actively exploring
-  Mobile/Expo   <span class="o">████████</span><span class="d">████████████</span>  early stage
+  <span class="c">MOBILE</span>
+  React Native  <span class="o">████████</span><span class="d">████████████</span>  early stage
 `,
 
   community: `
@@ -537,6 +542,35 @@ ${HR}
   <span class="y">dark</span>    back to dark  <span style="color:#ff6b35">████</span>
 
   usage: <span class="o">theme light</span>
+`,
+
+  ai: `
+  <span class="o">AI PROFILE</span>
+${HR}
+
+  Not just a frontend dev who tried ChatGPT.
+  In AI since GPT-3 launch — <span class="w">building, not just watching.</span>
+
+  <span class="c">CERTIFICATIONS</span>
+    <span class="g">✓</span>  AI Devs 2   <span class="d">— completed  ·  aidevs.pl</span>
+    <span class="g">✓</span>  AI Devs 3   <span class="d">— completed  ·  aidevs.pl</span>
+    <span class="y">⟳</span>  AI Devs 4   <span class="d">— in progress</span>
+
+  <span class="c">HANDS-ON</span>
+    <span class="g">→</span>  RAG implementations
+    <span class="g">→</span>  LLM API integrations (OpenAI, Anthropic, Gemini)
+    <span class="g">→</span>  prompt engineering — daily practice
+    <span class="g">→</span>  agents & MCP — exploring & building
+    <span class="g">→</span>  AI-assisted development — everyday workflow
+    <span class="g">→</span>  Windsurf Ambassador <span class="d">— AI-powered IDE</span>
+
+  <span class="c">POSITIONING</span>
+    AI-first Frontend Developer
+    Builder who ships AI products
+    Open to AI-native product roles
+
+  <span class="d">──────────────────────────────────────</span>
+  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
 `,
 
   // ── HIDDEN EASTER EGGS ─────────────────────────────────────────
@@ -1507,7 +1541,10 @@ function startBgParticles() {
     { text: 'Node.js',         color: '#ff6b35', weight: 2 },
     { text: 'Supabase',        color: '#ff6b35', weight: 2 },
     { text: 'REST APIs',       color: '#ff6b35', weight: 2 },
-    { text: 'AI / LLM',       color: '#ff6b35', weight: 2 },
+    { text: 'AI / LLM',       color: '#ff6b35', weight: 3 },
+    { text: 'RAG',            color: '#ff6b35', weight: 2 },
+    { text: 'agents',         color: '#ff6b35', weight: 2 },
+    { text: 'MCP',            color: '#ff6b35', weight: 2 },
     { text: 'Senior',          color: '#4af626', weight: 3 },
     { text: 'Lead Frontend',   color: '#4af626', weight: 3 },
     { text: 'open to work',    color: '#4af626', weight: 3 },
