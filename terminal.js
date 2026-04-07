@@ -1237,6 +1237,8 @@ async function launchMain() {
   resetIdleTimer();
 }
 
+let firstPrompt = true;
+
 function mkInput() {
   inputRow = el('div');
   inputRow.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:6px';
@@ -1249,6 +1251,7 @@ function mkInput() {
   cmdEl.autocomplete = 'off';
   cmdEl.spellcheck = false;
   cmdEl.style.cssText = 'background:transparent;border:none;outline:none;color:var(--text-bright);font-family:inherit;font-size:13px;flex:1;caret-color:var(--accent)';
+  if (firstPrompt) { cmdEl.placeholder = 'ls'; firstPrompt = false; }
 
   inputRow.append(ps1, cmdEl);
   tb.appendChild(inputRow);
