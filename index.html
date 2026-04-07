@@ -188,6 +188,73 @@
     .w { color: #e8e8e8; }
     .r { color: #ff4c4c; }
 
+    /* ── DOCK ── */
+    .dock {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13,13,13,0.75);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: background 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .dock-item:hover {
+      background: rgba(255,107,53,0.08);
+      transform: translateY(-3px);
+    }
+
+    .dock-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-title);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--accent);
+      font-family: inherit;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+    .dock-item:hover .dock-icon {
+      border-color: var(--accent);
+    }
+
+    .dock-label {
+      font-size: 10px;
+      color: var(--text);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .dock-sep {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      margin: 0 4px;
+    }
+
     @media (max-width: 640px) {
       body { align-items: flex-start; }
       .terminal {
@@ -197,6 +264,7 @@
       .term-body { font-size: 11px; padding: 14px 12px 12px; }
       .ascii-pre { font-size: 6px !important; line-height: 1.1 !important; }
       #bg-canvas { display: none; }
+      .dock { display: none; }
     }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24"></script>
@@ -233,6 +301,35 @@
   </div>
   <div class="term-body" id="tb"></div>
 </div>
+
+<nav class="dock" aria-label="Quick links">
+  <a class="dock-item" href="https://www.youtube.com/playlist?list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" rel="noopener">
+    <div class="dock-icon">▶</div>
+    <span class="dock-label">Web Nowinki</span>
+  </a>
+  <a class="dock-item" href="https://www.youtube.com/playlist?list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" rel="noopener">
+    <div class="dock-icon">▶</div>
+    <span class="dock-label">Web Prasówka</span>
+  </a>
+  <div class="dock-sep"></div>
+  <a class="dock-item" href="gallery.html">
+    <div class="dock-icon">◈</div>
+    <span class="dock-label">Gallery</span>
+  </a>
+  <a class="dock-item" href="projects.html">
+    <div class="dock-icon">⬡</div>
+    <span class="dock-label">Projects</span>
+  </a>
+  <div class="dock-sep"></div>
+  <a class="dock-item" href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" rel="noopener">
+    <div class="dock-icon">in</div>
+    <span class="dock-label">LinkedIn</span>
+  </a>
+  <a class="dock-item" href="https://github.com/dzienisz" target="_blank" rel="noopener">
+    <div class="dock-icon">gh</div>
+    <span class="dock-label">GitHub</span>
+  </a>
+</nav>
 
 <script type="module" src="terminal.js"></script>
 

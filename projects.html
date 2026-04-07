@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Kamil Dzieniszewski</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    :root {
+      --accent: #ff6b35;
+      --bg-body: #080808;
+      --bg-term: #0d0d0d;
+      --bg-title: #141414;
+      --border: #2a2a2a;
+      --text: #c8c8c8;
+      --text-bright: #e0e0e0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg-body);
+      color: var(--text);
+      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+      min-height: 100vh;
+      padding: 40px 24px 120px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 40px;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+    .back:hover { opacity: 1; }
+
+    h1 {
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 48px;
+    }
+
+    .section { margin-bottom: 48px; max-width: 900px; margin-left: auto; margin-right: auto; }
+
+    .section-title {
+      font-size: 11px;
+      color: #444;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1e1e1e;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--bg-term);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-icon { font-size: 20px; }
+    .card-name {
+      font-size: 13px;
+      color: var(--text-bright);
+      font-weight: bold;
+    }
+    .card-role {
+      font-size: 11px;
+      color: var(--accent);
+    }
+    .card-desc {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .tag {
+      font-size: 10px;
+      color: #555;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+    .card-link {
+      font-size: 10px;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    .badge-wip {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 9px;
+      color: #4af626;
+      border: 1px solid #4af626;
+      border-radius: 4px;
+      padding: 2px 6px;
+      letter-spacing: 0.5px;
+    }
+
+    /* dock */
+    .dock {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13,13,13,0.85);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 10px 20px;
+      backdrop-filter: blur(12px);
+      font-size: 12px;
+      color: #555;
+    }
+    .dock a { color: var(--accent); text-decoration: none; }
+    .dock a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back">← kamil@sh:~$</a>
+
+  <h1>⬡ PROJECTS</h1>
+  <p class="subtitle">things I built, ship, and care about</p>
+
+  <!-- CURRENT -->
+  <div class="section">
+    <div class="section-title">📁 current</div>
+    <div class="cards">
+
+      <a class="card" href="https://playsmart.ai" target="_blank" rel="noopener">
+        <div class="badge-wip">active</div>
+        <div class="card-icon">🎮</div>
+        <div class="card-name">Playsmart</div>
+        <div class="card-role">Lead Frontend Developer</div>
+        <div class="card-desc">Leading frontend development. Building with React, Next.js, TypeScript.</div>
+        <div class="card-tags">
+          <span class="tag">React</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </a>
+
+      <a class="card" href="/" >
+        <div class="badge-wip">active</div>
+        <div class="card-icon">>_</div>
+        <div class="card-name">dzienko.dev</div>
+        <div class="card-role">side project</div>
+        <div class="card-desc">Terminal-style personal portfolio. One HTML file, no frameworks. You're looking at it.</div>
+        <div class="card-tags">
+          <span class="tag">Vanilla JS</span>
+          <span class="tag">CSS</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="section">
+    <div class="section-title">📁 content</div>
+    <div class="cards">
+
+      <a class="card" href="https://www.youtube.com/playlist?list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" rel="noopener">
+        <div class="card-icon">▶</div>
+        <div class="card-name">Web Nowinki</div>
+        <div class="card-role">host & creator</div>
+        <div class="card-desc">Weekly web development news show in Polish. Covering the latest from the frontend world.</div>
+        <div class="card-tags">
+          <span class="tag">YouTube</span>
+          <span class="tag">Polish</span>
+          <span class="tag">Frontend</span>
+        </div>
+        <div class="card-link">youtube.com →</div>
+      </a>
+
+      <a class="card" href="https://www.youtube.com/playlist?list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" rel="noopener">
+        <div class="card-icon">▶</div>
+        <div class="card-name">Web Prasówka</div>
+        <div class="card-role">podcast host</div>
+        <div class="card-desc">Podcast about web development news and trends. Tech & community conversations.</div>
+        <div class="card-tags">
+          <span class="tag">YouTube</span>
+          <span class="tag">Podcast</span>
+          <span class="tag">Polish</span>
+        </div>
+        <div class="card-link">youtube.com →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="section">
+    <div class="section-title">📁 community</div>
+    <div class="cards">
+
+      <a class="card" href="https://meetjs.pl" target="_blank" rel="noopener">
+        <div class="badge-wip">active</div>
+        <div class="card-icon">👥</div>
+        <div class="card-name">meet.js</div>
+        <div class="card-role">co-organizer</div>
+        <div class="card-desc">One of Poland's longest-running frontend communities. 15th anniversary celebrated in March 2026.</div>
+        <div class="card-tags">
+          <span class="tag">Community</span>
+          <span class="tag">Frontend</span>
+          <span class="tag">Warsaw</span>
+        </div>
+        <div class="card-link">meetjs.pl →</div>
+      </a>
+
+      <div class="card">
+        <div class="badge-wip">active</div>
+        <div class="card-icon">💨</div>
+        <div class="card-name">Windsurf Meetup Warsaw</div>
+        <div class="card-role">organizer</div>
+        <div class="card-desc">Community meetup around Windsurf — the AI-powered IDE. Connecting developers exploring AI-assisted development.</div>
+        <div class="card-tags">
+          <span class="tag">Community</span>
+          <span class="tag">AI</span>
+          <span class="tag">Warsaw</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ARCHIVE -->
+  <div class="section">
+    <div class="section-title">📁 archive</div>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">🌊</div>
+        <div class="card-name">Tolgee</div>
+        <div class="card-role">Developer Advocate · 2025</div>
+        <div class="card-desc">Open-source localization platform. Frontend improvements and developer usability features.</div>
+        <div class="card-tags">
+          <span class="tag">Open Source</span>
+          <span class="tag">DevRel</span>
+          <span class="tag">i18n</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⛓</div>
+        <div class="card-name">Hashgraph / LEOCODE</div>
+        <div class="card-role">Frontend Developer · 2025</div>
+        <div class="card-desc">Backoffice for a Digital Identification platform built on Web3 / Hedera.</div>
+        <div class="card-tags">
+          <span class="tag">Web3</span>
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✈</div>
+        <div class="card-name">AirHelp</div>
+        <div class="card-role">Frontend Developer · 2024</div>
+        <div class="card-desc">Maintaining the AirHelp passenger rights application.</div>
+        <div class="card-tags">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏥</div>
+        <div class="card-name">Teckro</div>
+        <div class="card-role">Senior Frontend Engineer · 2022–2023</div>
+        <div class="card-desc">Micro-frontend medical platform used by global pharmaceutical corporations.</div>
+        <div class="card-tags">
+          <span class="tag">Single-SPA</span>
+          <span class="tag">React</span>
+          <span class="tag">MedTech</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏦</div>
+        <div class="card-name">Vodeno / Aion Bank</div>
+        <div class="card-role">Chapter Lead · Senior Dev · 2019–2022</div>
+        <div class="card-desc">Led a 15-person frontend team. Built ETF Investments and Savings apps for Aion Bank.</div>
+        <div class="card-tags">
+          <span class="tag">React</span>
+          <span class="tag">Redux</span>
+          <span class="tag">FinTech</span>
+          <span class="tag">Team Lead</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dock">
+    <a href="/">terminal</a>
+    <span>·</span>
+    <a href="gallery.html">gallery</a>
+    <span>·</span>
+    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
+    <span>·</span>
+    <a href="https://github.com/dzienisz" target="_blank">github</a>
+  </div>
+
+</body>
+</html>
