@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talks — Kamil Dzieniszewski</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24"></script>
+  <style>
+    :root {
+      --accent: #ff6b35;
+      --bg-body: #080808;
+      --bg-term: #0d0d0d;
+      --bg-title: #141414;
+      --border: #2a2a2a;
+      --text: #c8c8c8;
+      --text-bright: #e0e0e0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg-body);
+      color: var(--text);
+      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+      min-height: 100vh;
+      padding: 40px 24px 120px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 40px;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+    .back:hover { opacity: 1; }
+
+    h1 {
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 48px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--bg-term);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .card-icon { font-size: 20px; }
+    .card-name {
+      font-size: 13px;
+      color: var(--text-bright);
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    .card-role {
+      font-size: 11px;
+      color: var(--accent);
+    }
+    .card-desc {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .tag {
+      font-size: 10px;
+      color: #555;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+    .card-link {
+      font-size: 10px;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    /* dock */
+    .dock {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13,13,13,0.85);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 10px 20px;
+      backdrop-filter: blur(12px);
+      font-size: 12px;
+      color: #555;
+    }
+    .dock a { color: var(--accent); text-decoration: none; }
+    .dock a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <a href="/" class="back">← kamil@sh:~$</a>
+
+  <h1>🎤 TALKS</h1>
+  <p class="subtitle">conferences · panels · podcasts · live streams</p>
+
+  <div class="cards">
+
+    <a class="card" href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">
+      <div class="card-icon">🎤</div>
+      <div class="card-name">Release na proda z punktu widzenia frontend</div>
+      <div class="card-role">DDDDays · Better Dev Club · 2024</div>
+      <div class="card-desc">Kluczowe aspekty wdrażania aplikacji frontendowych — optymalizacja, najczęstsze błędy, narzędzia i najlepsze praktyki.</div>
+      <div class="card-tags">
+        <span class="tag">Talk</span>
+        <span class="tag">Frontend</span>
+        <span class="tag">DevOps</span>
+      </div>
+      <div class="card-link">youtube.com →</div>
+    </a>
+
+    <a class="card" href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">
+      <div class="card-icon">🎤</div>
+      <div class="card-name">Microfrontends in Mobile</div>
+      <div class="card-role">JS Poland · 2022</div>
+      <div class="card-desc">Talk on microfrontend architecture applied to mobile development at JS Poland conference.</div>
+      <div class="card-tags">
+        <span class="tag">Talk</span>
+        <span class="tag">Microfrontends</span>
+        <span class="tag">Mobile</span>
+      </div>
+      <div class="card-link">youtube.com →</div>
+    </a>
+
+    <a class="card" href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">
+      <div class="card-icon">🎤</div>
+      <div class="card-name">Front-end Discussion Panel</div>
+      <div class="card-role">BEC Tech Academy · 2022</div>
+      <div class="card-desc">Panel discussion with Luca Mezzalira, Manfred Steyer, Sebastian Gos. Microfrontends, frontend architecture, the future of the web.</div>
+      <div class="card-tags">
+        <span class="tag">Panel</span>
+        <span class="tag">Microfrontends</span>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="card-link">youtube.com →</div>
+    </a>
+
+    <a class="card" href="https://www.youtube.com/watch?v=M9SeBKc2xZk" target="_blank" rel="noopener">
+      <div class="card-icon">🎙</div>
+      <div class="card-name">Wyjazd na Hackathon</div>
+      <div class="card-role">Artur Chmaro · live · 2020</div>
+      <div class="card-desc">Live rozmowa o hackathonach — czym są, dlaczego warto, jak się przygotować i jakich błędów unikać.</div>
+      <div class="card-tags">
+        <span class="tag">Podcast</span>
+        <span class="tag">Hackathon</span>
+        <span class="tag">Polish</span>
+      </div>
+      <div class="card-link">youtube.com →</div>
+    </a>
+
+  </div>
+
+  <div class="dock">
+    <a href="/">terminal</a>
+    <span>·</span>
+    <a href="projects.html">projects</a>
+    <span>·</span>
+    <a href="gallery.html">gallery</a>
+    <span>·</span>
+    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
+  </div>
+
+</body>
+</html>
