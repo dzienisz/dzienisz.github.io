@@ -61,6 +61,253 @@ export const TYPOS = {
   'cs about': 'cd about', 'cs projects': 'cd projects', 'theme urple': 'theme purple',
 };
 
+// ── NODE_MODULES PACKAGES ─────────────────────────────────────────
+export const NODE_MODULES_PKGS = {
+  'left-pad': {
+    version: '1.0.0', weekly: '~8M', deps: 0,
+    tagline: '26 linii kodu. złamały internet w 2016.',
+    story: `  <span class="o">left-pad</span> <span class="d">@1.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  W 2016 Azer Koçulu unpublishował paczkę w proteście
+  po tym, jak npm zmusił go do oddania nazwy "kik".
+
+  Skutki: Babel, React i połowa ekosystemu JS
+  przestała się buildować na ~2 godziny.
+
+  npm musiało zmienić politykę unpublisha na zawsze.
+
+  Funkcja wyglądała mniej więcej tak:
+  <span class="d">  function leftPad(str, len, ch) {</span>
+  <span class="d">    str = str + ''; len = len - str.length;</span>
+  <span class="d">    while (len-- > 0) str = ch + str;</span>
+  <span class="d">    return str;</span>
+  <span class="d">  }</span>
+
+  <span class="y">// 26 linii. do dziś 8M pobrań tygodniowo.</span>`,
+  },
+  'is-odd': {
+    version: '3.0.1', weekly: '~6M', deps: 1,
+    tagline: 'sprawdza czy liczba jest nieparzysta. 1 dependency.',
+    story: `  <span class="o">is-odd</span> <span class="d">@3.0.1</span>  ·  <span class="r">1 dep (is-number)</span>  ·  <span class="d">~6M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Robi dokładnie to co mówi nazwa.
+  <span class="d">  module.exports = function isOdd(n) {</span>
+  <span class="d">    return !!(Math.abs(n) % 2 === 1);</span>
+  <span class="d">  };</span>
+
+  Zależy od <span class="c">is-number</span>, która sprawdza czy argument
+  jest liczbą. Bo ostrożność przede wszystkim.
+
+  <span class="y">// 6 milionów pobrań tygodniowo. za sprawdzenie reszty z dzielenia.</span>`,
+  },
+  'is-even': {
+    version: '1.0.0', weekly: '~4M', deps: 1,
+    tagline: 'zwraca !isOdd(n). to wszystko. osobna paczka.',
+    story: `  <span class="o">is-even</span> <span class="d">@1.0.0</span>  ·  <span class="r">1 dep (is-odd)</span>  ·  <span class="d">~4M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Kod źródłowy w całości:
+  <span class="d">  var isOdd = require('is-odd');</span>
+  <span class="d">  module.exports = function isEven(n) {</span>
+  <span class="d">    return !isOdd(n);</span>
+  <span class="d">  };</span>
+
+  Można by napisać <span class="c">n % 2 === 0</span>, ale po co.
+  Lepiej zależeć od paczki, która zależy od paczki.
+
+  <span class="y">// symmetry is important in open source.</span>`,
+  },
+  'colors': {
+    version: '1.4.0', weekly: '~25M', deps: 0,
+    tagline: 'autor sabotował własną paczkę. looped ZALGO.',
+    story: `  <span class="o">colors</span> <span class="d">@1.4.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~25M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Styczeń 2022. Marak Squires wypuścił wersję 1.4.1,
+  która celowo drukowała nieskończoną pętlę śmieciowych
+  znaków zamiast normalnego outputu.
+
+  Komentarz w commitcie:
+  <span class="r">  "As a project maintainer, I am no longer going to</span>
+  <span class="r">   support Fortune 500s [...] for free."</span>
+
+  npm wymusił rollback do poprzedniej wersji.
+  Marak był też autorem faker.js — i tam zrobił to samo.
+
+  <span class="y">// open source burnout jest bardzo realnym zjawiskiem.</span>`,
+  },
+  'faker': {
+    version: '5.5.3', weekly: '~10M', deps: 0,
+    tagline: 'autor usunął repo o 3 w nocy. w proteście.',
+    story: `  <span class="o">faker</span> <span class="d">@5.5.3</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~10M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Styczeń 2022. Ten sam Marak co colors.
+  O 3 w nocy wgrał do repo plik z jednym tekstem:
+  <span class="r">  "What really happened with Aaron Swartz?"</span>
+
+  Potem usunął całą historię commitów.
+  Tysiące projektów z dnia na dzień przestało działać.
+
+  GitHub zablokował mu konto. Community zrobiło fork.
+  Teraz jest <span class="c">@faker-js/faker</span> utrzymywane przez community.
+
+  <span class="y">// github.com/faker-js/faker — fork żyje dalej.</span>`,
+  },
+  'lodash': {
+    version: '4.17.21', weekly: '~50M', deps: 0,
+    tagline: 'importujesz całą bibliotekę żeby użyć _.get() raz.',
+    story: `  <span class="o">lodash</span> <span class="d">@4.17.21</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~50M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Najczęściej używana funkcja w każdym projekcie:
+  <span class="d">  _.get(obj, 'a.b.c', defaultValue)</span>
+
+  W 2024 to samo robi natywny JS:
+  <span class="d">  obj?.a?.b?.c ?? defaultValue</span>
+
+  A mimo to lodash wciąż jest w package.json każdego
+  projektu startującego od 2016 roku.
+
+  Waży 71KB (minified). Tree-shaking pomaga, ale tylko
+  jeśli importujesz z 'lodash/get', a nie z 'lodash'.
+
+  <span class="y">// nikt nie importuje z 'lodash/get'.</span>`,
+  },
+  'moment': {
+    version: '2.29.4', weekly: '~15M', deps: 0,
+    tagline: 'twój bundle waży 300kb więcej przez jedną datę.',
+    story: `  <span class="o">moment</span> <span class="d">@2.29.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~15M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Oficjalnie deprecated od 2020. Sam README mówi:
+  <span class="r">  "We now generally consider Moment to be a legacy project."</span>
+
+  Problem: dołącza WSZYSTKIE lokalizacje (i18n) do bundla.
+  Twoi użytkownicy pobierają tłumaczenia na swahili
+  żeby wyświetlić "2 days ago" po angielsku.
+
+  Alternatywy: <span class="c">date-fns</span>, <span class="c">dayjs</span>, natywne <span class="c">Intl</span>
+  Każda z nich waży 10-20x mniej.
+
+  <span class="y">// moment() — nadal #1 w package.json projektów z 2018.</span>`,
+  },
+  'node-sass': {
+    version: '9.0.0', weekly: '~3M', deps: 0,
+    tagline: 'deprecated. kompilacja 47s. wysypuje się na M1.',
+    story: `  <span class="o">node-sass</span> <span class="d">@9.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~3M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Bindings do libsass napisanej w C++.
+  libsass jest deprecated. node-sass jest deprecated.
+  Dart Sass jest oficjalną implementacją od 2018.
+
+  Ale node-sass nadal jest w milionach projektów bo:
+  <span class="d">  · przepisanie wymaga czasu</span>
+  <span class="d">  · "u mnie działa"</span>
+  <span class="d">  · nikt nie chce tego dotykać</span>
+
+  Na Apple Silicon (M1/M2/M3) kompilacja trwa wiecznie
+  albo kończy się błędem Python/gyp.
+
+  <span class="y">// npm install node-sass → 5 min kompilacji → error → płacz</span>`,
+  },
+  'jquery': {
+    version: '3.7.1', weekly: '~8M', deps: 0,
+    tagline: 'z 2006 roku. wciąż w projekcie bo "może się przyda".',
+    story: `  <span class="o">jquery</span> <span class="d">@3.7.1</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Powstało w 2006 kiedy DOM API było koszmarem.
+  Rozwiązało cross-browser compatibility.
+  Przez 10 lat było WSZĘDZIE.
+
+  Teraz mamy: querySelector, fetch, classList,
+  template literals, arrow functions, async/await...
+
+  jQuery waży 87KB. Robi to co natywny JS.
+  Ale wciąż trafia do projektów bo ktoś skopiował
+  boilerplate z Stack Overflow z 2014.
+
+  <span class="d">  $('document').ready(function() {</span>
+  <span class="d">    // to nadal działa. niestety.</span>
+  <span class="d">  });</span>
+
+  <span class="y">// youmightnotneedjquery.com — istnieje taka strona.</span>`,
+  },
+  'webpack': {
+    version: '5.89.0', weekly: '~20M', deps: 0,
+    tagline: 'konfiguracja ma więcej linii niż cała aplikacja.',
+    story: `  <span class="o">webpack</span> <span class="d">@5.89.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~20M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  webpack.config.js w przeciętnym projekcie:
+  <span class="d">  · 200 linii konfiguracji</span>
+  <span class="d">  · 15 loaderów</span>
+  <span class="d">  · 8 pluginów</span>
+  <span class="d">  · nikt nie wie jak to działa</span>
+  <span class="d">  · nikt nie odważy się dotknąć</span>
+
+  Czas buildu: od "akceptowalny" do "idź na kawę".
+  HMR działa, ale nie zawsze, i nie wiadomo czemu.
+
+  Alternatywy: Vite (10-100x szybszy cold start),
+  esbuild, Rollup, Parcel.
+
+  <span class="y">// "it works on my machine" — webpack config author, always</span>`,
+  },
+  'babel': {
+    version: '7.23.0', weekly: '~30M', deps: 0,
+    tagline: 'transformuje ES2025 do ES5 przez 847 pluginów.',
+    story: `  <span class="o">babel</span> <span class="d">@7.23.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~30M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Transformuje nowoczesny JS do starszego JS.
+  Czyli piszesz coś co już obsługują przeglądarki,
+  a babel przepisuje to żeby obsługiwały to starsze
+  przeglądarki, których nikt już nie używa.
+
+  Typowy projekt ma ~15 pluginów babel:
+  <span class="d">  @babel/preset-env</span>
+  <span class="d">  @babel/preset-react</span>
+  <span class="d">  @babel/preset-typescript</span>
+  <span class="d">  @babel/plugin-proposal-optional-chaining  ← natywny od 3 lat</span>
+  <span class="d">  ... i 11 więcej</span>
+
+  <span class="y">// "we dropped IE11 support" → usuń babel → 3x szybszy build</span>`,
+  },
+  'event-stream': {
+    version: '3.3.4', weekly: '~1M', deps: 0,
+    tagline: 'ktoś przejął ownership i wstrzyknął kradzież bitcoin.',
+    story: `  <span class="o">event-stream</span> <span class="d">@3.3.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~1M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+  Klasyczny supply chain attack. 2018 rok.
+
+  Oryginalny autor (dominictarr) nie używał już paczki.
+  Ktoś (right9ctrl) zaproponował "pomoc w utrzymaniu".
+  Dostał dostęp. Dodał zależność od <span class="r">flatmap-stream</span>.
+  <span class="r">flatmap-stream</span> zawierał zaciemniony kod do kradzieży
+  bitcoinów z konkretnego portfela (Copay).
+
+  Trwało to ~2 miesiące zanim ktoś zauważył.
+  Paczka miała 2M pobrań tygodniowo w tym czasie.
+
+  <span class="y">// audit your dependencies. npm audit. seriously.</span>`,
+  },
+  'cowsay': {
+    version: '1.5.0', weekly: '~2M', deps: 0,
+    tagline: 'krowa mówi rzeczy. to jest uzasadniony use case.',
+    story: `  <span class="o">cowsay</span> <span class="d">@1.5.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~2M/week</span>
+  <span class="d">──────────────────────────────────────────────────</span>
+<span class="g">   ________________________________
+  < to jest uzasadniony use case. >
+   --------------------------------
+          \\   ^__^
+           \\  (oo)\\_______
+              (__)\\       )\\/\\
+                  ||----w |
+                  ||     ||</span>
+
+  Powstało w Perlu w 1999 roku. Port do Node w 2012.
+  Używane w: CI/CD pipeline success messages, README
+  generators, onboarding scripts, i ogólnie wszędzie
+  gdzie ktoś chciał dodać trochę radości do terminala.
+
+  <span class="y">// cowsay jest jedyną paczką w node_modules z misją.</span>`,
+  },
+};
+
 // ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
 export const FS = {
   '~':              { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt','kamil.md'] },
@@ -82,6 +329,7 @@ export const KNOWN = [
   'htop','man','co jest','powiedz zart','allyourbasearebelongtous',
   'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname',
   'claude','dupa','chuj','dawaj','open .','status','email','github','f1','ai',
+  'npm install','ls node_modules','cd node_modules',
 ];
 
 // ── HINTS ─────────────────────────────────────────────────────────
@@ -748,6 +996,16 @@ ${HR}
 `,
 
   ls: () => {
+    if (cwd === '~/node_modules') {
+      const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
+      let out = `\n  <span class="d">total ${Object.keys(NODE_MODULES_PKGS).length}  (curated — the hall of fame)</span>\n\n`;
+      for (const [name, pkg] of Object.entries(NODE_MODULES_PKGS)) {
+        const padded = (name + '/').padEnd(16);
+        out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cat ~/node_modules/${name}')">${padded}</span>  <span class="d">${pkg.tagline}</span>\n`;
+      }
+      out += `\n  <span class="d">tip: click a package name to read its story</span>\n`;
+      return out;
+    }
     const dir = FS[cwd];
     if (!dir) return `  <span class="r">cannot access '${cwd}': No such directory</span>`;
     const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
@@ -1055,6 +1313,46 @@ ${HR}
   <span class="d">Warsaw University of Technology</span>
   <span class="d">2012 – 2016  ·  Warsaw</span>
 `,
+
+  'npm install': async () => {
+    const warns = [
+      `<span class="y">npm warn deprecated</span> <span class="w">colors@1.4.0</span>  <span class="d">: author sabotaged this. use chalk instead.</span>`,
+      `<span class="y">npm warn deprecated</span> <span class="w">moment@2.29.4</span>  <span class="d">: your bundle just gained 300KB. use date-fns.</span>`,
+      `<span class="y">npm warn deprecated</span> <span class="w">node-sass@9.0.0</span> <span class="d">: libsass deprecated. switch to sass (dart).</span>`,
+      `<span class="y">npm warn deprecated</span> <span class="w">left-pad@1.0.0</span>  <span class="d">: this broke the internet in 2016. legendary.</span>`,
+      `<span class="y">npm warn deprecated</span> <span class="w">faker@5.5.3</span>     <span class="d">: author deleted repo at 3am. use @faker-js/faker.</span>`,
+    ];
+    for (const w of warns) {
+      addHTML(`  ${w}`, 'font-size:12px;margin:1px 0;white-space:pre');
+      await sleep(300 + Math.random() * 200);
+    }
+    await sleep(400);
+
+    const bar = el('div');
+    bar.style.cssText = 'font-size:12px;color:var(--accent);margin:8px 0 4px;white-space:pre';
+    tb.appendChild(bar);
+    const total = 847;
+    const steps = 40;
+    for (let i = 0; i <= steps; i++) {
+      const pkgs = Math.round(i / steps * total);
+      const filled = Math.round(i / steps * 32);
+      bar.textContent = `  [${'█'.repeat(filled)}${'░'.repeat(32 - filled)}] ${pkgs} packages`;
+      scroll();
+      await sleep(40 + Math.random() * 30);
+    }
+    await sleep(300);
+
+    return `
+  <span class="g">added 847 packages</span> in 4m 23s
+  <span class="d">──────────────────────────────────────────</span>
+  <span class="d">found 0 vulnerabilities</span>
+  <span class="r">found 3 existential crises</span>
+  <span class="d">found 1 supply chain attack (event-stream)</span>
+  <span class="d">found ∞ deprecated packages (moment, node-sass...)</span>
+  <span class="d">──────────────────────────────────────────</span>
+  <span class="d">tip: type <span class="o">ls node_modules</span> or <span class="o">cd node_modules</span> to explore</span>
+`;
+  },
 
   f1: `
   <span style="color:#ff8000">█████████████████████████████████████</span>
@@ -1389,6 +1687,17 @@ async function _submit(cmd) {
     mkInput(); resetIdleTimer(); return;
   }
 
+  if (cmd === 'ls node_modules' || cmd === 'ls ~/node_modules') {
+    const savedCwd = cwd;
+    cwd = '~/node_modules';
+    const result = COMMANDS.ls();
+    cwd = savedCwd;
+    const out = el('div', { innerHTML: result });
+    out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+    tb.appendChild(out);
+    mkInput(); resetIdleTimer(); return;
+  }
+
   if (cmd.startsWith('ls ')) {
     const target = cmd.slice(3).trim().replace(/\/$/, '');
     const path = `~/${target}`;
@@ -1461,6 +1770,36 @@ async function _submit(cmd) {
         tb.appendChild(err); mkInput(); resetIdleTimer(); return;
       }
     }
+  }
+
+  // when inside ~/node_modules, `cat PKG` works without full path
+  if (cwd === '~/node_modules' && cmd.startsWith('cat ') && !cmd.includes('/')) {
+    const pkgName = cmd.slice(4).trim();
+    const pkg = NODE_MODULES_PKGS[pkgName];
+    if (pkg) {
+      const out = el('div');
+      out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      out.innerHTML = `\n${pkg.story}\n`;
+      tb.appendChild(out);
+      mkInput(); resetIdleTimer(); return;
+    }
+  }
+
+  if (cmd.startsWith('cat') && /cat ~?\/?(node_modules\/|~\/node_modules\/)/.test(cmd)) {
+    const pkgName = cmd.replace(/.*node_modules\//, '').trim();
+    const pkg = NODE_MODULES_PKGS[pkgName];
+    if (pkg) {
+      const out = el('div');
+      out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+      out.innerHTML = `\n${pkg.story}\n`;
+      tb.appendChild(out);
+    } else {
+      const err = el('div');
+      err.style.cssText = 'color:#ff4c4c;margin:4px 0 12px';
+      err.textContent = `  cat: node_modules/${pkgName}: package not in the hall of fame`;
+      tb.appendChild(err);
+    }
+    mkInput(); resetIdleTimer(); return;
   }
 
   if (cmd.startsWith('cat ')) {
