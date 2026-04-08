@@ -40,10 +40,6 @@ export const FORTUNES = [
   '"Underwater, everything is quiet.\n   That\'s where good ideas surface."',
 ];
 
-// ── LANGUAGE ──────────────────────────────────────────────────────
-export let lang = 'en';
-export function setLang(l) { if (l === 'pl' || l === 'en') lang = l; }
-
 // ── SIMPLE_ALIASES ────────────────────────────────────────────────
 export const SIMPLE_ALIASES = {
   'dir': 'ls', 'l': 'ls', 'll': 'ls',
@@ -55,8 +51,6 @@ export const SIMPLE_ALIASES = {
   'cs skills': 'cd skills', 'cs about': 'cd about', 'cs projects': 'cd projects',
   'amber': 'theme amber', 'green': 'theme green', 'blue': 'theme blue',
   'red': 'theme red', 'purple': 'theme purple', 'light': 'theme light', 'dark': 'theme dark',
-  'język': 'lang', 'jezyk': 'lang', 'language': 'lang',
-  'lang polish': 'lang pl', 'lang english': 'lang en',
 };
 
 // ── TYPOS ─────────────────────────────────────────────────────────
@@ -67,367 +61,15 @@ export const TYPOS = {
   'cs about': 'cd about', 'cs projects': 'cd projects', 'theme urple': 'theme purple',
 };
 
-// ── STRINGS (i18n) ────────────────────────────────────────────────
-export const STRINGS = {
-  en: {
-    help: () => STRINGS[lang].help,
-    whoami: () => STRINGS[lang].whoami,
-    about: () => STRINGS[lang].about,
-    skills: () => STRINGS[lang].skills,
-    community: () => STRINGS[lang].community,
-    projects: () => STRINGS[lang].projects,
-    cv: () => STRINGS[lang].cv,
-    now: () => STRINGS[lang].now,
-    contact: () => STRINGS[lang].contact,
-    hire: () => STRINGS[lang].hire,
-    status: () => STRINGS[lang].status,
-    ai: () => STRINGS[lang].ai,
-    hints: {
-      ls:            `  <span class="d">tip: try <span class="o">cd projects</span> · <span class="o">cat cv.pdf</span> · <span class="o">cd about</span></span>`,
-      'cd about':    `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat bio.txt</span></span>`,
-      'cd skills':   `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat skills.json</span></span>`,
-      'cd projects': `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat nowinki.md</span></span>`,
-      'cd community':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat meetjs.txt</span></span>`,
-      hire:          `  <span class="d">tip: type <span class="o">contact</span> to reach out or <span class="o">cat cv.pdf</span> to download CV</span>`,
-      whoami:        `  <span class="d">tip: type <span class="o">about</span> for full bio or <span class="o">skills</span> for tech stack</span>`,
-      skills:        `  <span class="d">tip: type <span class="o">ai</span> to see full AI profile & certifications</span>`,
-    },
-  },
-  pl: {
-    help: `
-  <span class="o">DOSTĘPNE KOMENDY</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  <span class="d">nie znasz terminala? wpisz</span> <span class="o">tour</span> <span class="d">— poprowadzi krok po kroku</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  <span class="y">whoami</span>      krótkie przedstawienie
-  <span class="y">about</span>       pełne bio
-  <span class="y">skills</span>      kompetencje techniczne
-  <span class="y">community</span>   meet.js i eventy
-  <span class="y">projects</span>    projekty i content
-  <span class="y">cv</span>          doświadczenie zawodowe
-  <span class="y">now</span>         czym się teraz zajmuję
-  <span class="y">contact</span>     jak się skontaktować
-  <span class="y">hire</span>        czy jestem dostępny?
-  <span class="y">status</span>      dostępność i czego szukam
-  <span class="y">email</span>       otwórz klienta email
-  <span class="y">github</span>      otwórz profil github
-  <span class="y">ls</span>          eksploruj pliki i foldery
-  <span class="y">theme</span>       zmień schemat kolorów
-  <span class="y">clear</span>       wyczyść terminal
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  <span class="d">wskazówka: ↑ ↓ historia · tab uzupełnianie · <span class="o">lang en</span> for English</span>
-`,
-    whoami: `
-  <span class="o">Kamil Dzieniszewski</span>
-  AI-first Frontend Developer · Builder
-  Warszawa, Polska
-  <span class="d">──────────────────────────────────────</span>
-  budowniczy społeczności · twórca produktów · nurek
-  buduję na przecięciu <span class="c">kodu</span>, <span class="g">AI</span> i <span class="y">ludzi</span>
-  <span class="d">→ wpisz <span class="o">ai</span> aby zobaczyć profil AI</span>
-`,
-    about: `
-  <span class="o">O MNIE</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  AI-first Frontend Developer i builder z Warszawy.
-  Nie "frontend dev, który próbował ChatGPT" —
-  głęboko w AI od premiery GPT-3 w 2022.
-
-  Buduję produkty na przecięciu:
-    <span class="g">→</span> inżynierii frontendowej
-    <span class="g">→</span> AI / LLM
-    <span class="g">→</span> budowania społeczności
-
-  <span class="d">Aktualna rola — Lead Frontend Developer w Playsmart:</span>
-    <span class="d">·</span> prowadzi frontend i wspiera zespół
-    <span class="d">·</span> buduje z TypeScript, React, Next.js
-    <span class="d">·</span> łączy produkt, design i inżynierię
-
-  <span class="d">Cechy osobiste:</span>
-    <span class="d">·</span> zorientowany na działanie i szybkie tempo
-    <span class="d">·</span> ciekawski i ciągle uczący się
-    <span class="d">·</span> komfortowy z ryzykiem i eksperymentami
-    <span class="d">·</span> certyfikowany nurek (PADI AOWD) · kitesurfer
-    <span class="d">·</span> fascynacja Japonią · planowana podróż
-`,
-    skills: `
-  <span class="o">UMIEJĘTNOŚCI</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  <span class="c">AI / LLM</span>  <span class="d">← tak, to teraz na pierwszym miejscu</span>
-  API LLM       <span class="o">████████████████████</span>  zaawansowany
-  RAG           <span class="o">████████████████</span><span class="d">████</span>  zaawansowany
-  Prompt Eng.   <span class="o">████████████████████</span>  zaawansowany
-  Agenty / MCP  <span class="o">████████████</span><span class="d">████████</span>  buduję
-  AI Devs cert  <span class="g">✓ poz. 2  ✓ poz. 3  ⟳ poz. 4</span>
-
-  <span class="c">FRONTEND</span>
-  React         <span class="o">████████████████████</span>  ekspert
-  TypeScript    <span class="o">████████████████████</span>  ekspert
-  Next.js       <span class="o">████████████████</span><span class="d">████</span>  zaawansowany
-  Three.js      <span class="o">████████</span><span class="d">████████████</span>  w eksploracji
-
-  <span class="c">BACKEND</span>
-  Supabase      <span class="o">████████████</span><span class="d">████████</span>  dobra znajomość
-  PostgreSQL    <span class="o">████████████</span><span class="d">████████</span>  dobra znajomość
-  REST APIs     <span class="o">████████████████</span><span class="d">████</span>  zaawansowany
-
-  <span class="c">MOBILE</span>
-  React Native  <span class="o">████████</span><span class="d">████████████</span>  wczesny etap
-`,
-    community: `
-  <span class="o">SPOŁECZNOŚĆ</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  <span class="y">meet.js</span>  <span class="d">— współorganizator</span>
-  Jedna z najdłużej działających społeczności frontendowych w Polsce.
-
-  <span class="g">✓</span> 15-lecie — świętowane 4 marca 2026
-  Aktualnie pracuję nad:
-    <span class="g">→</span> projekt dokumentalny / storytelling o społeczności
-
-  <span class="y">Windsurf Meetup Warszawa</span>  <span class="d">— organizator</span>
-  Meetupy wokół Windsurf — IDE wspomaganego przez AI.
-  Łączę programistów eksplorujących AI-assisted development.
-
-  <span class="d">"Świetnie odnajduje się w środowiskach, gdzie może łączyć</span>
-  <span class="d"> ludzi, idee i szanse."</span>
-`,
-    projects: `
-  <span class="o">PROJEKTY</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  <span class="y">Web Nowinki</span>  <span class="d">— prowadzący & twórca</span>
-  Tygodniowy show o nowościach w web developmencie.
-  Aktualności ze świata frontendowego.
-    <span class="g">→</span> <span class="c"><a href="https://www.youtube.com/watch?v=AYFjUU2AonA&list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" style="color:#00d4ff;text-decoration:none">youtube.com · playlista Web Nowinki</a></span>
-
-  <span class="d">──────────────────────────────────────</span>
-
-  <span class="y">Web Prasówka</span>  <span class="d">— prowadzący podcast</span>
-  Podcast o nowościach i trendach w web developmencie.
-  Rozmowy na przecięciu technologii i społeczności.
-    <span class="g">→</span> <span class="c"><a href="https://www.youtube.com/watch?v=c0fEjnqSnmQ&list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" style="color:#00d4ff;text-decoration:none">youtube.com · playlista Web Prasówka</a></span>
-`,
-    cv: `
-  <span class="o">DOŚWIADCZENIE ZAWODOWE</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  <span class="y">Lead Frontend Developer</span>  <span class="d">·  Playsmart</span>
-  <span class="d">Lis 2025 – teraz  ·  aktualna rola</span>
-  Prowadzę frontend w Playsmart, buduję i wdrażam funkcjonalności
-  używając React, Next.js i TypeScript. Łączę inżynierię,
-  myślenie produktowe i szybkie działanie dla dostarczania wartości.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Developer Advocate</span>  <span class="d">·  Tolgee</span>
-  <span class="d">Sie 2025 – Paź 2025  ·  3 mies.  ·  Zdalnie</span>
-  Współtworzyłem Tolgee — open-source platformę lokalizacyjną.
-  Ulepszenia frontendowe i funkcjonalności upraszczające przepływy
-  tłumaczeń. Łączyłem potrzeby produktu z używalnością.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Frontend Developer</span>  <span class="d">·  LEOCODE</span>
-  <span class="d">Lut 2025 – Cze 2025  ·  5 mies.  ·  Zdalnie</span>
-  Budowałem backoffice dla platformy Digital Identification (Web3)
-  dla Hashgraph Group.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Senior Frontend Developer</span>  <span class="d">·  Lighthouse Growth</span>
-  <span class="d">Paź 2024 – Sty 2025  ·  4 mies.  ·  Zdalnie</span>
-  Strona Lighthouse Growth oraz Next.js developer dla Telia —
-  przepisywanie legacy stron (Search & Category) na Next.js.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Frontend Developer</span>  <span class="d">·  AirHelp</span>
-  <span class="d">Maj 2024 – Wrz 2024  ·  5 mies.  ·  Hybryda</span>
-  Utrzymywanie aplikacji AirHelp.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Senior Frontend Developer</span>  <span class="d">·  STÖK</span>
-  <span class="d">Lis 2023 – Kwi 2024  ·  6 mies.  ·  Zdalnie</span>
-  Budowanie sklepów ecommerce z Centra, Storyblok i Next.js.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Senior Front-End Software Engineer</span>  <span class="d">·  Teckro</span>
-  <span class="d">Kwi 2022 – Paź 2023  ·  1 rok 7 mies.</span>
-  Platforma medyczna na mikrofrontendach (Single-SPA) używana
-  przez globalne korporacje farmaceutyczne.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Frontend Chapter Lead</span>  <span class="d">·  Vodeno</span>
-  <span class="d">Wrz 2021 – Kwi 2022  ·  8 mies.  ·  Warszawa</span>
-  Zarządzanie zespołem frontendowym 15 osób.
-  Rekrutacja (rozmowy techniczne).
-  Prowadzenie tygodniowych spotkań frontend chapter.
-
-  <span class="y">Senior Front-end Developer</span>  <span class="d">·  Vodeno</span>
-  <span class="d">Lip 2019 – Wrz 2021  ·  2 lata 3 mies.</span>
-  Architektura mikrofrontendowa (React, Redux).
-  Budowanie aplikacji ETF Investments i Savings dla Aion Bank.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Front-end Developer</span>  <span class="d">·  Daftcode</span>
-  <span class="d">Maj 2018 – Lip 2019  ·  1 rok 3 mies.  ·  Warszawa</span>
-  Aplikacje React + Redux, statyczne strony Next.js,
-  aplikacje mobilne React Native.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Front-end Developer</span>  <span class="d">·  GogoApps</span>
-  <span class="d">Sie 2017 – Kwi 2018  ·  9 mies.  ·  Warszawa</span>
-  Webaplikacje React z MobX. Motywy WordPress w Timber/Twig.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Front-end Developer</span>  <span class="d">·  Functionite / kodu.je</span>
-  <span class="d">Lis 2016 – Lip 2017  ·  9 mies.  ·  Warszawa</span>
-  kodu.je — szkoła programowania frontendowego.
-  Strona, produkcja wideo i social media.
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="y">Redaktor Naczelny / Operator</span>  <span class="d">·  Studencka Telewizja Internetowa TVPW</span>
-  <span class="d">Paź 2013 – Cze 2016  ·  2 lata 9 mies.  ·  Warszawa</span>
-  Zarządzanie 80-osobową organizacją studencką.
-  Produkcja wideo, transmisje na żywo, eventy.
-`,
-    now: `
-  <span class="o">TERAZ</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  Na czym się skupiam w kwietniu 2026:
-
-    <span class="g">→</span> prowadzę frontend w Playsmart
-    <span class="g">→</span> planuję podróż do Japonii
-    <span class="g">→</span> eksploruję AI-native product development
-    <span class="g">→</span> planuję kolejny wyjazd do nurkowania
-    <span class="g">→</span> buduję i wdrażam projekty poboczne
-    <span class="g">→</span> <span class="g">otwarty na nowe możliwości</span>
-
-  <span class="d">ostatnia aktualizacja: kwiecień 2026</span>
-`,
-    contact: `
-  <span class="o">KONTAKT</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  Lokalizacja    <span class="w">Warszawa, Polska</span>
-  Obszar         <span class="w">DevRel · Frontend · AI · Produkt</span>
-  Status         <span class="g">● otwarty na nowe możliwości</span>
-
-  <span class="d">──────────────────────────────────────</span>
-  Email          <a href="mailto:kamil.dzieniszewski@gmail.com" target="_blank" style="color:#00d4ff;text-decoration:none">kamil.dzieniszewski@gmail.com</a>
-  LinkedIn       <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">linkedin.com/in/dzieniszewski</a>
-  GitHub         <a href="https://github.com/dzienisz" target="_blank" style="color:#00d4ff;text-decoration:none">github.com/dzienisz</a>
-  X              <a href="https://x.com/dzienko" target="_blank" style="color:#00d4ff;text-decoration:none">x.com/dzienko</a>
-  <span class="d">──────────────────────────────────────</span>
-
-  Otwarty na możliwości łączące:
-    <span class="g">→</span> technologię
-    <span class="g">→</span> komunikację
-    <span class="g">→</span> wpływ na społeczność
-`,
-    hire: `
-  <span class="o">ZATRUDNIJ MNIE?</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  Status      <span class="g">● otwarty na nowe możliwości</span>
-  <span class="d">──────────────────────────────────────</span>
-  Szukasz kogoś, kto:
-    <span class="g">✓</span> prowadzi frontend i dostarcza szybko
-    <span class="g">✓</span> rozmawia z ludźmi (produkt, design, użytkownicy)
-    <span class="g">✓</span> buduje społeczność, nie tylko kod
-    <span class="g">✓</span> jest szczerze podekscytowany przez AI
-    <span class="g">✓</span> potrafi tłumaczyć technologię nie-technicznym
-
-  Bonus: ma partnera do nurkowania.
-
-  <span class="d">──────────────────────────────────────</span>
-  <a href="mailto:kamil.dzieniszewski@gmail.com" style="color:#4af626;text-decoration:none">✉  kamil.dzieniszewski@gmail.com</a>
-  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
-  <a href="/cv.pdf" download style="color:#e0e0e0;text-decoration:none">⬇  pobierz cv.pdf</a>
-`,
-    status: `
-  <span class="o">DOSTĘPNOŚĆ</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-  <span class="g">● aktualnie otwarty na nowe możliwości</span>
-
-  Szukam:
-    <span class="g">→</span> ról Senior / Lead Frontend
-    <span class="g">→</span> zespołów zorientowanych na produkt
-    <span class="g">→</span> zdalnie lub w Warszawie
-    <span class="g">→</span> praca na przecięciu technologii i ludzi
-
-  <a href="mailto:kamil.dzieniszewski@gmail.com" style="color:#4af626;text-decoration:none">✉  kamil.dzieniszewski@gmail.com</a>
-  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
-`,
-    ai: `
-  <span class="o">PROFIL AI</span>
-  <span class="d">──────────────────────────────────────────────────────────</span>
-
-  Nie "frontend dev, który próbował ChatGPT".
-  W AI od premiery GPT-3 — <span class="w">buduję, nie tylko oglądam.</span>
-
-  <span class="c">CERTYFIKATY</span>
-    <span class="g">✓</span>  AI Devs 2   <span class="d">— ukończony  ·  aidevs.pl</span>
-    <span class="g">✓</span>  AI Devs 3   <span class="d">— ukończony  ·  aidevs.pl</span>
-    <span class="y">⟳</span>  AI Devs 4   <span class="d">— w trakcie</span>
-
-  <span class="c">PRAKTYKA</span>
-    <span class="g">→</span>  implementacje RAG
-    <span class="g">→</span>  integracje API LLM (OpenAI, Anthropic, Gemini)
-    <span class="g">→</span>  prompt engineering — codzienna praktyka
-    <span class="g">→</span>  agenty & MCP — eksploruję i buduję
-    <span class="g">→</span>  AI-assisted development — codzienność
-    <span class="g">→</span>  Windsurf Ambassador <span class="d">— IDE wspomagane AI</span>
-
-  <span class="c">POZYCJONOWANIE</span>
-    AI-first Frontend Developer
-    Builder who ships AI products
-    Otwarty na role w produktach AI-native
-
-  <span class="d">──────────────────────────────────────</span>
-  <span class="d">wypróbuj Windsurf — IDE którego używam każdego dnia:</span>
-  <a href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" style="color:#4af626;text-decoration:none">→  windsurf.com/refer?referral_code=b506a23128</a>
-  <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" style="color:#00d4ff;text-decoration:none">in  linkedin.com/in/dzieniszewski</a>
-`,
-    hints: {
-      ls:            `  <span class="d">wskazówka: spróbuj <span class="o">cd projects</span> · <span class="o">cat cv.pdf</span> · <span class="o">cd about</span></span>`,
-      'cd about':    `  <span class="d">wskazówka: spróbuj <span class="o">ls</span> a potem <span class="o">cat bio.txt</span></span>`,
-      'cd skills':   `  <span class="d">wskazówka: spróbuj <span class="o">ls</span> a potem <span class="o">cat skills.json</span></span>`,
-      'cd projects': `  <span class="d">wskazówka: spróbuj <span class="o">ls</span> a potem <span class="o">cat nowinki.md</span></span>`,
-      'cd community':`  <span class="d">wskazówka: spróbuj <span class="o">ls</span> a potem <span class="o">cat meetjs.txt</span></span>`,
-      hire:          `  <span class="d">wskazówka: wpisz <span class="o">contact</span> aby napisać lub <span class="o">cat cv.pdf</span> aby pobrać CV</span>`,
-      whoami:        `  <span class="d">wskazówka: wpisz <span class="o">about</span> po pełne bio lub <span class="o">skills</span> po stack technologiczny</span>`,
-      skills:        `  <span class="d">wskazówka: wpisz <span class="o">ai</span> aby zobaczyć profil AI i certyfikaty</span>`,
-    },
-  },
-};
-
 // ── NODE_MODULES PACKAGES ─────────────────────────────────────────
 export const NODE_MODULES_PKGS = {
   'left-pad': {
     version: '1.0.0', weekly: '~8M', deps: 0,
-    tagline: { en: '26 lines of code. broke the internet in 2016.', pl: '26 linii kodu. złamały internet w 2016.' },
-    story: {
-      en: `  <span class="o">left-pad</span> <span class="d">@1.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  In 2016, Azer Koçulu unpublished the package in protest
-  after npm forced him to give up the name "kik" to a company.
-
-  Half of npm broke — Babel, React, and hundreds of packages
-  failed to install for ~2 hours.
-
-  npm permanently changed its unpublish policy because of this.
-
-  The entire function was essentially:
-  <span class="d">  function leftPad(str, len, ch) {</span>
-  <span class="d">    str = str + ''; len = len - str.length;</span>
-  <span class="d">    while (len-- > 0) str = ch + str;</span>
-  <span class="d">    return str;</span>
-  <span class="d">  }</span>
-
-  <span class="y">// 26 lines. still ~8M downloads per week.</span>`,
-      pl: `  <span class="o">left-pad</span> <span class="d">@1.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
+    tagline: '26 linii kodu. złamały internet w 2016.',
+    story: `  <span class="o">left-pad</span> <span class="d">@1.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   W 2016 Azer Koçulu unpublishował paczkę w proteście
-  po tym jak npm zmusił go do oddania nazwy "kik".
+  po tym, jak npm zmusił go do oddania nazwy "kik".
 
   Skutki: Babel, React i połowa ekosystemu JS
   przestała się buildować na ~2 godziny.
@@ -442,24 +84,11 @@ export const NODE_MODULES_PKGS = {
   <span class="d">  }</span>
 
   <span class="y">// 26 linii. do dziś 8M pobrań tygodniowo.</span>`,
-    },
   },
   'is-odd': {
     version: '3.0.1', weekly: '~6M', deps: 1,
-    tagline: { en: 'checks if a number is odd. has 1 dependency.', pl: 'sprawdza czy liczba jest nieparzysta. 1 dependency.' },
-    story: {
-      en: `  <span class="o">is-odd</span> <span class="d">@3.0.1</span>  ·  <span class="r">1 dep (is-number)</span>  ·  <span class="d">~6M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Does exactly what it says.
-  <span class="d">  module.exports = function isOdd(n) {</span>
-  <span class="d">    return !!(Math.abs(n) % 2 === 1);</span>
-  <span class="d">  };</span>
-
-  Depends on <span class="c">is-number</span> which checks if the argument is
-  actually a number. Because safety first.
-
-  <span class="y">// 6 million downloads a week. for a modulo operation.</span>`,
-      pl: `  <span class="o">is-odd</span> <span class="d">@3.0.1</span>  ·  <span class="r">1 dep (is-number)</span>  ·  <span class="d">~6M/week</span>
+    tagline: 'sprawdza czy liczba jest nieparzysta. 1 dependency.',
+    story: `  <span class="o">is-odd</span> <span class="d">@3.0.1</span>  ·  <span class="r">1 dep (is-number)</span>  ·  <span class="d">~6M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Robi dokładnie to co mówi nazwa.
   <span class="d">  module.exports = function isOdd(n) {</span>
@@ -470,25 +99,11 @@ export const NODE_MODULES_PKGS = {
   jest liczbą. Bo ostrożność przede wszystkim.
 
   <span class="y">// 6 milionów pobrań tygodniowo. za sprawdzenie reszty z dzielenia.</span>`,
-    },
   },
   'is-even': {
     version: '1.0.0', weekly: '~4M', deps: 1,
-    tagline: { en: 'return !isOdd(n). a separate package. seriously.', pl: 'zwraca !isOdd(n). to wszystko. osobna paczka.' },
-    story: {
-      en: `  <span class="o">is-even</span> <span class="d">@1.0.0</span>  ·  <span class="r">1 dep (is-odd)</span>  ·  <span class="d">~4M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  The entire source code:
-  <span class="d">  var isOdd = require('is-odd');</span>
-  <span class="d">  module.exports = function isEven(n) {</span>
-  <span class="d">    return !isOdd(n);</span>
-  <span class="d">  };</span>
-
-  You could write <span class="c">n % 2 === 0</span> but why do that.
-  Better to depend on a package that depends on a package.
-
-  <span class="y">// symmetry is important in open source.</span>`,
-      pl: `  <span class="o">is-even</span> <span class="d">@1.0.0</span>  ·  <span class="r">1 dep (is-odd)</span>  ·  <span class="d">~4M/week</span>
+    tagline: 'zwraca !isOdd(n). to wszystko. osobna paczka.',
+    story: `  <span class="o">is-even</span> <span class="d">@1.0.0</span>  ·  <span class="r">1 dep (is-odd)</span>  ·  <span class="d">~4M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Kod źródłowy w całości:
   <span class="d">  var isOdd = require('is-odd');</span>
@@ -500,28 +115,13 @@ export const NODE_MODULES_PKGS = {
   Lepiej zależeć od paczki, która zależy od paczki.
 
   <span class="y">// symmetry is important in open source.</span>`,
-    },
   },
   'colors': {
     version: '1.4.0', weekly: '~25M', deps: 0,
-    tagline: { en: 'author deliberately sabotaged their own package.', pl: 'autor sabotował własną paczkę. looped ZALGO.' },
-    story: {
-      en: `  <span class="o">colors</span> <span class="d">@1.4.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~25M/week</span>
+    tagline: 'autor sabotował własną paczkę. looped ZALGO.',
+    story: `  <span class="o">colors</span> <span class="d">@1.4.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~25M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  January 2022. Marak Squires released v1.4.1 that deliberately
-  printed an infinite loop of gibberish instead of normal output.
-
-  Commit message from the author:
-  <span class="r">  "As a project maintainer, I am no longer going to</span>
-  <span class="r">   support Fortune 500s [...] for free."</span>
-
-  npm force-rolled back to the previous version.
-  Marak was also the author of faker.js — same thing there.
-
-  <span class="y">// open source burnout is very real.</span>`,
-      pl: `  <span class="o">colors</span> <span class="d">@1.4.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~25M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Styczeń 2022. Marak Squires wypuścił wersję 1.4.1
+  Styczeń 2022. Marak Squires wypuścił wersję 1.4.1,
   która celowo drukowała nieskończoną pętlę śmieciowych
   znaków zamiast normalnego outputu.
 
@@ -533,26 +133,11 @@ export const NODE_MODULES_PKGS = {
   Marak był też autorem faker.js — i tam zrobił to samo.
 
   <span class="y">// open source burnout jest bardzo realnym zjawiskiem.</span>`,
-    },
   },
   'faker': {
     version: '5.5.3', weekly: '~10M', deps: 0,
-    tagline: { en: 'author deleted the repo at 3am. in protest.', pl: 'autor usunął repo o 3 w nocy. w proteście.' },
-    story: {
-      en: `  <span class="o">faker</span> <span class="d">@5.5.3</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~10M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  January 2022. Same Marak as colors.
-  At 3am he replaced the entire repo with a single text file:
-  <span class="r">  "What really happened with Aaron Swartz?"</span>
-
-  Then deleted all commit history.
-  Thousands of projects broke overnight.
-
-  GitHub suspended his account. Community made a fork.
-  Now there's <span class="c">@faker-js/faker</span> maintained by the community.
-
-  <span class="y">// github.com/faker-js/faker — the fork lives on.</span>`,
-      pl: `  <span class="o">faker</span> <span class="d">@5.5.3</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~10M/week</span>
+    tagline: 'autor usunął repo o 3 w nocy. w proteście.',
+    story: `  <span class="o">faker</span> <span class="d">@5.5.3</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~10M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Styczeń 2022. Ten sam Marak co colors.
   O 3 w nocy wgrał do repo plik z jednym tekstem:
@@ -565,27 +150,11 @@ export const NODE_MODULES_PKGS = {
   Teraz jest <span class="c">@faker-js/faker</span> utrzymywane przez community.
 
   <span class="y">// github.com/faker-js/faker — fork żyje dalej.</span>`,
-    },
   },
   'lodash': {
     version: '4.17.21', weekly: '~50M', deps: 0,
-    tagline: { en: 'you import the whole thing to use _.get() once.', pl: 'importujesz całą bibliotekę żeby użyć _.get() raz.' },
-    story: {
-      en: `  <span class="o">lodash</span> <span class="d">@4.17.21</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~50M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Most commonly used function in any project:
-  <span class="d">  _.get(obj, 'a.b.c', defaultValue)</span>
-
-  Since 2020, native JS does the same:
-  <span class="d">  obj?.a?.b?.c ?? defaultValue</span>
-
-  And yet lodash is still in package.json of every project
-  started before 2018. Weighs 71KB (minified).
-
-  Tree-shaking helps, but only if you import from 'lodash/get'.
-
-  <span class="y">// nobody imports from 'lodash/get'.</span>`,
-      pl: `  <span class="o">lodash</span> <span class="d">@4.17.21</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~50M/week</span>
+    tagline: 'importujesz całą bibliotekę żeby użyć _.get() raz.',
+    story: `  <span class="o">lodash</span> <span class="d">@4.17.21</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~50M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Najczęściej używana funkcja w każdym projekcie:
   <span class="d">  _.get(obj, 'a.b.c', defaultValue)</span>
@@ -594,31 +163,17 @@ export const NODE_MODULES_PKGS = {
   <span class="d">  obj?.a?.b?.c ?? defaultValue</span>
 
   A mimo to lodash wciąż jest w package.json każdego
-  projektu startującego od 2016. Waży 71KB (minified).
+  projektu startującego od 2016 roku.
 
-  Tree-shaking pomaga, ale tylko jeśli importujesz z 'lodash/get'.
+  Waży 71KB (minified). Tree-shaking pomaga, ale tylko
+  jeśli importujesz z 'lodash/get', a nie z 'lodash'.
 
   <span class="y">// nikt nie importuje z 'lodash/get'.</span>`,
-    },
   },
   'moment': {
     version: '2.29.4', weekly: '~15M', deps: 0,
-    tagline: { en: '+300KB bundle for one birthday field.', pl: 'twój bundle waży 300kb więcej przez jedną datę.' },
-    story: {
-      en: `  <span class="o">moment</span> <span class="d">@2.29.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~15M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Officially deprecated since 2020. The README says it clearly:
-  <span class="r">  "We now generally consider Moment to be a legacy project."</span>
-
-  Problem: ships ALL locales (i18n) in the bundle.
-  Your users download Swahili translations just to
-  display "2 days ago" in English.
-
-  Alternatives: <span class="c">date-fns</span>, <span class="c">dayjs</span>, native <span class="c">Intl</span>
-  Each weighs 10-20x less.
-
-  <span class="y">// moment() — still #1 in package.json of 2018 projects.</span>`,
-      pl: `  <span class="o">moment</span> <span class="d">@2.29.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~15M/week</span>
+    tagline: 'twój bundle waży 300kb więcej przez jedną datę.',
+    story: `  <span class="o">moment</span> <span class="d">@2.29.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~15M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Oficjalnie deprecated od 2020. Sam README mówi:
   <span class="r">  "We now generally consider Moment to be a legacy project."</span>
@@ -631,28 +186,11 @@ export const NODE_MODULES_PKGS = {
   Każda z nich waży 10-20x mniej.
 
   <span class="y">// moment() — nadal #1 w package.json projektów z 2018.</span>`,
-    },
   },
   'node-sass': {
     version: '9.0.0', weekly: '~3M', deps: 0,
-    tagline: { en: 'deprecated. 47s compile. breaks on every CI.', pl: 'deprecated. kompilacja 47s. wysypuje się na M1.' },
-    story: {
-      en: `  <span class="o">node-sass</span> <span class="d">@9.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~3M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Bindings to libsass written in C++.
-  libsass is deprecated. node-sass is deprecated.
-  Dart Sass has been the official implementation since 2018.
-
-  Yet node-sass is in millions of projects because:
-  <span class="d">  · migration takes time</span>
-  <span class="d">  · "works on my machine"</span>
-  <span class="d">  · nobody wants to touch it</span>
-
-  On Apple Silicon (M1/M2/M3) compilation takes forever
-  or fails with a Python/gyp error.
-
-  <span class="y">// npm install node-sass → 5min compile → error → tears</span>`,
-      pl: `  <span class="o">node-sass</span> <span class="d">@9.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~3M/week</span>
+    tagline: 'deprecated. kompilacja 47s. wysypuje się na M1.',
+    story: `  <span class="o">node-sass</span> <span class="d">@9.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~3M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Bindings do libsass napisanej w C++.
   libsass jest deprecated. node-sass jest deprecated.
@@ -667,33 +205,15 @@ export const NODE_MODULES_PKGS = {
   albo kończy się błędem Python/gyp.
 
   <span class="y">// npm install node-sass → 5 min kompilacji → error → płacz</span>`,
-    },
   },
   'jquery': {
     version: '3.7.1', weekly: '~8M', deps: 0,
-    tagline: { en: 'from 2006. still here because "just in case".', pl: 'z 2006 roku. wciąż tu jest bo "może się przyda".' },
-    story: {
-      en: `  <span class="o">jquery</span> <span class="d">@3.7.1</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Created in 2006 when the DOM API was a nightmare.
-  Solved cross-browser compatibility. Was EVERYWHERE.
-
-  Now we have: querySelector, fetch, classList,
-  template literals, arrow functions, async/await...
-
-  jQuery weighs 87KB. Does what native JS does.
-  But it still ends up in projects because someone
-  copy-pasted a Stack Overflow answer from 2014.
-
-  <span class="d">  $('document').ready(function() {</span>
-  <span class="d">    // this still works. unfortunately.</span>
-  <span class="d">  });</span>
-
-  <span class="y">// youmightnotneedjquery.com — yes, that's a real site.</span>`,
-      pl: `  <span class="o">jquery</span> <span class="d">@3.7.1</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
+    tagline: 'z 2006 roku. wciąż w projekcie bo "może się przyda".',
+    story: `  <span class="o">jquery</span> <span class="d">@3.7.1</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Powstało w 2006 kiedy DOM API było koszmarem.
-  Rozwiązało cross-browser compatibility. Przez 10 lat wszędzie.
+  Rozwiązało cross-browser compatibility.
+  Przez 10 lat było WSZĘDZIE.
 
   Teraz mamy: querySelector, fetch, classList,
   template literals, arrow functions, async/await...
@@ -707,28 +227,11 @@ export const NODE_MODULES_PKGS = {
   <span class="d">  });</span>
 
   <span class="y">// youmightnotneedjquery.com — istnieje taka strona.</span>`,
-    },
   },
   'webpack': {
     version: '5.89.0', weekly: '~20M', deps: 0,
-    tagline: { en: 'config has more lines than your app.', pl: 'konfiguracja ma więcej linii niż cała aplikacja.' },
-    story: {
-      en: `  <span class="o">webpack</span> <span class="d">@5.89.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~20M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  webpack.config.js in a typical project:
-  <span class="d">  · 200 lines of config</span>
-  <span class="d">  · 15 loaders</span>
-  <span class="d">  · 8 plugins</span>
-  <span class="d">  · nobody knows how it works</span>
-  <span class="d">  · nobody dares to touch it</span>
-
-  Build times: from "acceptable" to "go get coffee".
-  HMR works, but not always, and nobody knows why.
-
-  Alternatives: Vite (10-100x faster), esbuild, Rollup.
-
-  <span class="y">// "it works on my machine" — webpack config author, always</span>`,
-      pl: `  <span class="o">webpack</span> <span class="d">@5.89.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~20M/week</span>
+    tagline: 'konfiguracja ma więcej linii niż cała aplikacja.',
+    story: `  <span class="o">webpack</span> <span class="d">@5.89.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~20M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   webpack.config.js w przeciętnym projekcie:
   <span class="d">  · 200 linii konfiguracji</span>
@@ -740,31 +243,15 @@ export const NODE_MODULES_PKGS = {
   Czas buildu: od "akceptowalny" do "idź na kawę".
   HMR działa, ale nie zawsze, i nie wiadomo czemu.
 
-  Alternatywy: Vite (10-100x szybszy), esbuild, Rollup.
+  Alternatywy: Vite (10-100x szybszy cold start),
+  esbuild, Rollup, Parcel.
 
   <span class="y">// "it works on my machine" — webpack config author, always</span>`,
-    },
   },
   'babel': {
     version: '7.23.0', weekly: '~30M', deps: 0,
-    tagline: { en: 'transforms ES2025 to ES5 via 847 plugins.', pl: 'transformuje ES2025 do ES5 przez 847 pluginów.' },
-    story: {
-      en: `  <span class="o">babel</span> <span class="d">@7.23.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~30M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Transforms modern JS into older JS.
-  So you write something browsers already support,
-  and babel rewrites it for older browsers
-  that nobody uses anymore.
-
-  A typical project has ~15 babel plugins:
-  <span class="d">  @babel/preset-env</span>
-  <span class="d">  @babel/preset-react</span>
-  <span class="d">  @babel/preset-typescript</span>
-  <span class="d">  @babel/plugin-proposal-optional-chaining  ← native for 3 years</span>
-  <span class="d">  ... and 11 more</span>
-
-  <span class="y">// "we dropped IE11 support" → remove babel → 3x faster build</span>`,
-      pl: `  <span class="o">babel</span> <span class="d">@7.23.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~30M/week</span>
+    tagline: 'transformuje ES2025 do ES5 przez 847 pluginów.',
+    story: `  <span class="o">babel</span> <span class="d">@7.23.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~30M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Transformuje nowoczesny JS do starszego JS.
   Czyli piszesz coś co już obsługują przeglądarki,
@@ -779,27 +266,11 @@ export const NODE_MODULES_PKGS = {
   <span class="d">  ... i 11 więcej</span>
 
   <span class="y">// "we dropped IE11 support" → usuń babel → 3x szybszy build</span>`,
-    },
   },
   'event-stream': {
     version: '3.3.4', weekly: '~1M', deps: 0,
-    tagline: { en: 'someone injected bitcoin theft into a dependency.', pl: 'ktoś przejął ownership i wstrzyknął kradzież bitcoin.' },
-    story: {
-      en: `  <span class="o">event-stream</span> <span class="d">@3.3.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~1M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-  Classic supply chain attack. 2018.
-
-  Original author (dominictarr) wasn't using the package.
-  Someone (right9ctrl) offered to "help maintain" it.
-  Got access. Added a dependency on <span class="r">flatmap-stream</span>.
-  <span class="r">flatmap-stream</span> contained obfuscated code to steal
-  Bitcoin from a specific wallet (Copay).
-
-  Went undetected for ~2 months.
-  Package had 2M downloads per week during that time.
-
-  <span class="y">// npm audit. seriously. audit your dependencies.</span>`,
-      pl: `  <span class="o">event-stream</span> <span class="d">@3.3.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~1M/week</span>
+    tagline: 'ktoś przejął ownership i wstrzyknął kradzież bitcoin.',
+    story: `  <span class="o">event-stream</span> <span class="d">@3.3.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~1M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
   Klasyczny supply chain attack. 2018 rok.
 
@@ -812,48 +283,31 @@ export const NODE_MODULES_PKGS = {
   Trwało to ~2 miesiące zanim ktoś zauważył.
   Paczka miała 2M pobrań tygodniowo w tym czasie.
 
-  <span class="y">// npm audit. poważnie. audytuj zależności.</span>`,
-    },
+  <span class="y">// audit your dependencies. npm audit. seriously.</span>`,
   },
   'cowsay': {
     version: '1.5.0', weekly: '~2M', deps: 0,
-    tagline: { en: 'a cow says things in the terminal. valid use case.', pl: 'krowa mówi rzeczy w terminalu. uzasadniony use case.' },
-    story: {
-      en: `  <span class="o">cowsay</span> <span class="d">@1.5.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~2M/week</span>
+    tagline: 'krowa mówi rzeczy. to jest uzasadniony use case.',
+    story: `  <span class="o">cowsay</span> <span class="d">@1.5.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~2M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
 <span class="g">   ________________________________
-  < valid use case. no irony.     >
+  < to jest uzasadniony use case. >
    --------------------------------
           \\   ^__^
            \\  (oo)\\_______
-              (__)\\       )\/\\
-                  ||----w |
-                  ||     ||</span>
-
-  Created by Tony Monroe in 1999 as a Perl joke.
-  Ported to npm. Used in CI/CD pipelines to celebrate
-  successful deploys. Without irony.
-
-  <span class="y">// the only package on this list with a mission.</span>`,
-      pl: `  <span class="o">cowsay</span> <span class="d">@1.5.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~2M/week</span>
-  <span class="d">──────────────────────────────────────────────────</span>
-<span class="g">   ________________________________
-  < uzasadniony use case. serio.  >
-   --------------------------------
-          \\   ^__^
-           \\  (oo)\\_______
-              (__)\\       )\/\\
+              (__)\\       )\\/\\
                   ||----w |
                   ||     ||</span>
 
   Powstało w Perlu w 1999 roku. Port do Node w 2012.
-  Używane w CI/CD żeby świętować udane deploye.
-  Bez ironii.
+  Używane w: CI/CD pipeline success messages, README
+  generators, onboarding scripts, i ogólnie wszędzie
+  gdzie ktoś chciał dodać trochę radości do terminala.
 
-  <span class="y">// jedyna paczka w node_modules z misją.</span>`,
-    },
+  <span class="y">// cowsay jest jedyną paczką w node_modules z misją.</span>`,
   },
 };
+
 // ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
 export const FS = {
   '~':              { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt','kamil.md'] },
@@ -876,19 +330,18 @@ export const KNOWN = [
   'shrug','flip','unflip','rm -rf /','reboot','ping kamil.dev','uname',
   'claude','dupa','chuj','dawaj','open .','status','email','github','f1','ai',
   'npm install','ls node_modules','cd node_modules',
-  'lang pl','lang en','lang',
 ];
 
 // ── HINTS ─────────────────────────────────────────────────────────
 export const HINTS = {
-  ls:            () => STRINGS[lang].hints.ls,
-  'cd about':    () => STRINGS[lang].hints['cd about'],
-  'cd skills':   () => STRINGS[lang].hints['cd skills'],
-  'cd projects': () => STRINGS[lang].hints['cd projects'],
-  'cd community':() => STRINGS[lang].hints['cd community'],
-  hire:          () => STRINGS[lang].hints.hire,
-  whoami:        () => STRINGS[lang].hints.whoami,
-  skills:        () => STRINGS[lang].hints.skills,
+  ls:           `  <span class="d">tip: try <span class="o">cd projects</span> · <span class="o">cat cv.pdf</span> · <span class="o">cd about</span></span>`,
+  'cd about':   `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat bio.txt</span></span>`,
+  'cd skills':  `  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat skills.json</span></span>`,
+  'cd projects':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat nowinki.md</span></span>`,
+  'cd community':`  <span class="d">tip: try <span class="o">ls</span> then <span class="o">cat meetjs.txt</span></span>`,
+  hire:         `  <span class="d">tip: type <span class="o">contact</span> to reach out or <span class="o">cat cv.pdf</span> to download CV</span>`,
+  whoami:       `  <span class="d">tip: type <span class="o">about</span> for full bio or <span class="o">skills</span> for tech stack</span>`,
+  skills:       `  <span class="d">tip: type <span class="o">ai</span> to see full AI profile & certifications</span>`,
 };
 
 // ── PURE FUNCTIONS ────────────────────────────────────────────────
@@ -1030,7 +483,7 @@ function applyTheme(name) {
 function showHint(cmd) {
   const hint = HINTS[cmd];
   if (!hint) return;
-  const d = el('div', { innerHTML: typeof hint === 'function' ? hint() : hint });
+  const d = el('div', { innerHTML: hint });
   d.style.cssText = 'font-size:11px;margin:-6px 0 10px;opacity:0.7';
   tb.appendChild(d);
   scroll();
@@ -2265,27 +1718,6 @@ async function _submit(cmd) {
     mkInput(); resetIdleTimer(); return;
   }
 
-
-  // ── lang command ──
-  if (cmd === 'lang' || cmd === 'lang pl' || cmd === 'lang en') {
-    if (cmd === 'lang pl') {
-      setLang('pl');
-      const d = el('div', { innerHTML: `  <span class="g">język zmieniony na: Polski (pl)</span>  <span class="d">· wpisz <span class="o">lang en</span> aby przełączyć</span>` });
-      d.style.cssText = 'font-size:13px;margin:4px 0 12px';
-      tb.appendChild(d);
-    } else if (cmd === 'lang en') {
-      setLang('en');
-      const d = el('div', { innerHTML: `  <span class="g">language set to: English (en)</span>  <span class="d">· type <span class="o">lang pl</span> to switch</span>` });
-      d.style.cssText = 'font-size:13px;margin:4px 0 12px';
-      tb.appendChild(d);
-    } else {
-      const d = el('div', { innerHTML: `  <span class="d">current language:</span> <span class="o">${lang === 'pl' ? 'Polski (pl)' : 'English (en)'}</span>  <span class="d">· type <span class="o">lang pl</span> or <span class="o">lang en</span></span>` });
-      d.style.cssText = 'font-size:13px;margin:4px 0 12px';
-      tb.appendChild(d);
-    }
-    mkInput(); resetIdleTimer(); return;
-  }
-
   // ── typo detection ──
   const typoFix = detectTypo(cmd);
   if (typoFix) {
@@ -2347,8 +1779,7 @@ async function _submit(cmd) {
     if (pkg) {
       const out = el('div');
       out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
-      const story = typeof pkg.story === 'object' ? (pkg.story[lang] || pkg.story.en) : pkg.story;
-      out.innerHTML = `\n${story}\n`;
+      out.innerHTML = `\n${pkg.story}\n`;
       tb.appendChild(out);
       mkInput(); resetIdleTimer(); return;
     }
@@ -2514,10 +1945,6 @@ function startBgParticles() {
 
 // ── DOM INIT ──────────────────────────────────────────────────────
 if (typeof document !== 'undefined') {
-  // auto-detect language from browser
-  if (typeof navigator !== 'undefined') {
-    setLang(navigator.language.startsWith('pl') ? 'pl' : 'en');
-  }
   tb = document.getElementById('tb');
 
   // Theme: auto-detect and watch system preference
