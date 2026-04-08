@@ -1575,7 +1575,7 @@ function mkInput() {
 
   cmdEl = el('input');
   cmdEl.type = 'text';
-  cmdEl.autocomplete = 'off';
+  cmdEl.autocomplete = 'new-password';
   cmdEl.spellcheck = false;
   cmdEl.style.cssText = 'background:transparent;border:none;outline:none;color:var(--text-bright);font-family:inherit;font-size:13px;flex:1;caret-color:var(--accent)';
   if (firstPrompt) { cmdEl.placeholder = 'ls'; firstPrompt = false; }
