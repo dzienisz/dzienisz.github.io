@@ -65,249 +65,242 @@ export const TYPOS = {
 export const NODE_MODULES_PKGS = {
   'left-pad': {
     version: '1.0.0', weekly: '~8M', deps: 0,
-    tagline: '26 linii kodu. złamały internet w 2016.',
+    tagline: '26 lines of code. broke the internet in 2016.',
     story: `  <span class="o">left-pad</span> <span class="d">@1.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  W 2016 Azer Koçulu unpublishował paczkę w proteście
-  po tym, jak npm zmusił go do oddania nazwy "kik".
+  In 2016, Azer Koçulu unpublished the package in protest
+  after npm forced him to give up the name "kik" to a company.
 
-  Skutki: Babel, React i połowa ekosystemu JS
-  przestała się buildować na ~2 godziny.
+  Half of npm broke — Babel, React, and hundreds of packages
+  failed to install for ~2 hours.
 
-  npm musiało zmienić politykę unpublisha na zawsze.
+  npm permanently changed its unpublish policy because of this.
 
-  Funkcja wyglądała mniej więcej tak:
+  The entire function was essentially:
   <span class="d">  function leftPad(str, len, ch) {</span>
   <span class="d">    str = str + ''; len = len - str.length;</span>
   <span class="d">    while (len-- > 0) str = ch + str;</span>
   <span class="d">    return str;</span>
   <span class="d">  }</span>
 
-  <span class="y">// 26 linii. do dziś 8M pobrań tygodniowo.</span>`,
+  <span class="y">// 26 lines. still ~8M downloads per week.</span>`,
   },
   'is-odd': {
     version: '3.0.1', weekly: '~6M', deps: 1,
-    tagline: 'sprawdza czy liczba jest nieparzysta. 1 dependency.',
+    tagline: 'checks if a number is odd. has 1 dependency.',
     story: `  <span class="o">is-odd</span> <span class="d">@3.0.1</span>  ·  <span class="r">1 dep (is-number)</span>  ·  <span class="d">~6M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Robi dokładnie to co mówi nazwa.
+  Does exactly what it says.
   <span class="d">  module.exports = function isOdd(n) {</span>
   <span class="d">    return !!(Math.abs(n) % 2 === 1);</span>
   <span class="d">  };</span>
 
-  Zależy od <span class="c">is-number</span>, która sprawdza czy argument
-  jest liczbą. Bo ostrożność przede wszystkim.
+  Depends on <span class="c">is-number</span> which checks if the argument is
+  actually a number. Because safety first.
 
-  <span class="y">// 6 milionów pobrań tygodniowo. za sprawdzenie reszty z dzielenia.</span>`,
+  <span class="y">// 6 million downloads a week. for a modulo operation.</span>`,
   },
   'is-even': {
     version: '1.0.0', weekly: '~4M', deps: 1,
-    tagline: 'zwraca !isOdd(n). to wszystko. osobna paczka.',
+    tagline: 'return !isOdd(n). a separate package. seriously.',
     story: `  <span class="o">is-even</span> <span class="d">@1.0.0</span>  ·  <span class="r">1 dep (is-odd)</span>  ·  <span class="d">~4M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Kod źródłowy w całości:
+  The entire source code:
   <span class="d">  var isOdd = require('is-odd');</span>
   <span class="d">  module.exports = function isEven(n) {</span>
   <span class="d">    return !isOdd(n);</span>
   <span class="d">  };</span>
 
-  Można by napisać <span class="c">n % 2 === 0</span>, ale po co.
-  Lepiej zależeć od paczki, która zależy od paczki.
+  You could write <span class="c">n % 2 === 0</span>, but where's the fun in that.
+  Better to depend on a package that depends on a package.
 
   <span class="y">// symmetry is important in open source.</span>`,
   },
   'colors': {
     version: '1.4.0', weekly: '~25M', deps: 0,
-    tagline: 'autor sabotował własną paczkę. looped ZALGO.',
+    tagline: 'author deliberately sabotaged their own package.',
     story: `  <span class="o">colors</span> <span class="d">@1.4.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~25M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Styczeń 2022. Marak Squires wypuścił wersję 1.4.1,
-  która celowo drukowała nieskończoną pętlę śmieciowych
-  znaków zamiast normalnego outputu.
+  January 2022. Marak Squires released v1.4.1 that deliberately
+  printed an infinite loop of gibberish instead of normal output.
 
-  Komentarz w commitcie:
+  Commit message from the author:
   <span class="r">  "As a project maintainer, I am no longer going to</span>
   <span class="r">   support Fortune 500s [...] for free."</span>
 
-  npm wymusił rollback do poprzedniej wersji.
-  Marak był też autorem faker.js — i tam zrobił to samo.
+  npm force-rolled back to the previous version.
+  Marak was also the author of faker.js — same thing there.
 
-  <span class="y">// open source burnout jest bardzo realnym zjawiskiem.</span>`,
+  <span class="y">// open source burnout is very real.</span>`,
   },
   'faker': {
     version: '5.5.3', weekly: '~10M', deps: 0,
-    tagline: 'autor usunął repo o 3 w nocy. w proteście.',
+    tagline: 'author deleted the repo at 3am. in protest.',
     story: `  <span class="o">faker</span> <span class="d">@5.5.3</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~10M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Styczeń 2022. Ten sam Marak co colors.
-  O 3 w nocy wgrał do repo plik z jednym tekstem:
+  January 2022. Same Marak as colors.
+  At 3am he replaced the entire repo with a single text file:
   <span class="r">  "What really happened with Aaron Swartz?"</span>
 
-  Potem usunął całą historię commitów.
-  Tysiące projektów z dnia na dzień przestało działać.
+  Then deleted all commit history.
+  Thousands of projects broke overnight.
 
-  GitHub zablokował mu konto. Community zrobiło fork.
-  Teraz jest <span class="c">@faker-js/faker</span> utrzymywane przez community.
+  GitHub suspended his account. Community made a fork.
+  Now there's <span class="c">@faker-js/faker</span> maintained by the community.
 
-  <span class="y">// github.com/faker-js/faker — fork żyje dalej.</span>`,
+  <span class="y">// github.com/faker-js/faker — the fork lives on.</span>`,
   },
   'lodash': {
     version: '4.17.21', weekly: '~50M', deps: 0,
-    tagline: 'importujesz całą bibliotekę żeby użyć _.get() raz.',
+    tagline: 'you import the whole thing to use _.get() once.',
     story: `  <span class="o">lodash</span> <span class="d">@4.17.21</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~50M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Najczęściej używana funkcja w każdym projekcie:
+  Most commonly used function in any project:
   <span class="d">  _.get(obj, 'a.b.c', defaultValue)</span>
 
-  W 2024 to samo robi natywny JS:
+  Since 2020, native JS does the same:
   <span class="d">  obj?.a?.b?.c ?? defaultValue</span>
 
-  A mimo to lodash wciąż jest w package.json każdego
-  projektu startującego od 2016 roku.
+  And yet lodash is still in package.json of every project
+  started before 2018. Weighs 71KB (minified).
 
-  Waży 71KB (minified). Tree-shaking pomaga, ale tylko
-  jeśli importujesz z 'lodash/get', a nie z 'lodash'.
+  Tree-shaking helps, but only if you import from 'lodash/get'.
 
-  <span class="y">// nikt nie importuje z 'lodash/get'.</span>`,
+  <span class="y">// nobody imports from 'lodash/get'.</span>`,
   },
   'moment': {
     version: '2.29.4', weekly: '~15M', deps: 0,
-    tagline: 'twój bundle waży 300kb więcej przez jedną datę.',
+    tagline: '+300KB bundle for one birthday field.',
     story: `  <span class="o">moment</span> <span class="d">@2.29.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~15M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Oficjalnie deprecated od 2020. Sam README mówi:
+  Officially deprecated since 2020. The README says it clearly:
   <span class="r">  "We now generally consider Moment to be a legacy project."</span>
 
-  Problem: dołącza WSZYSTKIE lokalizacje (i18n) do bundla.
-  Twoi użytkownicy pobierają tłumaczenia na swahili
-  żeby wyświetlić "2 days ago" po angielsku.
+  Problem: ships ALL locales (i18n) in the bundle.
+  Your users download Swahili translations just to
+  display "2 days ago" in English.
 
-  Alternatywy: <span class="c">date-fns</span>, <span class="c">dayjs</span>, natywne <span class="c">Intl</span>
-  Każda z nich waży 10-20x mniej.
+  Alternatives: <span class="c">date-fns</span>, <span class="c">dayjs</span>, native <span class="c">Intl</span> — each 10-20x smaller.
 
-  <span class="y">// moment() — nadal #1 w package.json projektów z 2018.</span>`,
+  <span class="y">// moment() — still #1 in package.json of 2018 projects.</span>`,
   },
   'node-sass': {
     version: '9.0.0', weekly: '~3M', deps: 0,
-    tagline: 'deprecated. kompilacja 47s. wysypuje się na M1.',
+    tagline: 'deprecated. 47s compile. breaks on every CI.',
     story: `  <span class="o">node-sass</span> <span class="d">@9.0.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~3M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Bindings do libsass napisanej w C++.
-  libsass jest deprecated. node-sass jest deprecated.
-  Dart Sass jest oficjalną implementacją od 2018.
+  Bindings to libsass written in C++.
+  libsass is deprecated. node-sass is deprecated.
+  Dart Sass has been the official implementation since 2018.
 
-  Ale node-sass nadal jest w milionach projektów bo:
-  <span class="d">  · przepisanie wymaga czasu</span>
-  <span class="d">  · "u mnie działa"</span>
-  <span class="d">  · nikt nie chce tego dotykać</span>
+  Yet node-sass is in millions of projects because:
+  <span class="d">  · migration takes time</span>
+  <span class="d">  · "works on my machine"</span>
+  <span class="d">  · nobody wants to touch it</span>
 
-  Na Apple Silicon (M1/M2/M3) kompilacja trwa wiecznie
-  albo kończy się błędem Python/gyp.
+  On Apple Silicon (M1/M2/M3) compilation takes forever
+  or fails with a Python/gyp error.
 
-  <span class="y">// npm install node-sass → 5 min kompilacji → error → płacz</span>`,
+  <span class="y">// npm install node-sass → 5min compile → error → tears</span>`,
   },
   'jquery': {
     version: '3.7.1', weekly: '~8M', deps: 0,
-    tagline: 'z 2006 roku. wciąż w projekcie bo "może się przyda".',
+    tagline: 'from 2006. still in the project "just in case".',
     story: `  <span class="o">jquery</span> <span class="d">@3.7.1</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~8M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Powstało w 2006 kiedy DOM API było koszmarem.
-  Rozwiązało cross-browser compatibility.
-  Przez 10 lat było WSZĘDZIE.
+  Created in 2006 when the DOM API was a nightmare.
+  Solved cross-browser compatibility. Was EVERYWHERE.
 
-  Teraz mamy: querySelector, fetch, classList,
+  Now we have: querySelector, fetch, classList,
   template literals, arrow functions, async/await...
 
-  jQuery waży 87KB. Robi to co natywny JS.
-  Ale wciąż trafia do projektów bo ktoś skopiował
-  boilerplate z Stack Overflow z 2014.
+  jQuery weighs 87KB. Does what native JS does.
+  But it still ends up in projects because someone
+  copy-pasted a Stack Overflow answer from 2014.
 
   <span class="d">  $('document').ready(function() {</span>
-  <span class="d">    // to nadal działa. niestety.</span>
+  <span class="d">    // this still works. unfortunately.</span>
   <span class="d">  });</span>
 
-  <span class="y">// youmightnotneedjquery.com — istnieje taka strona.</span>`,
+  <span class="y">// youmightnotneedjquery.com — yes, that's a real site.</span>`,
   },
   'webpack': {
     version: '5.89.0', weekly: '~20M', deps: 0,
-    tagline: 'konfiguracja ma więcej linii niż cała aplikacja.',
+    tagline: 'config has more lines than your entire app.',
     story: `  <span class="o">webpack</span> <span class="d">@5.89.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~20M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  webpack.config.js w przeciętnym projekcie:
-  <span class="d">  · 200 linii konfiguracji</span>
-  <span class="d">  · 15 loaderów</span>
-  <span class="d">  · 8 pluginów</span>
-  <span class="d">  · nikt nie wie jak to działa</span>
-  <span class="d">  · nikt nie odważy się dotknąć</span>
+  webpack.config.js in a typical project:
+  <span class="d">  · 200 lines of config</span>
+  <span class="d">  · 15 loaders</span>
+  <span class="d">  · 8 plugins</span>
+  <span class="d">  · nobody knows how it works</span>
+  <span class="d">  · nobody dares to touch it</span>
 
-  Czas buildu: od "akceptowalny" do "idź na kawę".
-  HMR działa, ale nie zawsze, i nie wiadomo czemu.
+  Build times: from "acceptable" to "go get coffee".
+  HMR works, but not always, and nobody knows why.
 
-  Alternatywy: Vite (10-100x szybszy cold start),
-  esbuild, Rollup, Parcel.
+  Alternatives: Vite (10-100x faster), esbuild, Rollup.
 
   <span class="y">// "it works on my machine" — webpack config author, always</span>`,
   },
   'babel': {
     version: '7.23.0', weekly: '~30M', deps: 0,
-    tagline: 'transformuje ES2025 do ES5 przez 847 pluginów.',
+    tagline: 'transforms ES2025 to ES5 using 847 packages.',
     story: `  <span class="o">babel</span> <span class="d">@7.23.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~30M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Transformuje nowoczesny JS do starszego JS.
-  Czyli piszesz coś co już obsługują przeglądarki,
-  a babel przepisuje to żeby obsługiwały to starsze
-  przeglądarki, których nikt już nie używa.
+  Transforms modern JS into older JS.
+  So you write something browsers already support,
+  and babel rewrites it for older browsers
+  that nobody uses anymore.
 
-  Typowy projekt ma ~15 pluginów babel:
+  A typical project has ~15 babel plugins:
   <span class="d">  @babel/preset-env</span>
   <span class="d">  @babel/preset-react</span>
   <span class="d">  @babel/preset-typescript</span>
-  <span class="d">  @babel/plugin-proposal-optional-chaining  ← natywny od 3 lat</span>
-  <span class="d">  ... i 11 więcej</span>
+  <span class="d">  @babel/plugin-proposal-optional-chaining  ← native for 3 years</span>
+  <span class="d">  ... and 11 more</span>
 
-  <span class="y">// "we dropped IE11 support" → usuń babel → 3x szybszy build</span>`,
+  <span class="y">// "we dropped IE11 support" → remove babel → 3x faster build</span>`,
   },
   'event-stream': {
     version: '3.3.4', weekly: '~1M', deps: 0,
-    tagline: 'ktoś przejął ownership i wstrzyknął kradzież bitcoin.',
+    tagline: 'someone took over maintenance and injected bitcoin theft.',
     story: `  <span class="o">event-stream</span> <span class="d">@3.3.4</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~1M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
-  Klasyczny supply chain attack. 2018 rok.
+  Classic supply chain attack. 2018.
 
-  Oryginalny autor (dominictarr) nie używał już paczki.
-  Ktoś (right9ctrl) zaproponował "pomoc w utrzymaniu".
-  Dostał dostęp. Dodał zależność od <span class="r">flatmap-stream</span>.
-  <span class="r">flatmap-stream</span> zawierał zaciemniony kod do kradzieży
-  bitcoinów z konkretnego portfela (Copay).
+  Original author (dominictarr) wasn't using the package anymore.
+  Someone (right9ctrl) offered to "help maintain" it.
+  Got access. Added a dependency on <span class="r">flatmap-stream</span>.
+  <span class="r">flatmap-stream</span> contained obfuscated code to steal
+  Bitcoin from a specific wallet (Copay).
 
-  Trwało to ~2 miesiące zanim ktoś zauważył.
-  Paczka miała 2M pobrań tygodniowo w tym czasie.
+  Went undetected for ~2 months.
+  Package had 2M downloads per week during that time.
 
-  <span class="y">// audit your dependencies. npm audit. seriously.</span>`,
+  <span class="y">// npm audit. seriously. audit your dependencies.</span>`,
   },
   'cowsay': {
     version: '1.5.0', weekly: '~2M', deps: 0,
-    tagline: 'krowa mówi rzeczy. to jest uzasadniony use case.',
+    tagline: 'a cow says things in the terminal. valid use case.',
     story: `  <span class="o">cowsay</span> <span class="d">@1.5.0</span>  ·  <span class="g">0 deps</span>  ·  <span class="d">~2M/week</span>
   <span class="d">──────────────────────────────────────────────────</span>
 <span class="g">   ________________________________
-  < to jest uzasadniony use case. >
+  < valid use case. no irony.     >
    --------------------------------
-          \\   ^__^
-           \\  (oo)\\_______
-              (__)\\       )\\/\\
+          \   ^__^
+           \  (oo)\_______
+              (__)\       )\/\
                   ||----w |
                   ||     ||</span>
 
-  Powstało w Perlu w 1999 roku. Port do Node w 2012.
-  Używane w: CI/CD pipeline success messages, README
-  generators, onboarding scripts, i ogólnie wszędzie
-  gdzie ktoś chciał dodać trochę radości do terminala.
+  Created by Tony Monroe in 1999 as a Perl joke.
+  Ported to npm. Used in CI/CD pipelines to celebrate
+  successful deploys. Without irony.
 
-  <span class="y">// cowsay jest jedyną paczką w node_modules z misją.</span>`,
+  <span class="y">// the only package on this list with a mission.</span>`,
   },
 };
-
 // ── VIRTUAL FILESYSTEM ────────────────────────────────────────────
 export const FS = {
   '~':              { dirs: ['about','skills','projects','community','node_modules'], files: ['cv.pdf','skills.json','contact.txt','kamil.md'] },
