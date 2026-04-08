@@ -1004,7 +1004,7 @@ ${HR}
     const style = `cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-style:dotted`;
     let out = `\n  <span class="d">total ${dir.dirs.length + dir.files.length}</span>\n`;
     const base = cwd;
-    for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="submit('cd ${base}/${d}')">${d}/</span>\n`;
+    for (const d of dir.dirs)  out += `  <span class="d">drwxr-xr-x</span>  <span class="c" style="${style}" onclick="cdls('${base}/${d}')">${d}/</span>\n`;
     for (const f of dir.files) out += `  <span class="d">-rw-r--r--</span>  <span class="w" style="${style}" onclick="submit('cat ${base}/${f}')">${f}</span>\n`;
     return out;
   },
@@ -1609,6 +1609,38 @@ function onKey(e) {
 // Make submit available as a global for inline onclick handlers
 function submit(cmd) { _submit(cmd); }
 if (typeof window !== 'undefined') window.submit = submit;
+
+// cdls: cd into a directory and immediately show ls output (used by dir clicks)
+function cdls(target) {
+  if (!inputRow || inputRow.parentNode !== tb) return;
+  const shortName = target.split('/').pop();
+  const frozen = el('div');
+  frozen.style.cssText = 'display:flex;gap:10px;margin-top:6px';
+  frozen.innerHTML = `<span style="color:var(--accent)">kamil@sh:${cwd}$</span><span style="color:var(--text-bright)"> cd ${esc(shortName)}</span>`;
+  tb.replaceChild(frozen, inputRow);
+  const result = resolveCd(target, cwd);
+  if (result.type === 'node_modules') {
+    addHTML(`  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`, 'font-size:12px;color:#555;margin:4px 0 8px');
+    cwd = result.cwd;
+  } else if (['home','absolute','up','dir'].includes(result.type)) {
+    cwd = result.cwd;
+  } else {
+    addHTML(`  <span class="r">cd: ${esc(shortName)}: No such file or directory</span>`, 'font-size:13px;margin:4px 0 12px');
+    mkInput(); resetIdleTimer(); return;
+  }
+  const lsResult = COMMANDS.ls();
+  if (lsResult) {
+    const out = el('div');
+    out.style.cssText = 'white-space:pre;line-height:1.7;font-size:13px;margin-bottom:4px';
+    out.innerHTML = lsResult;
+    tb.appendChild(out);
+    scroll();
+  }
+  showHint('cd ' + shortName);
+  mkInput();
+  resetIdleTimer();
+}
+if (typeof window !== 'undefined') window.cdls = cdls;
 
 async function _submit(cmd) {
   if (!cmd) return;
