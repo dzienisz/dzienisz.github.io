@@ -75,6 +75,7 @@
       --text: #c8c8c8;
       --text-bright: #e0e0e0;
       --scrollbar: #2a2a2a;
+      --dock-bg: rgba(13,13,13,0.75);
     }
 
     :root.light {
@@ -86,6 +87,7 @@
       --text: #3a3530;
       --text-bright: #1a1510;
       --scrollbar: #c8c0b4;
+      --dock-bg: rgba(232,228,222,0.85);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -198,7 +200,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(13,13,13,0.75);
+      background: var(--dock-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 10px 16px;
