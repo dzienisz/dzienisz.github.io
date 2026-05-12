@@ -586,7 +586,7 @@ ${HR}
     <span class="d">·</span> action-oriented and fast-moving
     <span class="d">·</span> curious and continuously learning
     <span class="d">·</span> comfortable with risk and experimentation
-    <span class="d">·</span> certified scuba diver (PADI AOWD) · kite surfer
+    <span class="d">·</span> builds with AI · kite surfer
     <span class="d">·</span> Japan enthusiast · upcoming trip planned
 `,
 
@@ -853,7 +853,7 @@ ${HR}
 
   <span class="o">NAME</span>
       kamil — senior frontend developer, community builder,
-      certified scuba diver (PADI AOWD)
+      builds with AI
 
   <span class="o">SYNOPSIS</span>
       kamil [--react] [--typescript] [--community] [--dive]
@@ -861,7 +861,7 @@ ${HR}
   <span class="o">DESCRIPTION</span>
       A senior/lead frontend developer based in Warsaw, Poland.
       Leads teams, ships products, builds communities, and
-      occasionally descends 18 metres below sea level.
+      builds with AI tools daily.
 
   <span class="o">OPTIONS</span>
       --react          preferred framework (required)
@@ -1417,7 +1417,7 @@ export const FS_FILES = {
     - <span class="w">VS Code / Windsurf</span>
     - <span class="w">GitHub</span>
     - <span class="w">Figma (reading)</span>
-    - <span class="w">scuba gear (PADI AOWD certified)</span>
+    - <span class="w">Claude / Cursor / AI tooling</span>
     - <span class="w">this terminal</span>
 
   <span class="o">context_window:</span>
@@ -1554,7 +1554,7 @@ async function launchMain() {
   const tag = el('div');
   tag.style.cssText = 'color:#888;font-size:13px;margin-bottom:4px';
   tb.appendChild(tag);
-  await typewrite(tag, '  Senior/Lead Frontend Developer  ·  Warsaw, Poland  ·  PADI AOWD diver', 20);
+  await typewrite(tag, '  Senior/Lead Frontend Developer  ·  Warsaw, Poland  ·  builds with AI', 20);
   await sleep(150);
 
   addHTML(`  <span class="d">type <span class="o">help</span> to explore · <span class="o">tour</span> for guided walkthrough · <span class="o">clear</span> to reset</span>`, 'font-size:12px;margin-bottom:6px');
@@ -1921,7 +1921,7 @@ function startBgParticles() {
     { text: 'team lead',       color: '#4af626', weight: 2 },
     { text: 'meet.js',         color: '#00d4ff', weight: 2 },
     { text: 'organizer',       color: '#00d4ff', weight: 1 },
-    { text: 'PADI AOWD',       color: '#00d4ff', weight: 1 },
+    { text: 'AI builder',      color: '#00d4ff', weight: 1 },
     { text: 'F1 fan',          color: '#00d4ff', weight: 1 },
     { text: 'community',       color: '#00d4ff', weight: 2 },
     { text: 'Japan',           color: '#00d4ff', weight: 1 },
