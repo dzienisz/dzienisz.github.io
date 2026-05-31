@@ -3,218 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talks — Kamil Dzieniszewski</title>
+  <title>Talks - Kamil Dzieniszewski</title>
+  <meta name="description" content="Talks, panels, podcasts and live streams by Kamil Dzieniszewski about frontend engineering, architecture and hackathons.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="site.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
   <style>
-    :root {
-      --accent: #ff6b35;
-      --bg-body: #080808;
-      --bg-term: #0d0d0d;
-      --bg-title: #141414;
-      --border: #2a2a2a;
-      --text: #c8c8c8;
-      --text-bright: #e0e0e0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg-body);
-      color: var(--text);
-      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
-      min-height: 100vh;
-      padding: 40px 24px 120px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 13px;
-      margin-bottom: 40px;
-      opacity: 0.8;
-      transition: opacity 0.15s;
-    }
-    .back:hover { opacity: 1; }
-
-    h1 {
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .subtitle {
-      font-size: 12px;
-      color: #555;
-      margin-bottom: 48px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 14px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--bg-term);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .card-thumb {
+    .talk-card img {
       width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
+      aspect-ratio: 16 / 9;
       border-radius: 6px;
-      display: block;
-      background: #111;
-    }
-    .card-icon { font-size: 20px; }
-    .card-name {
-      font-size: 13px;
-      color: var(--text-bright);
-      font-weight: bold;
-      line-height: 1.4;
-    }
-    .card-role {
-      font-size: 11px;
-      color: var(--accent);
-    }
-    .card-desc {
-      font-size: 11px;
-      color: #666;
-      line-height: 1.6;
-      flex: 1;
-    }
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: auto;
-    }
-    .tag {
-      font-size: 10px;
-      color: #555;
-      border: 1px solid #2a2a2a;
-      border-radius: 4px;
-      padding: 2px 7px;
-    }
-    .card-link {
-      font-size: 10px;
-      color: var(--accent);
-      opacity: 0.7;
-      margin-top: 4px;
+      object-fit: cover;
     }
 
-    /* dock */
-    .dock {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(13,13,13,0.85);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 10px 20px;
-      backdrop-filter: blur(12px);
-      font-size: 12px;
-      color: #555;
+    .talk-card {
+      min-height: 0;
     }
-    .dock a { color: var(--accent); text-decoration: none; }
-    .dock a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="ai.html">AI</a>
+        <a href="talks.html" aria-current="page">Talks</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
 
-  <a href="/" class="back">← kamil@sh:~$</a>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Talks and conversations</p>
+          <h1>Frontend lessons are easier to share when they came from shipping.</h1>
+          <p class="lead">
+            Conference talks, panels, podcasts and live streams about frontend releases, microfrontends, architecture and hackathons.
+          </p>
+        </div>
+        <div class="hero-media">
+          <img src="photos/daftcode-presentation.jpeg" alt="Kamil presenting at Daftcode">
+        </div>
+      </section>
 
-  <h1>🎤 TALKS</h1>
-  <p class="subtitle">conferences · panels · podcasts · live streams</p>
+      <section class="section">
+        <div class="section-head">
+          <h2>Featured</h2>
+          <p class="section-intro">A small archive of public sessions and conversations.</p>
+        </div>
 
-  <div class="cards">
+        <div class="grid two">
+          <a class="card talk-card" href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/Upx7VcqXH-M/hqdefault.jpg" alt="Release na proda z punktu widzenia frontend">
+            <span class="card-meta">DDDDays / Better Dev Club / 2024</span>
+            <h3>Release na proda z punktu widzenia frontend</h3>
+            <p>Kluczowe aspekty wdrażania aplikacji frontendowych: optymalizacja, najczęstsze błędy, narzędzia i dobre praktyki.</p>
+            <div class="tags"><span class="tag">Talk</span><span class="tag">Frontend</span><span class="tag">DevOps</span></div>
+            <span class="link-row">youtube.com</span>
+          </a>
 
-    <a class="card" href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">
-      <img class="card-thumb" src="https://img.youtube.com/vi/Upx7VcqXH-M/hqdefault.jpg" alt="Release na proda z punktu widzenia frontend">
-      <div class="card-name">Release na proda z punktu widzenia frontend</div>
-      <div class="card-role">DDDDays · Better Dev Club · 2024</div>
-      <div class="card-desc">Kluczowe aspekty wdrażania aplikacji frontendowych — optymalizacja, najczęstsze błędy, narzędzia i najlepsze praktyki.</div>
-      <div class="card-tags">
-        <span class="tag">Talk</span>
-        <span class="tag">Frontend</span>
-        <span class="tag">DevOps</span>
-      </div>
-      <div class="card-link">youtube.com →</div>
-    </a>
+          <a class="card talk-card" href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/vRqR06oCc_I/hqdefault.jpg" alt="Microfrontends in Mobile">
+            <span class="card-meta">JS Poland / 2022</span>
+            <h3>Microfrontends in Mobile</h3>
+            <p>Microfrontend architecture applied to mobile development and multi-team product delivery.</p>
+            <div class="tags"><span class="tag">Talk</span><span class="tag">Microfrontends</span><span class="tag">Mobile</span></div>
+            <span class="link-row">youtube.com</span>
+          </a>
 
-    <a class="card" href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">
-      <img class="card-thumb" src="https://img.youtube.com/vi/vRqR06oCc_I/hqdefault.jpg" alt="Microfrontends in Mobile">
-      <div class="card-name">Microfrontends in Mobile</div>
-      <div class="card-role">JS Poland · 2022</div>
-      <div class="card-desc">Talk on microfrontend architecture applied to mobile development at JS Poland conference.</div>
-      <div class="card-tags">
-        <span class="tag">Talk</span>
-        <span class="tag">Microfrontends</span>
-        <span class="tag">Mobile</span>
-      </div>
-      <div class="card-link">youtube.com →</div>
-    </a>
+          <a class="card talk-card" href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/JmkDXeIDG9A/hqdefault.jpg" alt="Front-end Discussion Panel">
+            <span class="card-meta">BEC Tech Academy / 2022</span>
+            <h3>Front-end Discussion Panel</h3>
+            <p>Panel discussion with Luca Mezzalira, Manfred Steyer and Sebastian Gos about microfrontends, architecture and the future of the web.</p>
+            <div class="tags"><span class="tag">Panel</span><span class="tag">Architecture</span></div>
+            <span class="link-row">youtube.com</span>
+          </a>
 
-    <a class="card" href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">
-      <img class="card-thumb" src="https://img.youtube.com/vi/JmkDXeIDG9A/hqdefault.jpg" alt="Front-end Discussion Panel">
-      <div class="card-name">Front-end Discussion Panel</div>
-      <div class="card-role">BEC Tech Academy · 2022</div>
-      <div class="card-desc">Panel discussion with Luca Mezzalira, Manfred Steyer, Sebastian Gos. Microfrontends, frontend architecture, the future of the web.</div>
-      <div class="card-tags">
-        <span class="tag">Panel</span>
-        <span class="tag">Microfrontends</span>
-        <span class="tag">Architecture</span>
-      </div>
-      <div class="card-link">youtube.com →</div>
-    </a>
+          <a class="card talk-card" href="https://www.youtube.com/watch?v=M9SeBKc2xZk" target="_blank" rel="noopener">
+            <img src="https://img.youtube.com/vi/M9SeBKc2xZk/hqdefault.jpg" alt="Wyjazd na Hackathon">
+            <span class="card-meta">Live / 2020</span>
+            <h3>Wyjazd na Hackathon</h3>
+            <p>Live rozmowa o hackathonach: czym są, dlaczego warto, jak się przygotować i jakich błędów unikać.</p>
+            <div class="tags"><span class="tag">Podcast</span><span class="tag">Hackathon</span><span class="tag">Polish</span></div>
+            <span class="link-row">youtube.com</span>
+          </a>
+        </div>
+      </section>
+    </main>
 
-    <a class="card" href="https://www.youtube.com/watch?v=M9SeBKc2xZk" target="_blank" rel="noopener">
-      <img class="card-thumb" src="https://img.youtube.com/vi/M9SeBKc2xZk/hqdefault.jpg" alt="Wyjazd na Hackathon">
-      <div class="card-name">Wyjazd na Hackathon</div>
-      <div class="card-role">Artur Chmaro · live · 2020</div>
-      <div class="card-desc">Live rozmowa o hackathonach — czym są, dlaczego warto, jak się przygotować i jakich błędów unikać.</div>
-      <div class="card-tags">
-        <span class="tag">Podcast</span>
-        <span class="tag">Hackathon</span>
-        <span class="tag">Polish</span>
-      </div>
-      <div class="card-link">youtube.com →</div>
-    </a>
-
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span>Frontend, AI-native development, community.</span>
+    </footer>
   </div>
-
-  <div class="dock">
-    <a href="/">terminal</a>
-    <span>·</span>
-    <a href="projects.html">projects</a>
-    <span>·</span>
-    <a href="gallery.html">gallery</a>
-    <span>·</span>
-    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
-  </div>
-
 </body>
 </html>

@@ -3,346 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI — Kamil Dzieniszewski</title>
+  <title>AI - Kamil Dzieniszewski</title>
+  <meta name="description" content="AI-native development profile of Kamil Dzieniszewski: AI Devs, RAG, agents, LLM APIs, Windsurf and AI developer communities.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="site.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
-  <style>
-    :root {
-      --accent: #ff6b35;
-      --bg-body: #080808;
-      --bg-term: #0d0d0d;
-      --bg-title: #141414;
-      --border: #2a2a2a;
-      --text: #c8c8c8;
-      --text-bright: #e0e0e0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg-body);
-      color: var(--text);
-      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
-      min-height: 100vh;
-      padding: 40px 24px 120px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 13px;
-      margin-bottom: 40px;
-      opacity: 0.8;
-      transition: opacity 0.15s;
-    }
-    .back:hover { opacity: 1; }
-
-    .hero {
-      max-width: 700px;
-      margin: 0 auto 56px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .hero .statement {
-      font-size: 15px;
-      color: var(--text-bright);
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-    .hero .sub {
-      font-size: 12px;
-      color: #555;
-    }
-
-    .section { margin-bottom: 48px; max-width: 1000px; margin-left: auto; margin-right: auto; }
-    .section-title {
-      font-size: 11px;
-      color: #444;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title::after { content: ''; flex: 1; height: 1px; background: #1e1e1e; }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--bg-term);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-    }
-    a.card:hover { border-color: var(--accent); transform: translateY(-2px); }
-
-    .card-icon { font-size: 20px; }
-    .card-name { font-size: 13px; color: var(--text-bright); font-weight: bold; line-height: 1.4; }
-    .card-role { font-size: 11px; color: var(--accent); }
-    .card-desc { font-size: 11px; color: #666; line-height: 1.6; flex: 1; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
-    .tag { font-size: 10px; color: #555; border: 1px solid #2a2a2a; border-radius: 4px; padding: 2px 7px; }
-    .tag-green { color: #4af626; border-color: #4af62640; }
-    .card-link { font-size: 10px; color: var(--accent); opacity: 0.7; margin-top: 4px; }
-
-    .badge {
-      position: absolute;
-      top: 14px; right: 14px;
-      font-size: 9px;
-      border-radius: 4px;
-      padding: 2px 6px;
-      letter-spacing: 0.5px;
-    }
-    .badge-active  { color: #4af626; border: 1px solid #4af626; }
-    .badge-soon    { color: #ffc947; border: 1px solid #ffc947; }
-    .badge-wip     { color: #00d4ff; border: 1px solid #00d4ff; }
-
-    /* cert row */
-    .cert-list { display: flex; flex-direction: column; gap: 10px; }
-    .cert {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 20px;
-      background: var(--bg-term);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .cert-status { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; }
-    .cert-name { font-size: 13px; color: var(--text-bright); }
-    .cert-meta { font-size: 11px; color: #555; margin-top: 2px; }
-    .cert-bar { margin-left: auto; }
-    .cert-bar span { font-size: 11px; color: #4af626; }
-
-    /* referral */
-    .referral {
-      border: 1px solid #4af62640;
-      border-radius: 10px;
-      padding: 20px 24px;
-      background: rgba(74,246,38,0.03);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 0 auto 48px;
-    }
-    .referral-text { font-size: 12px; color: var(--text); line-height: 1.6; }
-    .referral-text strong { color: var(--text-bright); }
-    .referral-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background: rgba(74,246,38,0.08);
-      border: 1px solid #4af62660;
-      border-radius: 8px;
-      color: #4af626;
-      text-decoration: none;
-      font-size: 12px;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .referral-link:hover { background: rgba(74,246,38,0.15); }
-
-    /* dock */
-    .dock {
-      position: fixed;
-      bottom: 28px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(13,13,13,0.85);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 10px 20px;
-      backdrop-filter: blur(12px);
-      font-size: 12px;
-      color: #555;
-    }
-    .dock a { color: var(--accent); text-decoration: none; }
-    .dock a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="ai.html" aria-current="page">AI</a>
+        <a href="talks.html">Talks</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
 
-  <a href="/" class="back">← kamil@sh:~$</a>
-
-  <div class="hero">
-    <h1>🤖 AI PROFILE</h1>
-    <p class="statement">Not just a frontend dev who tried ChatGPT.<br>In AI since GPT-3 — building, shipping, learning.</p>
-    <p class="sub">AI-first Frontend Developer · Builder who ships AI products</p>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="section">
-    <div class="section-title">certifications</div>
-    <div class="cert-list">
-      <div class="cert">
-        <div class="cert-status">✅</div>
+    <main>
+      <section class="hero">
         <div>
-          <div class="cert-name">AI Devs 2</div>
-          <div class="cert-meta">aidevs.pl · completed</div>
+          <p class="eyebrow">AI-native developer</p>
+          <h1>Not just using AI. Building with it.</h1>
+          <p class="lead">
+            I have been close to applied AI since GPT-3: LLM APIs, prompt design, structured outputs, RAG, agents and AI-assisted engineering workflows.
+          </p>
         </div>
-        <div class="cert-bar"><span>████████████████████</span></div>
-      </div>
-      <div class="cert">
-        <div class="cert-status">✅</div>
-        <div>
-          <div class="cert-name">AI Devs 3</div>
-          <div class="cert-meta">aidevs.pl · completed</div>
+        <div class="hero-media">
+          <img src="photos/windsurf-ambasador.jpeg" alt="Kamil hosting a Windsurf community meetup">
         </div>
-        <div class="cert-bar"><span>████████████████████</span></div>
-      </div>
-      <div class="cert">
-        <div class="cert-status">⟳</div>
-        <div>
-          <div class="cert-name">AI Devs 4</div>
-          <div class="cert-meta">aidevs.pl · in progress</div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Certifications</h2>
+          <p class="section-intro">Hands-on training through AI Devs, focused on building real systems instead of only reading about models.</p>
         </div>
-        <div class="cert-bar"><span style="color:#ffc947">████████████░░░░░░░░</span></div>
-      </div>
-    </div>
+        <div class="grid">
+          <article class="card">
+            <span class="badge active">completed</span>
+            <h3>AI Devs 2</h3>
+            <p>Practical LLM application work, API use, prompt engineering and early product patterns.</p>
+            <div class="tags"><span class="tag">aidevs.pl</span><span class="tag">LLM APIs</span></div>
+          </article>
+
+          <article class="card">
+            <span class="badge active">completed</span>
+            <h3>AI Devs 3</h3>
+            <p>More advanced workflows around retrieval, tools, automation and integrating AI into software.</p>
+            <div class="tags"><span class="tag">RAG</span><span class="tag">Tools</span></div>
+          </article>
+
+          <article class="card">
+            <span class="badge soon">in progress</span>
+            <h3>AI Devs 4</h3>
+            <p>Continuing deeper into agents, protocols and production-minded AI development patterns.</p>
+            <div class="tags"><span class="tag">Agents</span><span class="tag">Evaluation</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Hands-On</h2>
+          <p class="section-intro">The AI work I care about is tied to product behavior, developer leverage and measurable usefulness.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="card-meta">Retrieval</span>
+            <h3>RAG systems</h3>
+            <p>Embedding, retrieval, context injection and evaluation for product flows that need grounded answers.</p>
+            <div class="tags"><span class="tag">RAG</span><span class="tag">Embeddings</span><span class="tag">Vector DBs</span></div>
+          </article>
+
+          <article class="card">
+            <span class="card-meta">Automation</span>
+            <h3>Agents and tool use</h3>
+            <p>Exploring agent workflows, MCP, A2A and the practical limits of autonomous software tasks.</p>
+            <div class="tags"><span class="tag">Agents</span><span class="tag">MCP</span><span class="tag">A2A</span></div>
+          </article>
+
+          <article class="card">
+            <span class="card-meta">Integrations</span>
+            <h3>LLM APIs</h3>
+            <p>OpenAI, Anthropic and Gemini integrations with structured outputs, function calling and eval loops.</p>
+            <div class="tags"><span class="tag">OpenAI</span><span class="tag">Anthropic</span><span class="tag">Gemini</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Ecosystem</h2>
+          <p class="section-intro">Communities and tools around AI-assisted software development.</p>
+        </div>
+        <div class="media-grid">
+          <a class="media-card" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
+            <img src="photos/windsurf-ambasador.jpeg" alt="Windsurf Ambassador meetup">
+            <div class="media-copy">
+              <span class="tagline">Ambassador</span>
+              <h3>Windsurf</h3>
+              <p>AI-powered IDE I use daily. I organize Windsurf Meetup Warsaw and help developers understand AI-assisted coding workflows.</p>
+              <span class="link-row">try Windsurf</span>
+            </div>
+          </a>
+
+          <a class="media-card" href="https://www.aisyncconf.com/" target="_blank" rel="noopener">
+            <img src="photos/google-for-startups.jpeg" alt="Kamil speaking at an AI and technology event">
+            <div class="media-copy">
+              <span class="tagline">Conference</span>
+              <h3>AISyncConf</h3>
+              <p>Involved in organizing a conference at the intersection of AI and software development.</p>
+              <span class="link-row">aisyncconf.com</span>
+            </div>
+          </a>
+
+          <a class="media-card" href="https://www.codesota.com/" target="_blank" rel="noopener">
+            <img src="photos/daftcode-presentation.jpeg" alt="Kamil presenting to developers">
+            <div class="media-copy">
+              <span class="tagline">Community</span>
+              <h3>Codesota</h3>
+              <p>Part of the Codesota AI development community. More public work to come.</p>
+              <span class="link-row">codesota.com</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="callout">
+          <div>
+            <h2>Daily Tooling</h2>
+            <p>I use Windsurf as part of my everyday AI-assisted development workflow, especially for iteration, refactoring and exploring implementation paths.</p>
+          </div>
+          <a class="button" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">Try Windsurf</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span>Frontend, AI-native development, community.</span>
+    </footer>
   </div>
-
-  <!-- HANDS-ON -->
-  <div class="section">
-    <div class="section-title">hands-on</div>
-    <div class="cards">
-
-      <div class="card">
-        <div class="badge badge-active">active</div>
-        <div class="card-icon">📚</div>
-        <div class="card-name">RAG Systems</div>
-        <div class="card-role">Retrieval-Augmented Generation</div>
-        <div class="card-desc">Building and shipping RAG pipelines — embedding, retrieval, context injection, evaluation.</div>
-        <div class="card-tags">
-          <span class="tag">RAG</span>
-          <span class="tag">Embeddings</span>
-          <span class="tag">Vector DBs</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="badge badge-active">active</div>
-        <div class="card-icon">🤖</div>
-        <div class="card-name">Agents & MCP</div>
-        <div class="card-role">autonomous workflows</div>
-        <div class="card-desc">Exploring and building AI agents. Following MCP and A2A protocol developments closely — this is where it's going.</div>
-        <div class="card-tags">
-          <span class="tag">Agents</span>
-          <span class="tag">MCP</span>
-          <span class="tag">A2A</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="badge badge-active">daily</div>
-        <div class="card-icon">⚡</div>
-        <div class="card-name">LLM API integrations</div>
-        <div class="card-role">OpenAI · Anthropic · Gemini</div>
-        <div class="card-desc">Integrating LLMs into products daily. Prompt engineering, structured outputs, function calling, evals.</div>
-        <div class="card-tags">
-          <span class="tag">OpenAI</span>
-          <span class="tag">Anthropic</span>
-          <span class="tag">Gemini</span>
-          <span class="tag">Prompt Eng.</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ECOSYSTEM -->
-  <div class="section">
-    <div class="section-title">ecosystem</div>
-    <div class="cards">
-
-      <a class="card" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
-        <div class="badge badge-active">ambassador</div>
-        <div class="card-icon">🌊</div>
-        <div class="card-name">Windsurf</div>
-        <div class="card-role">AI-powered IDE · Codeium</div>
-        <div class="card-desc">Official Windsurf Ambassador. AI-first IDE I use every day. Organizer of Windsurf Meetup Warsaw.</div>
-        <div class="card-tags">
-          <span class="tag">AI Dev Tools</span>
-          <span class="tag">IDE</span>
-          <span class="tag">Warsaw</span>
-        </div>
-        <div class="card-link">try with my referral →</div>
-      </a>
-
-      <a class="card" href="https://www.aisyncconf.com/" target="_blank" rel="noopener">
-        <div class="badge badge-soon">coming soon</div>
-        <div class="card-icon">🎙</div>
-        <div class="card-name">AISyncConf</div>
-        <div class="card-role">AI conference · 1st edition</div>
-        <div class="card-desc">Involved in organising AISyncConf — a conference at the intersection of AI and software development. First edition in the works.</div>
-        <div class="card-tags">
-          <span class="tag">Conference</span>
-          <span class="tag">AI</span>
-          <span class="tag">Community</span>
-        </div>
-        <div class="card-link">aisyncconf.com →</div>
-      </a>
-
-      <a class="card" href="https://www.codesota.com/" target="_blank" rel="noopener">
-        <div class="badge badge-wip">in progress</div>
-        <div class="card-icon">💡</div>
-        <div class="card-name">Codesota</div>
-        <div class="card-role">AI development · community</div>
-        <div class="card-desc">Part of the Codesota community. More to come.</div>
-        <div class="card-tags">
-          <span class="tag">AI</span>
-          <span class="tag">Community</span>
-        </div>
-        <div class="card-link">codesota.com →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- REFERRAL -->
-  <div class="referral">
-    <div class="referral-text">
-      <strong>Try Windsurf — the AI IDE I use every day.</strong><br>
-      Used by me as Windsurf Ambassador. If you're building with AI, this is the tool.
-    </div>
-    <a class="referral-link" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
-      → get Windsurf free
-    </a>
-  </div>
-
-  <div class="dock">
-    <a href="/">terminal</a>
-    <span>·</span>
-    <a href="projects.html">projects</a>
-    <span>·</span>
-    <a href="talks.html">talks</a>
-    <span>·</span>
-    <a href="gallery.html">gallery</a>
-    <span>·</span>
-    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
-  </div>
-
 </body>
 </html>

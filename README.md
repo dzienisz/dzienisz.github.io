@@ -1,12 +1,16 @@
 # dzienko.dev
 
-Personal terminal portfolio of [Kamil Dzieniszewski](https://dzienko.dev) — Senior/Lead Frontend Developer based in Warsaw.
+Personal website of [Kamil Dzieniszewski](https://dzienko.dev) — Senior/Lead Frontend Developer and AI-native developer based in Warsaw.
 
 ## About
 
-A browser-based terminal that serves as a portfolio. No frameworks, no bundler, no build step. One HTML file + one JS module.
+A clean static portfolio focused on frontend product engineering, AI-native development, public work, talks, and community activity.
 
-Built by accident — started as an ASCII art experiment, ended up as a full terminal experience.
+The previous browser-based terminal portfolio is preserved in git on:
+
+```bash
+backup/current-terminal-vibe-2026-05-30
+```
 
 ## Stack
 
@@ -18,29 +22,17 @@ Built by accident — started as an ASCII art experiment, ended up as a full ter
 ## Structure
 
 ```
-index.html        # markup + CSS
-terminal.js       # all JS logic (ES module)
-terminal.test.js  # 67 tests (node:test)
-favicon.svg       # >_ in amber
-cv.pdf            # downloadable CV
+index.html        # homepage markup + CSS
+site.css          # shared styling for supporting pages
+projects.html     # selected projects and community work
+talks.html        # talks, panels, podcasts, live streams
+ai.html           # AI profile and certifications
+gallery.html      # photo gallery
+terminal.js       # preserved terminal portfolio logic
+terminal.test.js  # terminal logic tests
+favicon.svg
+cv.pdf
 ```
-
-## Commands
-
-```
-help        show all commands
-whoami      short intro
-about       full bio
-skills      tech stack
-cv          work experience
-hire        availability
-contact     how to reach me
-tour        guided walkthrough
-ls          explore virtual filesystem
-theme       change color scheme (amber green blue red purple light dark)
-```
-
-Easter eggs exist. Try `rm -rf /`, Konami code, or click the titlebar dots.
 
 ## Running locally
 

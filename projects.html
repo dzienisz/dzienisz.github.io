@@ -3,443 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Kamil Dzieniszewski</title>
+  <title>Projects - Kamil Dzieniszewski</title>
+  <meta name="description" content="Selected frontend, AI, community, talks, video and hardware projects by Kamil Dzieniszewski.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="site.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
-  <style>
-    :root {
-      --accent: #ff6b35;
-      --bg-body: #080808;
-      --bg-term: #0d0d0d;
-      --bg-title: #141414;
-      --border: #2a2a2a;
-      --text: #c8c8c8;
-      --text-bright: #e0e0e0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg-body);
-      color: var(--text);
-      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
-      min-height: 100vh;
-      padding: 40px 24px 120px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 13px;
-      margin-bottom: 40px;
-      opacity: 0.8;
-      transition: opacity 0.15s;
-    }
-    .back:hover { opacity: 1; }
-
-    h1 {
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .subtitle {
-      font-size: 12px;
-      color: #555;
-      margin-bottom: 48px;
-    }
-
-    .section { margin-bottom: 48px; max-width: 900px; margin-left: auto; margin-right: auto; }
-
-    .section-title {
-      font-size: 11px;
-      color: #444;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #1e1e1e;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--bg-term);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .card-icon { font-size: 20px; }
-    .card-name {
-      font-size: 13px;
-      color: var(--text-bright);
-      font-weight: bold;
-    }
-    .card-role {
-      font-size: 11px;
-      color: var(--accent);
-    }
-    .card-desc {
-      font-size: 11px;
-      color: #666;
-      line-height: 1.6;
-    }
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: auto;
-    }
-    .tag {
-      font-size: 10px;
-      color: #555;
-      border: 1px solid #2a2a2a;
-      border-radius: 4px;
-      padding: 2px 7px;
-    }
-    .card-link {
-      font-size: 10px;
-      color: var(--accent);
-      opacity: 0.7;
-      margin-top: 4px;
-    }
-
-    .badge-archived {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 9px;
-      color: #555;
-      border: 1px solid #333;
-      border-radius: 4px;
-      padding: 2px 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-wip {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 9px;
-      color: #4af626;
-      border: 1px solid #4af626;
-      border-radius: 4px;
-      padding: 2px 6px;
-      letter-spacing: 0.5px;
-    }
-
-    /* dock */
-    .dock {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(13,13,13,0.85);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 10px 20px;
-      backdrop-filter: blur(12px);
-      font-size: 12px;
-      color: #555;
-    }
-    .dock a { color: var(--accent); text-decoration: none; }
-    .dock a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="ai.html">AI</a>
+        <a href="talks.html">Talks</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
 
-  <a href="/" class="back">← kamil@sh:~$</a>
-
-  <h1>⬡ PROJECTS</h1>
-  <p class="subtitle">things I built, ship, and care about</p>
-
-  <!-- CURRENT -->
-  <div class="section">
-    <div class="section-title">📁 current</div>
-    <div class="cards">
-
-      <div class="card">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">🏫</div>
-        <div class="card-name">???</div>
-        <div class="card-role">education app · stealth mode</div>
-        <div class="card-desc">Building something for schools. Can't say much yet.</div>
-        <div class="card-tags">
-          <span class="tag">EdTech</span>
-          <span class="tag">classified</span>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h1>Things I build, organize and keep learning from.</h1>
+          <p class="lead">
+            A practical mix of product engineering, AI development, community work, talks, video formats and hardware experiments.
+          </p>
         </div>
-      </div>
-
-      <a class="card" href="/" >
-        <div class="badge-wip">active</div>
-        <div class="card-icon">>_</div>
-        <div class="card-name">dzienko.dev</div>
-        <div class="card-role">side project</div>
-        <div class="card-desc">Terminal-style personal portfolio. One HTML file, no frameworks. You're looking at it.</div>
-        <div class="card-tags">
-          <span class="tag">Vanilla JS</span>
-          <span class="tag">CSS</span>
-          <span class="tag">GitHub Pages</span>
+        <div class="hero-media">
+          <img src="photos/google-for-startups.jpeg" alt="Kamil speaking at Google for Startups">
         </div>
-      </a>
+      </section>
 
-    </div>
+      <section class="section">
+        <div class="section-head">
+          <h2>Current</h2>
+          <p class="section-intro">Active work and the strongest signals for where my attention is now.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <span class="badge active">active</span>
+            <h3>Education app</h3>
+            <p>Building something for schools. Still in stealth, with product quality and practical classroom workflows as the core constraint.</p>
+            <div class="tags"><span class="tag">EdTech</span><span class="tag">Product</span></div>
+          </article>
+
+          <a class="card" href="/">
+            <span class="badge active">active</span>
+            <h3>dzienko.dev</h3>
+            <p>Personal website rebuilt as a cleaner frontend and AI-native developer portfolio. Static, fast, and easy to maintain.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">GitHub Pages</span></div>
+          </a>
+
+          <a class="card" href="ai.html">
+            <span class="badge active">active</span>
+            <h3>AI Devs, RAG and agents</h3>
+            <p>Hands-on AI development practice: LLM APIs, retrieval workflows, structured outputs, agent tooling and AI-assisted engineering.</p>
+            <div class="tags"><span class="tag">AI Devs</span><span class="tag">RAG</span><span class="tag">Agents</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>AI And Community</h2>
+          <p class="section-intro">Developer communities are where new tools become practical craft.</p>
+        </div>
+        <div class="media-grid">
+          <a class="media-card" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
+            <img src="photos/windsurf-ambasador.jpeg" alt="Windsurf Ambassador meetup">
+            <div class="media-copy">
+              <span class="tagline">Developer tools</span>
+              <h3>Windsurf Ambassador</h3>
+              <p>Official Windsurf Ambassador and organizer of Windsurf Meetup Warsaw around AI-assisted development.</p>
+              <span class="link-row">windsurf.com</span>
+            </div>
+          </a>
+
+          <a class="media-card" href="https://meetjs.pl" target="_blank" rel="noopener">
+            <img src="photos/meetjs-warszawa.jpeg" alt="meet.js Warsaw event">
+            <div class="media-copy">
+              <span class="tagline">Frontend community</span>
+              <h3>meet.js</h3>
+              <p>Co-organizer of one of Poland's longest-running frontend communities.</p>
+              <span class="link-row">meetjs.pl</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Talks</h2>
+          <p class="section-intro">Conference talks, panels, podcasts and live conversations around frontend engineering.</p>
+        </div>
+        <div class="grid two">
+          <a class="card" href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">
+            <span class="card-meta">DDDDays / Better Dev Club / 2024</span>
+            <h3>Release na proda z punktu widzenia frontend</h3>
+            <p>Frontend releases, optimization, common mistakes, tooling and production practices.</p>
+            <div class="tags"><span class="tag">Frontend</span><span class="tag">DevOps</span></div>
+          </a>
+
+          <a class="card" href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">
+            <span class="card-meta">JS Poland / 2022</span>
+            <h3>Microfrontends in Mobile</h3>
+            <p>Microfrontend architecture applied to mobile development and multi-team delivery.</p>
+            <div class="tags"><span class="tag">Architecture</span><span class="tag">Mobile</span></div>
+          </a>
+
+          <a class="card" href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">
+            <span class="card-meta">BEC Tech Academy / 2022</span>
+            <h3>Front-end Discussion Panel</h3>
+            <p>Panel with Luca Mezzalira, Manfred Steyer and Sebastian Gos on frontend architecture and the future of the web.</p>
+            <div class="tags"><span class="tag">Panel</span><span class="tag">Microfrontends</span></div>
+          </a>
+
+          <a class="card" href="https://www.youtube.com/watch?v=M9SeBKc2xZk" target="_blank" rel="noopener">
+            <span class="card-meta">Live / 2020</span>
+            <h3>Wyjazd na Hackathon</h3>
+            <p>Live conversation about hackathons, preparation and common mistakes.</p>
+            <div class="tags"><span class="tag">Podcast</span><span class="tag">Hackathon</span></div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Video And Hardware</h2>
+          <p class="section-intro">Archived formats and maker work that shaped how I explain, prototype and ship.</p>
+        </div>
+        <div class="grid two">
+          <a class="card" href="https://www.youtube.com/playlist?list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" rel="noopener">
+            <span class="badge archived">archived</span>
+            <h3>Web Nowinki</h3>
+            <p>Weekly web development news show in Polish, covering the frontend ecosystem.</p>
+            <div class="tags"><span class="tag">YouTube</span><span class="tag">Frontend</span></div>
+          </a>
+
+          <a class="card" href="https://www.youtube.com/playlist?list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" rel="noopener">
+            <span class="badge archived">archived</span>
+            <h3>Web Prasówka</h3>
+            <p>Podcast about web development news, trends and community conversations.</p>
+            <div class="tags"><span class="tag">Podcast</span><span class="tag">Polish</span></div>
+          </a>
+
+          <a class="card" href="https://www.instagram.com/3dprinting_warsaw/" target="_blank" rel="noopener">
+            <span class="badge active">active</span>
+            <h3>3D Printing Warsaw</h3>
+            <p>Designs, prints and hardware experiments documented on Instagram.</p>
+            <div class="tags"><span class="tag">3D Printing</span><span class="tag">Hardware</span></div>
+          </a>
+
+          <a class="card" href="https://forbot.pl/forum/topic/1197-kichero/" target="_blank" rel="noopener">
+            <span class="badge archived">archived</span>
+            <h3>Kichero</h3>
+            <p>My first robot: a minisumo built in 2009 with help from the KONAR Robotics Science Club.</p>
+            <div class="tags"><span class="tag">Robotics</span><span class="tag">2009</span></div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span>Frontend, AI-native development, community.</span>
+    </footer>
   </div>
-
-  <!-- AI -->
-  <div class="section">
-    <div class="section-title">📁 ai</div>
-    <div class="cards">
-
-      <div class="card">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">🤖</div>
-        <div class="card-name">AI Devs Certifications</div>
-        <div class="card-role">aidevs.pl</div>
-        <div class="card-desc">Hands-on AI development program. Completed levels 2 & 3, currently working through level 4. RAGs, agents, LLM APIs, prompt engineering.</div>
-        <div class="card-tags">
-          <span class="tag">✓ AI Devs 2</span>
-          <span class="tag">✓ AI Devs 3</span>
-          <span class="tag">⟳ AI Devs 4</span>
-        </div>
-      </div>
-
-      <a class="card" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">🌊</div>
-        <div class="card-name">Windsurf Ambassador</div>
-        <div class="card-role">AI-powered IDE · Codeium</div>
-        <div class="card-desc">Official Windsurf Ambassador. Organizer of Windsurf Meetup Warsaw. Try Windsurf with my referral link.</div>
-        <div class="card-tags">
-          <span class="tag">AI Dev Tools</span>
-          <span class="tag">Community</span>
-          <span class="tag">Warsaw</span>
-        </div>
-        <div class="card-link">windsurf.com →</div>
-      </a>
-
-      <div class="card">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">⚡</div>
-        <div class="card-name">RAG & Agents</div>
-        <div class="card-role">hands-on · 2023–now</div>
-        <div class="card-desc">Building RAG systems, LLM integrations, and AI agents. Daily use of OpenAI, Anthropic, and Gemini APIs. Exploring MCP and A2A protocols.</div>
-        <div class="card-tags">
-          <span class="tag">RAG</span>
-          <span class="tag">Agents</span>
-          <span class="tag">MCP</span>
-          <span class="tag">LLM APIs</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- TALKS -->
-  <div class="section">
-    <div class="section-title">📁 talks</div>
-    <div class="cards">
-
-      <a class="card" href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">
-        <div class="card-icon">🎤</div>
-        <div class="card-name">Release na proda z punktu widzenia frontend</div>
-        <div class="card-role">DDDDays · Better Dev Club · 2024</div>
-        <div class="card-desc">Kluczowe aspekty wdrażania aplikacji frontendowych — optymalizacja, najczęstsze błędy, narzędzia i najlepsze praktyki.</div>
-        <div class="card-tags">
-          <span class="tag">Talk</span>
-          <span class="tag">Frontend</span>
-          <span class="tag">DevOps</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-      <a class="card" href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">
-        <div class="card-icon">🎤</div>
-        <div class="card-name">Microfrontends in Mobile</div>
-        <div class="card-role">JS Poland · 2022</div>
-        <div class="card-desc">Talk on microfrontend architecture applied to mobile development at JS Poland conference.</div>
-        <div class="card-tags">
-          <span class="tag">Talk</span>
-          <span class="tag">Microfrontends</span>
-          <span class="tag">Mobile</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-      <a class="card" href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">
-        <div class="card-icon">🎤</div>
-        <div class="card-name">Front-end Discussion Panel</div>
-        <div class="card-role">BEC Tech Academy · 2022</div>
-        <div class="card-desc">Panel discussion with Luca Mezzalira, Manfred Steyer, Sebastian Gos. Microfrontends, frontend architecture, the future of the web.</div>
-        <div class="card-tags">
-          <span class="tag">Panel</span>
-          <span class="tag">Microfrontends</span>
-          <span class="tag">Architecture</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-      <a class="card" href="https://www.youtube.com/watch?v=M9SeBKc2xZk" target="_blank" rel="noopener">
-        <div class="card-icon">🎙</div>
-        <div class="card-name">Wyjazd na Hackathon</div>
-        <div class="card-role">Artur Chmaro · live · 2020</div>
-        <div class="card-desc">Live rozmowa o hackathonach — czym są, dlaczego warto, jak się przygotować i jakich błędów unikać.</div>
-        <div class="card-tags">
-          <span class="tag">Podcast</span>
-          <span class="tag">Hackathon</span>
-          <span class="tag">Polish</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- COMMUNITY -->
-  <div class="section">
-    <div class="section-title">📁 community</div>
-    <div class="cards">
-
-      <a class="card" href="https://meetjs.pl" target="_blank" rel="noopener">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">👥</div>
-        <div class="card-name">meet.js</div>
-        <div class="card-role">co-organizer</div>
-        <div class="card-desc">One of Poland's longest-running frontend communities. 15th anniversary celebrated in March 2026.</div>
-        <div class="card-tags">
-          <span class="tag">Community</span>
-          <span class="tag">Frontend</span>
-          <span class="tag">Warsaw</span>
-        </div>
-        <div class="card-link">meetjs.pl →</div>
-      </a>
-
-      <div class="card">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">💨</div>
-        <div class="card-name">Windsurf Meetup Warsaw</div>
-        <div class="card-role">organizer</div>
-        <div class="card-desc">Community meetup around Windsurf — the AI-powered IDE. Connecting developers exploring AI-assisted development.</div>
-        <div class="card-tags">
-          <span class="tag">Community</span>
-          <span class="tag">AI</span>
-          <span class="tag">Warsaw</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- VIDEO -->
-  <div class="section">
-    <div class="section-title">📁 video</div>
-    <div class="cards">
-
-      <a class="card" href="https://www.youtube.com/playlist?list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" rel="noopener">
-        <div class="badge-archived">archived</div>
-        <div class="card-icon">▶</div>
-        <div class="card-name">Web Nowinki</div>
-        <div class="card-role">host & creator</div>
-        <div class="card-desc">Weekly web development news show in Polish. Covering the latest from the frontend world.</div>
-        <div class="card-tags">
-          <span class="tag">YouTube</span>
-          <span class="tag">Polish</span>
-          <span class="tag">Frontend</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-      <a class="card" href="https://www.youtube.com/playlist?list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" rel="noopener">
-        <div class="badge-archived">archived</div>
-        <div class="card-icon">▶</div>
-        <div class="card-name">Web Prasówka</div>
-        <div class="card-role">podcast host</div>
-        <div class="card-desc">Podcast about web development news and trends. Tech & community conversations.</div>
-        <div class="card-tags">
-          <span class="tag">YouTube</span>
-          <span class="tag">Podcast</span>
-          <span class="tag">Polish</span>
-        </div>
-        <div class="card-link">youtube.com →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- HARDWARE -->
-  <div class="section">
-    <div class="section-title">📁 hardware</div>
-    <div class="cards">
-
-      <a class="card" href="https://www.instagram.com/3dprinting_warsaw/" target="_blank" rel="noopener">
-        <div class="badge-wip">active</div>
-        <div class="card-icon">🖨</div>
-        <div class="card-name">3D Printing Warsaw</div>
-        <div class="card-role">maker · @3dprinting_warsaw</div>
-        <div class="card-desc">My 3D printing adventures. Designs, prints, experiments — documented on Instagram.</div>
-        <div class="card-tags">
-          <span class="tag">3D Printing</span>
-          <span class="tag">Making</span>
-          <span class="tag">Hardware</span>
-        </div>
-        <div class="card-link">instagram.com →</div>
-      </a>
-
-      <a class="card" href="https://forbot.pl/forum/topic/1197-kichero/" target="_blank" rel="noopener">
-        <div class="badge-archived">archived</div>
-        <div class="card-icon">🤖</div>
-        <div class="card-name">Kichero</div>
-        <div class="card-role">minisumo robot · 2009</div>
-        <div class="card-desc">My first robot. A minisumo built from plans published in Komputer Świat Ekspert, with help from the KONAR Robotics Science Club. Many thanks to the electronics folks without whom it would never have existed.</div>
-        <div class="card-tags">
-          <span class="tag">Robotics</span>
-          <span class="tag">Hardware</span>
-          <span class="tag">Minisumo</span>
-          <span class="tag">2009</span>
-        </div>
-        <div class="card-link">forbot.pl →</div>
-      </a>
-
-    </div>
-  </div>
-
-  <div class="dock">
-    <a href="/">terminal</a>
-    <span>·</span>
-    <a href="gallery.html">gallery</a>
-    <span>·</span>
-    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
-    <span>·</span>
-    <a href="https://github.com/dzienisz" target="_blank">github</a>
-  </div>
-
 </body>
 </html>

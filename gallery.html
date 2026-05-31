@@ -3,215 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery — Kamil Dzieniszewski</title>
+  <title>Gallery - Kamil Dzieniszewski</title>
+  <meta name="description" content="Photo gallery from hackathons, talks, community events and hardware projects by Kamil Dzieniszewski.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="site.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
-  <style>
-    :root {
-      --accent: #ff6b35;
-      --bg-body: #080808;
-      --bg-term: #0d0d0d;
-      --bg-title: #141414;
-      --border: #2a2a2a;
-      --text: #c8c8c8;
-      --text-bright: #e0e0e0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg-body);
-      color: var(--text);
-      font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
-      min-height: 100vh;
-      padding: 40px 24px 120px;
-    }
-
-    .back {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 13px;
-      margin-bottom: 40px;
-      opacity: 0.8;
-      transition: opacity 0.15s;
-    }
-    .back:hover { opacity: 1; }
-
-    h1 {
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-    }
-    .subtitle {
-      font-size: 12px;
-      color: #555;
-      margin-bottom: 48px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .photo-card {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--bg-term);
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .photo-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .photo-card img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-    }
-    .photo-card .caption {
-      padding: 12px 14px;
-      font-size: 12px;
-      color: var(--text);
-      border-top: 1px solid var(--border);
-    }
-    .photo-card .caption .tag {
-      font-size: 10px;
-      color: #555;
-      margin-top: 3px;
-    }
-
-    /* placeholder cards */
-    .photo-placeholder {
-      border: 1px dashed #2a2a2a;
-      border-radius: 10px;
-      aspect-ratio: 4/3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #333;
-      font-size: 12px;
-    }
-    .photo-placeholder span { font-size: 24px; opacity: 0.4; }
-
-    /* dock */
-    .dock {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(13,13,13,0.85);
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
-      padding: 10px 20px;
-      backdrop-filter: blur(12px);
-      font-size: 12px;
-      color: #555;
-    }
-    .dock a { color: var(--accent); text-decoration: none; }
-    .dock a:hover { text-decoration: underline; }
-  </style>
 </head>
 <body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="ai.html">AI</a>
+        <a href="talks.html">Talks</a>
+        <a href="gallery.html" aria-current="page">Gallery</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
 
-  <a href="/" class="back">← kamil@sh:~$</a>
+    <main>
+      <section class="hero hero-simple">
+        <p class="eyebrow">Gallery</p>
+        <h1>Hackathons, talks, meetups and things built by hand.</h1>
+        <p class="lead">
+          A small visual archive from community events, public speaking, hackathons, robotics and 3D printing.
+        </p>
+      </section>
 
-  <h1>◈ GALLERY</h1>
-  <p class="subtitle">hackathons · community events · building things · life</p>
+      <section class="section">
+        <div class="photo-grid">
+          <article class="photo-card">
+            <img src="photos/windsurf-ambasador.jpeg" alt="Windsurf Ambassador">
+            <div class="caption"><strong>Windsurf Ambassador</strong><span>AI developer tools / 2025</span></div>
+          </article>
 
-  <div class="grid">
-    <div class="photo-card">
-      <img src="photos/windsurf-ambasador.jpeg" alt="Windsurf Ambassador">
-      <div class="caption">
-        Windsurf Ambassador
-        <div class="tag">2025</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/bank-pekao-hackathon.jpeg" alt="Bank Pekao Hackathon">
+            <div class="caption"><strong>Bank Pekao Hackathon</strong><span>Hackathon</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/bank-pekao-hackathon.jpeg" alt="Bank Pekao Hackathon">
-      <div class="caption">
-        Bank Pekao Hackathon
-        <div class="tag">Hackathon</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/hack-yeah-2018.jpeg" alt="Hack Yeah 2018">
+            <div class="caption"><strong>Hack Yeah 2018</strong><span>Hackathon / 2018</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/hack-yeah-2018.jpeg" alt="Hack Yeah! 2018">
-      <div class="caption">
-        Hack Yeah! 2018
-        <div class="tag">Hackathon · 2018</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/google-for-startups.jpeg" alt="Google for Startups">
+            <div class="caption"><strong>Google for Startups</strong><span>Warsaw</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/google-for-startups.jpeg" alt="Google for Startups">
-      <div class="caption">
-        Google for Startups
-        <div class="tag">Warsaw</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/meetjs-warszawa.jpeg" alt="meet.js Warszawa">
+            <div class="caption"><strong>meet.js Warszawa</strong><span>Community</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/meetjs-warszawa.jpeg" alt="meet.js Warszawa">
-      <div class="caption">
-        meet.js Warszawa
-        <div class="tag">Community</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/warsawjs-seo-w-spa.jpeg" alt="WarsawJS SEO w SPA">
+            <div class="caption"><strong>WarsawJS - SEO w SPA</strong><span>Talk / 2017</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/warsawjs-seo-w-spa.jpeg" alt="WarsawJS — SEO w SPA">
-      <div class="caption">
-        WarsawJS — SEO w SPA
-        <div class="tag">Talk · 2017</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/daftcode-presentation.jpeg" alt="Daftcode presentation">
+            <div class="caption"><strong>Daftcode presentation</strong><span>Talk</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/daftcode-presentation.jpeg" alt="Daftcode presentation">
-      <div class="caption">
-        Daftcode presentation
-        <div class="tag">Talk</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/robot-kichero.jpg" alt="Kichero minisumo robot">
+            <div class="caption"><strong>Kichero</strong><span>Minisumo robot / 2009</span></div>
+          </article>
 
-    <div class="photo-card">
-      <img src="photos/robot-kichero.jpg" alt="Kichero — minisumo robot">
-      <div class="caption">
-        Kichero — minisumo robot
-        <div class="tag">Hardware · 2009</div>
-      </div>
-    </div>
+          <article class="photo-card">
+            <img src="photos/steve-wozniak.jpeg" alt="Meeting Steve Wozniak">
+            <div class="caption"><strong>Meeting Steve Wozniak</strong><span>Warsaw</span></div>
+          </article>
+        </div>
+      </section>
+    </main>
 
-    <div class="photo-card">
-      <img src="photos/steve-wozniak.jpeg" alt="Meeting Steve Wozniak">
-      <div class="caption">
-        Meeting Steve Wozniak
-        <div class="tag">Warsaw</div>
-      </div>
-    </div>
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span>Frontend, AI-native development, community.</span>
+    </footer>
   </div>
-
-  <div class="dock">
-    <a href="/">terminal</a>
-    <span>·</span>
-    <a href="projects.html">projects</a>
-    <span>·</span>
-    <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank">linkedin</a>
-  </div>
-
 </body>
 </html>
