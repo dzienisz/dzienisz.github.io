@@ -128,6 +128,13 @@ h1 {
   line-height: 1.45;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
 .hero-media {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -432,5 +439,9 @@ a.card:hover,
 
   .button {
     width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
   }
 }
