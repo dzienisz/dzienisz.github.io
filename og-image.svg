@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4f1ec"/>
+      <stop offset="55%" stop-color="#fffdfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Top border accent -->
+  <rect x="0" y="0" width="1200" height="4" fill="#17211f"/>
+
+  <!-- Left column: monogram block -->
+  <rect x="72" y="72" width="72" height="72" rx="10" fill="#17211f"/>
+  <text x="108" y="123" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="800" fill="#fffdfa" text-anchor="middle" letter-spacing="-1">KD</text>
+
+  <!-- Eyebrow label -->
+  <text x="72" y="210" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="760" fill="#2f7054" letter-spacing="2.5" text-transform="uppercase">FRONTEND DEVELOPER &amp; AI-NATIVE BUILDER</text>
+
+  <!-- Name -->
+  <text x="72" y="320" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="88" font-weight="820" fill="#17211f" letter-spacing="-3">Kamil</text>
+  <text x="72" y="412" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="88" font-weight="820" fill="#17211f" letter-spacing="-3">Dzieniszewski</text>
+
+  <!-- Divider -->
+  <line x1="72" y1="452" x2="580" y2="452" stroke="#ddd7cc" stroke-width="1.5"/>
+
+  <!-- Descriptor row -->
+  <text x="72" y="494" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="400" fill="#62706c">React · TypeScript · Next.js · LLM integrations · RAG · Agents</text>
+
+  <!-- Location + URL row -->
+  <text x="72" y="546" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="600" fill="#62706c">Warsaw, Poland</text>
+  <text x="72" y="580" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#17211f" letter-spacing="-0.3">dzienko.dev</text>
+
+  <!-- Right decorative card -->
+  <rect x="820" y="100" width="308" height="430" rx="12" fill="#fffdfa" stroke="#ddd7cc" stroke-width="1.5"/>
+
+  <!-- Card: Available label -->
+  <rect x="848" y="128" width="90" height="26" rx="999" fill="none" stroke="#2f7054" stroke-width="1.2"/>
+  <text x="893" y="146" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="11" font-weight="760" fill="#2f7054" text-anchor="middle" letter-spacing="1">AVAILABLE</text>
+
+  <!-- Card: Role -->
+  <text x="848" y="198" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="26" font-weight="820" fill="#17211f" letter-spacing="-0.5">Senior / Lead</text>
+  <text x="848" y="230" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="26" font-weight="820" fill="#17211f" letter-spacing="-0.5">Frontend Dev</text>
+
+  <!-- Card divider -->
+  <line x1="848" y1="258" x2="1100" y2="258" stroke="#ddd7cc" stroke-width="1"/>
+
+  <!-- Card: Skills -->
+  <text x="848" y="294" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="400" fill="#62706c">React</text>
+  <text x="848" y="318" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="400" fill="#62706c">TypeScript</text>
+  <text x="848" y="342" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="400" fill="#62706c">Next.js</text>
+  <text x="848" y="366" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="400" fill="#62706c">LLM APIs &amp; RAG</text>
+  <text x="848" y="390" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="400" fill="#62706c">AI Agents</text>
+
+  <!-- Card divider 2 -->
+  <line x1="848" y1="416" x2="1100" y2="416" stroke="#ddd7cc" stroke-width="1"/>
+
+  <!-- Card: URL -->
+  <text x="848" y="452" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#17211f">dzienko.dev</text>
+
+  <!-- Card: Warsaw -->
+  <text x="848" y="474" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="400" fill="#62706c">Warsaw, Poland</text>
+
+  <!-- Coral accent dot -->
+  <circle cx="1100" cy="128" r="10" fill="#cf5b3f"/>
+</svg>
