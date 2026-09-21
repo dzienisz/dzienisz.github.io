@@ -486,7 +486,7 @@ function resetIdleTimer() {
   clearTimeout(idleTimer);
   idleTimer = setTimeout(() => {
     const d = el('div');
-    d.style.cssText = 'font-size:11px;color:#555;margin:8px 0;';
+    d.style.cssText = 'font-size:11px;color:var(--text-muted);margin:8px 0;';
     d.innerHTML = `  <span class="d">not sure where to start? type <span class="o">tour</span> for a guided experience or <span class="o">help</span> for all commands</span>`;
     tb.appendChild(d);
     scroll();
@@ -1620,7 +1620,7 @@ function cdls(target) {
   tb.replaceChild(frozen, inputRow);
   const result = resolveCd(target, cwd);
   if (result.type === 'node_modules') {
-    addHTML(`  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`, 'font-size:12px;color:#555;margin:4px 0 8px');
+    addHTML(`  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`, 'font-size:12px;color:var(--text-muted);margin:4px 0 8px');
     cwd = result.cwd;
   } else if (['home','absolute','up','dir'].includes(result.type)) {
     cwd = result.cwd;
@@ -1770,7 +1770,7 @@ async function _submit(cmd) {
         cwd = result.cwd; showHint(cmd); mkInput(); resetIdleTimer(); return;
       case 'node_modules': {
         const warn = el('div');
-        warn.style.cssText = 'font-size:12px;color:#555;margin:4px 0 8px';
+        warn.style.cssText = 'font-size:12px;color:var(--text-muted);margin:4px 0 8px';
         warn.innerHTML = `  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`;
         tb.appendChild(warn);
         cwd = result.cwd; mkInput(); resetIdleTimer(); return;

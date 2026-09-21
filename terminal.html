@@ -48,6 +48,7 @@
       --text-bright: #e0e0e0;
       --scrollbar: #2a2a2a;
       --dock-bg: rgba(13,13,13,0.75);
+      --text-muted: #808080;
     }
 
     :root.light {
@@ -60,6 +61,7 @@
       --text-bright: #1a1510;
       --scrollbar: #c8c0b4;
       --dock-bg: rgba(232,228,222,0.85);
+      --text-muted: #6b645c;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -82,7 +84,7 @@
         rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
       );
       pointer-events: none;
-      z-index: 999;
+      z-index: 5;
     }
 
     .terminal {
@@ -113,7 +115,8 @@
       user-select: none;
     }
 
-    .dot { width: 13px; height: 13px; border-radius: 50%; }
+    .dot { width: 13px; height: 13px; border-radius: 50%; border: none; padding: 0; cursor: pointer; }
+    .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
     .dot-r { background: #ff5f57; }
     .dot-y { background: #febc2e; }
     .dot-g { background: #28c840; }
@@ -158,7 +161,7 @@
     .g { color: #4af626; }
     .y { color: #ffc947; }
     .c { color: #00d4ff; }
-    .d { color: #555; }
+    .d { color: var(--text-muted); }
     .w { color: #e8e8e8; }
     .r { color: #ff4c4c; }
 
@@ -235,10 +238,22 @@
         width: 100vw; height: 100vh; max-height: 100vh;
         border-radius: 0; border: none; box-shadow: none;
       }
-      .term-body { font-size: 11px; padding: 14px 12px 12px; }
+      .term-body { font-size: 11px; padding: 14px 12px 104px; }
       .ascii-pre { font-size: 6px !important; line-height: 1.1 !important; }
       #bg-canvas { display: none; }
-      .dock { display: none; }
+      .dock {
+        left: 8px; right: 8px; bottom: 8px;
+        transform: none;
+        gap: 2px;
+        padding: 6px 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .dock::-webkit-scrollbar { display: none; }
+      .dock-item { flex-shrink: 0; padding: 4px 6px; }
+      .dock-item:hover { transform: none; }
+      .dock-icon { width: 32px; height: 32px; font-size: 13px; }
+      .dock-sep { flex-shrink: 0; height: 32px; }
     }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
@@ -268,9 +283,9 @@
 
 <div class="terminal" style="position:relative;z-index:1">
   <div class="titlebar">
-    <div class="dot dot-r" id="dot-r" title="rm -rf /" style="cursor:pointer"></div>
-    <div class="dot dot-y" id="dot-y" title="toggle light/dark" style="cursor:pointer"></div>
-    <div class="dot dot-g" id="dot-g" title="matrix" style="cursor:pointer"></div>
+    <button type="button" class="dot dot-r" id="dot-r" aria-label="Run rm -rf /" title="rm -rf /"></button>
+    <button type="button" class="dot dot-y" id="dot-y" aria-label="Toggle light/dark theme" title="toggle light/dark"></button>
+    <button type="button" class="dot dot-g" id="dot-g" aria-label="Run matrix effect" title="matrix"></button>
     <div class="titlebar-text">dzienko.dev — personal terminal v1.0</div>
   </div>
   <div class="term-body" id="tb"></div>
