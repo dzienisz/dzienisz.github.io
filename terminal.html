@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Terminal - Kamil Dzieniszewski</title>
+  <meta name="description" content="Kamil Dzieniszewski — Senior/Lead Frontend Developer based in Warsaw, Poland. Open to new opportunities. React, TypeScript, Next.js, AI. Community builder, meet.js co-organizer, builds with AI.">
+  <meta name="author" content="Kamil Dzieniszewski">
+  <meta name="keywords" content="Kamil Dzieniszewski, frontend developer, React, TypeScript, Next.js, Warsaw, meet.js, community builder, AI developer, open to work, available for hire">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://dzienko.dev/terminal.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <meta property="og:description" content="Senior/Lead Frontend Developer based in Warsaw. Building with React, TypeScript & Next.js. Co-organizer of meet.js. Builds with AI.">
+  <meta property="og:url" content="https://dzienko.dev/terminal.html">
+  <meta property="og:site_name" content="dzienko.dev">
+  <meta property="og:image" content="https://dzienko.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Kamil">
+  <meta property="profile:last_name" content="Dzieniszewski">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@dzienko">
+  <meta name="twitter:creator" content="@dzienko">
+  <meta name="twitter:title" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <meta name="twitter:description" content="Senior/Lead Frontend Developer based in Warsaw. Building with React, TypeScript & Next.js. Co-organizer of meet.js. Builds with AI.">
+  <meta name="twitter:image" content="https://dzienko.dev/og-image.png">
+  <meta name="twitter:image:alt" content="Kamil Dzieniszewski — Senior Frontend Developer">
+  <style>
+    :root {
+      --accent: #ff6b35;
+      --glow-a: rgba(255,107,53,0.12);
+      --glow-b: rgba(255,107,53,0.05);
+      --bg-body: #080808;
+      --bg-term: #0d0d0d;
+      --bg-title: #141414;
+      --border: #2a2a2a;
+      --border2: #222;
+      --text: #c8c8c8;
+      --text-bright: #e0e0e0;
+      --scrollbar: #2a2a2a;
+      --dock-bg: rgba(13,13,13,0.75);
+      --text-muted: #808080;
+    }
+
+    :root.light {
+      --bg-body: #f0ede8;
+      --bg-term: #faf8f5;
+      --bg-title: #e8e4de;
+      --border: #c8c0b4;
+      --border2: #d4cdc4;
+      --text: #3a3530;
+      --text-bright: #1a1510;
+      --scrollbar: #c8c0b4;
+      --dock-bg: rgba(232,228,222,0.85);
+      --text-muted: #6b645c;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', 'Courier New', monospace;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
+      );
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .terminal {
+      width: 880px;
+      max-width: 98vw;
+      height: 92vh;
+      max-height: 720px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 0 0 1px var(--border),
+        0 0 40px var(--glow-a),
+        0 0 100px var(--glow-b),
+        0 30px 80px rgba(0,0,0,0.15);
+    }
+
+    .titlebar {
+      background: var(--bg-title);
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border2);
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .dot { width: 13px; height: 13px; border-radius: 50%; border: none; padding: 0; cursor: pointer; }
+    .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+
+    .titlebar-text {
+      flex: 1;
+      text-align: center;
+      color: var(--text);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .term-body {
+      flex: 1;
+      background: var(--bg-term);
+      overflow-y: auto;
+      padding: 24px 28px 90px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.65;
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar) transparent;
+    }
+
+    .term-body::-webkit-scrollbar { width: 5px; }
+    .term-body::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 3px; }
+
+    #cmd {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-bright);
+      font-family: inherit;
+      font-size: 13px;
+      flex: 1;
+      caret-color: var(--accent);
+    }
+
+    input::placeholder { color: var(--accent); opacity: 0.35; }
+
+    .o { color: var(--accent); }
+    .g { color: #4af626; }
+    .y { color: #ffc947; }
+    .c { color: #00d4ff; }
+    .d { color: var(--text-muted); }
+    .w { color: #e8e8e8; }
+    .r { color: #ff4c4c; }
+
+    /* ── DOCK ── */
+    .dock {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dock-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 10px 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .dock-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: background 0.15s, transform 0.15s;
+      cursor: pointer;
+    }
+    .dock-item:hover {
+      background: rgba(255,107,53,0.08);
+      transform: translateY(-3px);
+    }
+
+    .dock-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--bg-title);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--accent);
+      font-family: inherit;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+    .dock-item:hover .dock-icon {
+      border-color: var(--accent);
+    }
+
+    .dock-label {
+      font-size: 10px;
+      color: var(--text);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .dock-sep {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      margin: 0 4px;
+    }
+
+    @media (max-width: 640px) {
+      body { align-items: flex-start; }
+      .terminal {
+        width: 100vw; height: 100vh; max-height: 100vh;
+        border-radius: 0; border: none; box-shadow: none;
+      }
+      .term-body { font-size: 11px; padding: 14px 12px 104px; }
+      .ascii-pre { font-size: 6px !important; line-height: 1.1 !important; }
+      #bg-canvas { display: none; }
+      .dock {
+        left: 8px; right: 8px; bottom: 8px;
+        transform: none;
+        gap: 2px;
+        padding: 6px 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .dock::-webkit-scrollbar { display: none; }
+      .dock-item { flex-shrink: 0; padding: 4px 6px; }
+      .dock-item:hover { transform: none; }
+      .dock-icon { width: 32px; height: 32px; font-size: 13px; }
+      .dock-sep { flex-shrink: 0; height: 32px; }
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
+</head>
+<body>
+
+<!-- Static content for crawlers that don't execute JS -->
+<noscript>
+  <div style="font-family:monospace;max-width:700px;margin:40px auto;padding:20px;color:#ccc;background:#0d0d0d">
+    <h1>Kamil Dzieniszewski</h1>
+    <p>Senior / Lead Frontend Developer — Warsaw, Poland</p>
+    <p>Community builder · builds with AI · meet.js co-organizer</p>
+    <h2>About</h2>
+    <p>Senior/Lead Frontend Developer and product-oriented technologist. Building at the intersection of software engineering, community, and product thinking. Open to new opportunities.</p>
+    <h2>Skills</h2>
+    <p>React, TypeScript, Next.js, Supabase, PostgreSQL, AI/LLM development, React Native / Expo</p>
+    <h2>Community</h2>
+    <p>Co-organizer of meet.js — one of Poland's longest-running frontend communities. Devin (formerly Windsurf) Ambassador, organizing meetups in Warsaw.</p>
+    <h2>Contact</h2>
+    <p>Email: kamil.dzieniszewski@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/dzieniszewski</p>
+    <p>X: x.com/dzienko</p>
+  </div>
+</noscript>
+
+<canvas id="bg-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+
+<div class="terminal" style="position:relative;z-index:1">
+  <div class="titlebar">
+    <button type="button" class="dot dot-r" id="dot-r" aria-label="Run rm -rf /" title="rm -rf /"></button>
+    <button type="button" class="dot dot-y" id="dot-y" aria-label="Toggle light/dark theme" title="toggle light/dark"></button>
+    <button type="button" class="dot dot-g" id="dot-g" aria-label="Run matrix effect" title="matrix"></button>
+    <div class="titlebar-text">dzienko.dev — personal terminal v1.0</div>
+  </div>
+  <div class="term-body" id="tb"></div>
+</div>
+
+<nav class="dock" aria-label="Quick links">
+  <a class="dock-item" href="https://www.youtube.com/playlist?list=PLfw7v_5i7LoJGlATHL8rvE_IU02ACWOkp" target="_blank" rel="noopener">
+    <div class="dock-icon">▶</div>
+    <span class="dock-label">Web Nowinki</span>
+  </a>
+  <a class="dock-item" href="https://www.youtube.com/playlist?list=PLOzzvlJKwOdVAA2gLzQHju68dxkOhUzkd" target="_blank" rel="noopener">
+    <div class="dock-icon">▶</div>
+    <span class="dock-label">Web Prasówka</span>
+  </a>
+  <div class="dock-sep"></div>
+  <a class="dock-item" href="/">
+    <div class="dock-icon">⌂</div>
+    <span class="dock-label">New site</span>
+  </a>
+  <a class="dock-item" href="gallery.html">
+    <div class="dock-icon">◈</div>
+    <span class="dock-label">Gallery</span>
+  </a>
+  <a class="dock-item" href="projects.html">
+    <div class="dock-icon">⬡</div>
+    <span class="dock-label">Projects</span>
+  </a>
+  <a class="dock-item" href="talks.html">
+    <div class="dock-icon">🎤</div>
+    <span class="dock-label">Talks</span>
+  </a>
+  <a class="dock-item" href="ai.html">
+    <div class="dock-icon">🤖</div>
+    <span class="dock-label">AI</span>
+  </a>
+  <div class="dock-sep"></div>
+  <a class="dock-item" href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" rel="noopener">
+    <div class="dock-icon">in</div>
+    <span class="dock-label">LinkedIn</span>
+  </a>
+  <a class="dock-item" href="https://github.com/dzienisz" target="_blank" rel="noopener">
+    <div class="dock-icon">gh</div>
+    <span class="dock-label">GitHub</span>
+  </a>
+</nav>
+
+<script type="module" src="terminal.js"></script>
+
+</body>
+</html>

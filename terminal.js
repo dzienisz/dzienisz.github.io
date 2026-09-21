@@ -486,7 +486,7 @@ function resetIdleTimer() {
   clearTimeout(idleTimer);
   idleTimer = setTimeout(() => {
     const d = el('div');
-    d.style.cssText = 'font-size:11px;color:#555;margin:8px 0;';
+    d.style.cssText = 'font-size:11px;color:var(--text-muted);margin:8px 0;';
     d.innerHTML = `  <span class="d">not sure where to start? type <span class="o">tour</span> for a guided experience or <span class="o">help</span> for all commands</span>`;
     tb.appendChild(d);
     scroll();
@@ -627,8 +627,8 @@ ${HR}
   Currently working on:
     <span class="g">→</span> documentary / storytelling project about the community
 
-  <span class="y">Windsurf Meetup Warsaw</span>  <span class="d">— organizer</span>
-  Community meetup around Windsurf — the AI-powered IDE.
+  <span class="y">Devin (formerly Windsurf) Meetup Warsaw</span>  <span class="d">— ambassador</span>
+  Community meetup around Devin and Windsurf — AI coding tools.
   Connecting developers exploring AI-assisted development.
 
   <span class="d">"He thrives in environments where he can connect</span>
@@ -803,7 +803,7 @@ ${HR}
     <span class="g">→</span>  prompt engineering — daily practice
     <span class="g">→</span>  agents & MCP — exploring & building
     <span class="g">→</span>  AI-assisted development — everyday workflow
-    <span class="g">→</span>  Windsurf Ambassador <span class="d">— AI-powered IDE</span>
+    <span class="g">→</span>  Devin Ambassador <span class="d">— formerly Windsurf</span>
 
   <span class="c">POSITIONING</span>
     AI-first Frontend Developer
@@ -1407,7 +1407,7 @@ export const FS_FILES = {
       stack: <span class="w">[LLMs, MCP, A2A, prompt engineering]</span>
       proficiency: <span class="y">actively exploring</span>
     - id: <span class="c">community_building</span>
-      tools: <span class="w">[meet.js, Windsurf Meetup Warsaw]</span>
+      tools: <span class="w">[meet.js, Devin Meetup Warsaw]</span>
       proficiency: <span class="g">15+ years</span>
     - id: <span class="c">leadership</span>
       tools: <span class="w">[team management, recruitment, mentoring]</span>
@@ -1620,7 +1620,7 @@ function cdls(target) {
   tb.replaceChild(frozen, inputRow);
   const result = resolveCd(target, cwd);
   if (result.type === 'node_modules') {
-    addHTML(`  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`, 'font-size:12px;color:#555;margin:4px 0 8px');
+    addHTML(`  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`, 'font-size:12px;color:var(--text-muted);margin:4px 0 8px');
     cwd = result.cwd;
   } else if (['home','absolute','up','dir'].includes(result.type)) {
     cwd = result.cwd;
@@ -1770,7 +1770,7 @@ async function _submit(cmd) {
         cwd = result.cwd; showHint(cmd); mkInput(); resetIdleTimer(); return;
       case 'node_modules': {
         const warn = el('div');
-        warn.style.cssText = 'font-size:12px;color:#555;margin:4px 0 8px';
+        warn.style.cssText = 'font-size:12px;color:var(--text-muted);margin:4px 0 8px';
         warn.innerHTML = `  <span class="r">warning:</span> <span class="d">you are entering node_modules. godspeed.  (type <span class="o">cd ..</span> to escape)</span>`;
         tb.appendChild(warn);
         cwd = result.cwd; mkInput(); resetIdleTimer(); return;
