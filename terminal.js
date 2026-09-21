@@ -627,8 +627,8 @@ ${HR}
   Currently working on:
     <span class="g">→</span> documentary / storytelling project about the community
 
-  <span class="y">Windsurf Meetup Warsaw</span>  <span class="d">— organizer</span>
-  Community meetup around Windsurf — the AI-powered IDE.
+  <span class="y">Devin (formerly Windsurf) Meetup Warsaw</span>  <span class="d">— ambassador</span>
+  Community meetup around Devin and Windsurf — AI coding tools.
   Connecting developers exploring AI-assisted development.
 
   <span class="d">"He thrives in environments where he can connect</span>
@@ -803,7 +803,7 @@ ${HR}
     <span class="g">→</span>  prompt engineering — daily practice
     <span class="g">→</span>  agents & MCP — exploring & building
     <span class="g">→</span>  AI-assisted development — everyday workflow
-    <span class="g">→</span>  Windsurf Ambassador <span class="d">— AI-powered IDE</span>
+    <span class="g">→</span>  Devin Ambassador <span class="d">— formerly Windsurf</span>
 
   <span class="c">POSITIONING</span>
     AI-first Frontend Developer
@@ -1407,7 +1407,7 @@ export const FS_FILES = {
       stack: <span class="w">[LLMs, MCP, A2A, prompt engineering]</span>
       proficiency: <span class="y">actively exploring</span>
     - id: <span class="c">community_building</span>
-      tools: <span class="w">[meet.js, Windsurf Meetup Warsaw]</span>
+      tools: <span class="w">[meet.js, Devin Meetup Warsaw]</span>
       proficiency: <span class="g">15+ years</span>
     - id: <span class="c">leadership</span>
       tools: <span class="w">[team management, recruitment, mentoring]</span>

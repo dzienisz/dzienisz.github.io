@@ -6,11 +6,7 @@ Personal website of [Kamil Dzieniszewski](https://dzienko.dev) — Senior/Lead F
 
 A clean static portfolio focused on frontend product engineering, AI-native development, public work, talks, and community activity.
 
-The previous browser-based terminal portfolio is preserved in git on:
-
-```bash
-backup/current-terminal-vibe-2026-05-30
-```
+The previous browser-based terminal portfolio lives on as an easter egg at `/terminal.html` (linked as `>_` in the homepage footer). The original version is also preserved on the `backup/current-terminal-vibe-2026-05-30` branch.
 
 ## Stack
 
@@ -24,12 +20,16 @@ backup/current-terminal-vibe-2026-05-30
 ```
 index.html        # homepage markup + CSS
 site.css          # shared styling for supporting pages
-projects.html     # selected projects and community work
+projects.html     # Chrome extensions, community and AI work
 talks.html        # talks, panels, podcasts, live streams
 ai.html           # AI profile and certifications
 gallery.html      # photo gallery
-terminal.js       # preserved terminal portfolio logic
+terminal.html     # easter egg: the old terminal portfolio
+terminal.js       # terminal logic
 terminal.test.js  # terminal logic tests
+donut.html        # easter egg: ASCII donut
+og-image.svg      # social preview source
+og-image.png      # social preview (rendered from the SVG; social sites don't support SVG)
 favicon.svg
 cv.pdf
 ```
@@ -48,7 +48,7 @@ Then open `http://localhost:8080`. ES modules require HTTP — opening `index.ht
 node --test terminal.test.js
 ```
 
-## Stats after week one
+## Terminal stats after week one (April 2026)
 
 - 784 visitors, ~2000 commands typed
 - Most popular: `help`, `ls`, `tour`, `rm -rf /` (54x), `hire` (44x)
