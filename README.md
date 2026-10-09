@@ -30,6 +30,10 @@ terminal.test.js  # terminal logic tests
 donut.html        # easter egg: ASCII donut
 og-image.svg      # social preview source
 og-image.png      # social preview (rendered from the SVG; social sites don't support SVG)
+404.html          # GitHub Pages not-found page (absolute links)
+robots.txt
+sitemap.xml       # public pages only; terminal/donut are noindex
+photos/           # large photos as WebP, small ones as JPEG
 favicon.svg
 cv.pdf
 ```
