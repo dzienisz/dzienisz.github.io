@@ -13,6 +13,9 @@
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://dzienko.dev/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&family=Inter:wght@400..700&display=swap">
   <link rel="stylesheet" href="site.css">
 
   <meta property="og:type" content="profile">
@@ -82,123 +85,116 @@
     <main id="main">
       <section class="hero">
         <div>
-          <p class="eyebrow">Frontend developer and AI-native builder</p>
-          <h1>I build clear product interfaces and AI-powered workflows.</h1>
+          <h1>Frontend lead who ships the tools developers keep open.</h1>
           <p class="lead">
-            Senior/Lead Frontend Developer focused on React, TypeScript and Next.js. I use AI as part of the engineering loop, from prototypes and LLM features to RAG, agents and developer tooling.
+            I lead React and TypeScript teams in Warsaw, build LLM features into products, and publish Chrome extensions with over a thousand users. I also co-organize meet.js.
           </p>
           <div class="actions">
-            <a class="button" href="mailto:kamil.dzieniszewski@gmail.com">Contact me</a>
-            <a class="button secondary" href="projects.html">Selected work</a>
+            <a class="button" href="mailto:kamil.dzieniszewski@gmail.com">Email me</a>
+            <a class="button secondary" href="#extensions">See the extensions</a>
           </div>
         </div>
         <div class="hero-media">
-          <img src="photos/devin-ambassador.webp" alt="Kamil Dzieniszewski at a Devin (formerly Windsurf) community meetup" width="1600" height="1200" fetchpriority="high">
+          <img src="photos/devin-ambassador.webp" alt="Kamil Dzieniszewski speaking at a Devin (formerly Windsurf) community meetup in Warsaw" width="1600" height="1200" fetchpriority="high">
         </div>
       </section>
 
-      <section class="section">
-        <div class="grid">
-          <article class="card">
-            <span class="card-meta">Frontend</span>
-            <h3>Product UI</h3>
-            <p>Complex React interfaces, frontend architecture, TypeScript-heavy codebases and production-minded delivery.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-meta">AI-native</span>
-            <h3>LLM workflows</h3>
-            <p>RAG, agents, structured outputs and practical AI integrations that make products and teams faster.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-meta">Community</span>
-            <h3>Developer networks</h3>
-            <p>meet.js co-organizer, Devin Ambassador (formerly Windsurf) and long-time frontend community builder.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
+      <section class="section" id="extensions">
         <div class="section-head">
-          <h2>Chrome Extensions</h2>
-          <p class="section-intro">Small tools I built and ship on the Chrome Web Store. <a href="projects.html">More work</a></p>
+          <h2>Chrome extensions</h2>
+          <p class="section-intro">Small, focused tools published on the Chrome Web Store. <a href="projects.html">All work</a></p>
         </div>
+        <div class="bento">
+          <article class="ext featured">
+            <h3><a href="https://chromewebstore.google.com/detail/csr-vs-ssr-detector/fhiopdjeekafnhmfbcfoolhejdgjpkgg?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="csr-vs-ssr-detector" data-umami-event-page="home" target="_blank" rel="noopener">CSR vs SSR Detector</a></h3>
+            <p>Shows whether a page is server- or client-rendered, right on the toolbar icon. Keeps a history of the sites you checked.</p>
 
-        <div class="grid">
-          <a class="card" href="https://chromewebstore.google.com/detail/csr-vs-ssr-detector/fhiopdjeekafnhmfbcfoolhejdgjpkgg?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="csr-vs-ssr-detector" data-umami-event-page="home" target="_blank" rel="noopener">
-            <span class="badge active">live</span>
-            <h3>CSR vs SSR Detector</h3>
-            <p>Tells you whether a page is server- or client-side rendered, right from the toolbar.</p>
-            <div class="tags"><span class="tag">DevTools</span><span class="tag">★ 4.6</span></div>
-          </a>
+            <div class="demo">
+              <div class="demo-bar">
+                <span class="demo-url" id="demo-url">github.com</span>
+                <span class="demo-badge" id="demo-badge" data-mode="SSR" aria-live="polite">SSR</span>
+              </div>
+              <div class="demo-body">
+                <span class="demo-label">First HTML response</span>
+                <pre class="demo-source" id="demo-source"><span class="t">&lt;main&gt;</span>
+  <span class="t">&lt;h1&gt;</span><span class="x">Build and ship software on a single platform</span><span class="t">&lt;/h1&gt;</span>
+  <span class="t">&lt;p&gt;</span><span class="x">Join the world's most widely adopted developer…</span><span class="t">&lt;/p&gt;</span>
+<span class="t">&lt;/main&gt;</span></pre>
+                <p class="demo-explain" id="demo-explain">Server-rendered: the HTML arrives with the content already in it.</p>
+              </div>
+            </div>
+            <div class="demo-sites" id="demo-sites" role="group" aria-label="Try the detector on an example site" hidden>
+              Try it on
+              <button type="button" aria-pressed="true" data-site="github.com" data-umami-event="csr-demo" data-umami-event-site="github.com">github.com</button>
+              <button type="button" aria-pressed="false" data-site="excalidraw.com" data-umami-event="csr-demo" data-umami-event-site="excalidraw.com">excalidraw.com</button>
+              <button type="button" aria-pressed="false" data-site="nextjs.org" data-umami-event="csr-demo" data-umami-event-site="nextjs.org">nextjs.org</button>
+            </div>
 
-          <a class="card" href="https://chromewebstore.google.com/detail/youtube-overlay-opacity-c/dcmmcbdcbpaoefhnlogalnfnnmjolfbh?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="youtube-overlay-opacity-c" data-umami-event-page="home" target="_blank" rel="noopener">
-            <span class="badge active">live</span>
+            <div class="ext-footer">
+              <div class="big-number">1,000+<span>users, rated 4.6</span></div>
+              <a class="button" href="https://chromewebstore.google.com/detail/csr-vs-ssr-detector/fhiopdjeekafnhmfbcfoolhejdgjpkgg?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="csr-vs-ssr-detector" data-umami-event-page="home" target="_blank" rel="noopener">Add to Chrome</a>
+            </div>
+          </article>
+
+          <a class="ext" href="https://chromewebstore.google.com/detail/youtube-overlay-opacity-c/dcmmcbdcbpaoefhnlogalnfnnmjolfbh?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="youtube-overlay-opacity-c" data-umami-event-page="home" target="_blank" rel="noopener">
             <h3>YouTube Overlay Opacity</h3>
-            <p>Controls YouTube player overlay opacity and makes transparent controls readable.</p>
-            <div class="tags"><span class="tag">YouTube</span><span class="tag">★ 4.5</span></div>
+            <p>Makes YouTube's translucent player controls readable over bright video.</p>
+            <div class="ext-stats"><strong>60+</strong> users, rated <strong>4.5</strong></div>
           </a>
 
-          <a class="card" href="https://chromewebstore.google.com/detail/comment-vibe/kibcnjcipaofjlbbnjdjaobbkoajiejp?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="comment-vibe" data-umami-event-page="home" target="_blank" rel="noopener">
-            <span class="badge active">new</span>
+          <a class="ext" href="https://chromewebstore.google.com/detail/comment-vibe/kibcnjcipaofjlbbnjdjaobbkoajiejp?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=home" data-umami-event="cws-click" data-umami-event-extension="comment-vibe" data-umami-event-page="home" target="_blank" rel="noopener">
             <h3>Comment Vibe</h3>
-            <p>Reads the sentiment and tone of comment sections on any page.</p>
-            <div class="tags"><span class="tag">AI</span><span class="tag">★ 5</span></div>
+            <p>Reads the sentiment and tone of a comment section with an LLM.</p>
+            <div class="ext-stats">Newest, rated <strong>5.0</strong></div>
           </a>
         </div>
       </section>
 
       <section class="section">
         <div class="section-head">
-          <h2>Signals</h2>
-          <p class="section-intro">A few current proof points.</p>
+          <h2>Community and talks</h2>
+          <p class="section-intro">Meetups I help run, and sessions I've given.</p>
         </div>
-
-        <div class="media-grid">
-          <a class="media-card" href="ai.html">
-            <img src="photos/google-for-startups.jpeg" alt="Kamil speaking at Google for Startups" width="480" height="320" loading="lazy" decoding="async">
-            <div class="media-copy">
-              <span class="tagline">AI practice</span>
-              <h3>AI Devs, RAG and agents</h3>
-              <p>Completed AI Devs 2 and 3, working through AI Devs 4.</p>
-            </div>
-          </a>
-
-          <a class="media-card" href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">
-            <img src="photos/devin-ambassador.webp" alt="Devin (formerly Windsurf) ambassador meetup in Warsaw" width="1600" height="1200" loading="lazy" decoding="async">
-            <div class="media-copy">
-              <span class="tagline">Developer tools</span>
-              <h3>Devin Ambassador</h3>
-              <p>Formerly Windsurf. Organizing Warsaw meetups around AI-assisted development.</p>
-            </div>
-          </a>
-
-          <a class="media-card" href="https://meetjs.pl" target="_blank" rel="noopener">
-            <img src="photos/meetjs-warszawa.jpeg" alt="meet.js Warsaw meetup audience" width="480" height="320" loading="lazy" decoding="async">
-            <div class="media-copy">
-              <span class="tagline">Community</span>
-              <h3>meet.js co-organizer</h3>
-              <p>Helping run one of Poland's longest-running frontend communities.</p>
-            </div>
-          </a>
-
-          <a class="media-card" href="talks.html">
-            <img src="photos/daftcode-presentation.jpeg" alt="Kamil giving a frontend presentation" width="480" height="319" loading="lazy" decoding="async">
-            <div class="media-copy">
-              <span class="tagline">Speaking</span>
-              <h3>Frontend talks</h3>
-              <p>Public sessions on releases, architecture, microfrontends and hackathons.</p>
-            </div>
-          </a>
-        </div>
+        <ul class="rows">
+          <li>
+            <span class="when">Now</span>
+            <div><h3><a href="https://windsurf.com/refer?referral_code=b506a23128" target="_blank" rel="noopener">Devin ambassador</a></h3><p>Formerly Windsurf. Organizing Warsaw meetups on AI-assisted development.</p></div>
+            <span class="where">Warsaw</span>
+          </li>
+          <li>
+            <span class="when">Now</span>
+            <div><h3><a href="https://meetjs.pl" target="_blank" rel="noopener">meet.js co-organizer</a></h3><p>One of Poland's longest-running frontend communities.</p></div>
+            <span class="where">Warsaw</span>
+          </li>
+          <li>
+            <span class="when">Now</span>
+            <div><h3><a href="ai.html">AI Devs, RAG and agents</a></h3><p>Completed AI Devs 2 and 3, working through AI Devs 4.</p></div>
+            <span class="where">Course</span>
+          </li>
+          <li>
+            <span class="when">2024</span>
+            <div><h3><a href="https://www.youtube.com/watch?v=Upx7VcqXH-M" target="_blank" rel="noopener">Release na proda z punktu widzenia frontend</a></h3><p>Shipping frontend apps: optimization, common mistakes and tooling.</p></div>
+            <span class="where">DDDDays</span>
+          </li>
+          <li>
+            <span class="when">2022</span>
+            <div><h3><a href="https://www.youtube.com/watch?v=vRqR06oCc_I" target="_blank" rel="noopener">Microfrontends in Mobile</a></h3><p>Microfrontend architecture for multi-team mobile delivery.</p></div>
+            <span class="where">JS Poland</span>
+          </li>
+          <li>
+            <span class="when">2022</span>
+            <div><h3><a href="https://www.youtube.com/watch?v=JmkDXeIDG9A" target="_blank" rel="noopener">Front-end discussion panel</a></h3><p>With Luca Mezzalira, Manfred Steyer and Sebastian Gos.</p></div>
+            <span class="where">BEC Tech Academy</span>
+          </li>
+        </ul>
+        <p class="rows-more"><a href="talks.html">All talks</a></p>
       </section>
 
       <section class="section">
         <div class="callout">
           <div>
-            <h2>Available For Useful Work</h2>
-            <p>Frontend leadership, product engineering and AI-native development where the interface matters as much as the model behind it.</p>
+            <h2>Hiring a frontend lead?</h2>
+            <p>Product engineering and AI features where the interface matters as much as the model behind it.</p>
           </div>
           <a class="button" href="mailto:kamil.dzieniszewski@gmail.com">Email me</a>
         </div>
@@ -210,5 +206,6 @@
       <span><a href="gallery.html">Gallery</a> · <a href="terminal.html" title="The old terminal version of this site">&gt;_</a> · <a href="donut.html" title="ASCII donut">🍩</a> · <a href="https://github.com/dzienisz" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" rel="noopener">LinkedIn</a></span>
     </footer>
   </div>
+  <script src="demo.js" defer></script>
 </body>
 </html>
