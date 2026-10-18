@@ -140,7 +140,7 @@ img {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(320px, 0.72fr);
   gap: 52px;
-  align-items: end;
+  align-items: stretch;
   padding: 58px 0 52px;
   border-bottom: 1px solid var(--line);
 }
@@ -197,8 +197,19 @@ h1 {
 
 .hero-media img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+  object-position: 40% center;
+}
+
+/* Low-res photos can't stretch to the text column's height without blurring */
+.hero-media.is-landscape {
+  align-self: center;
+}
+
+.hero-media.is-landscape img {
+  height: auto;
+  aspect-ratio: 4 / 3;
 }
 
 .section {
@@ -455,6 +466,11 @@ a.card:hover,
   .media-grid,
   .photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-media img {
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
 }
 
