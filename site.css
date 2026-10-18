@@ -7,7 +7,7 @@
   --line-strong: #b9b0a2;
   --blue: #216c8d;
   --green: #2f7054;
-  --coral: #cf5b3f;
+  --coral: #b24e36;
   --gold: #9a6b13;
   --shadow: 0 24px 70px rgba(30, 40, 38, 0.12);
   --shadow-hover: 0 16px 45px rgba(30, 40, 38, 0.09);
@@ -51,6 +51,38 @@ a {
   color: inherit;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.card:focus-visible,
+.media-card:focus-visible,
+.photo-card:focus-visible,
+.button:focus-visible {
+  border-radius: var(--radius);
+}
+
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
 }
 
 img {
@@ -399,6 +431,16 @@ a.card:hover,
   padding: 24px 0 36px;
   color: var(--muted);
   font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  a.card:hover,
+  .media-card:hover,
+  .photo-card:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 920px) {
