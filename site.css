@@ -449,6 +449,19 @@ a.ext:hover {
   grid-column: 1 / -1;
 }
 
+.ext-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-inline-end: 0.5rem;
+  border-radius: 0.375rem;
+  vertical-align: -0.25em;
+}
+
+.ext.featured .ext-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .ext-footer {
   display: flex;
   flex-wrap: wrap;
