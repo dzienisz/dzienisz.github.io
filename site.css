@@ -449,12 +449,18 @@ a.ext:hover {
   grid-column: 1 / -1;
 }
 
+.ext h3,
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .ext-icon {
+  flex: none;
   width: 1.5rem;
   height: 1.5rem;
-  margin-inline-end: 0.5rem;
   border-radius: 0.375rem;
-  vertical-align: -0.25em;
 }
 
 .ext.featured .ext-icon {
