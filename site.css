@@ -445,6 +445,10 @@ a.ext:hover {
   font-size: 1.0625rem;
 }
 
+.ext.wide {
+  grid-column: 1 / -1;
+}
+
 .ext-footer {
   display: flex;
   flex-wrap: wrap;
