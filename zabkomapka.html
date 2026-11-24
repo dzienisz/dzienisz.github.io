@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffdfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131816" media="(prefers-color-scheme: dark)">
+  <title>Żabkomapka - mapa odwiedzonych Żabek</title>
+  <meta name="description" content="Żabkomapka: darmowa apka do odhaczania odwiedzonych Żabek. Ponad 13&nbsp;600 sklepów na mapie, zakupy i żabsy, spacery z GPS, wyzwania, dzielnice Warszawy i wspólna mapa z przyjaciółmi.">
+  <link rel="canonical" href="https://dzienko.dev/zabkomapka.html">
+  <link rel="icon" type="image/svg+xml" href="/icons/zabkomapka.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Żabkomapka - mapa odwiedzonych Żabek">
+  <meta property="og:description" content="Odhaczaj odwiedzone Żabki, spacery i żabsy na jednej mapie.">
+  <meta property="og:url" content="https://dzienko.dev/zabkomapka.html">
+  <meta property="og:site_name" content="dzienko.dev">
+  <meta property="og:image" content="https://dzienko.dev/photos/zabkomapka/og.png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="500">
+  <meta property="og:image:alt" content="Żabkomapka - odhaczaj odwiedzone Żabki">
+  <meta property="og:locale" content="pl_PL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dzienko">
+  <meta name="twitter:creator" content="@dzienko">
+  <meta name="twitter:title" content="Żabkomapka - mapa odwiedzonych Żabek">
+  <meta name="twitter:description" content="Odhaczaj odwiedzone Żabki, spacery i żabsy na jednej mapie.">
+  <meta name="twitter:image" content="https://dzienko.dev/photos/zabkomapka/og.png">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .app-title { display: flex; align-items: center; gap: 0.75rem; }
+    .app-title img { width: 3.5rem; height: 3.5rem; }
+    .phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .phones figure { margin: 0; }
+    .phones img {
+      width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover;
+      border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    }
+    .phones figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.875rem; text-align: center; }
+    .hero-media.phone { display: grid; place-items: center; padding: 1.5rem; background: var(--green-soft); }
+    .hero-media.phone img { width: min(100%, 280px); height: auto; object-fit: contain; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .fine { color: var(--muted); font-size: 0.875rem; }
+    @media (max-width: 920px) {
+      .phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-media.phone img { aspect-ratio: auto; }
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Przejdź do treści</a>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html">Work</a>
+        <a href="ai.html">AI</a>
+        <a href="talks.html">Talks</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Darmowa apka · web i Android</p>
+          <h1 class="app-title"><img src="icons/zabkomapka.svg" alt="" width="56" height="56">Żabkomapka</h1>
+          <p class="lead">Odhaczaj Żabki, w których byłaś. Wszystkie ponad 13&nbsp;600 sklepów w Polsce są na jednej mapie. Przy każdej wizycie zapiszesz datę, zakupy i żabsy.</p>
+          <div class="actions">
+            <a class="button" href="https://zabkomapka.vercel.app/?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=zabkomapka" data-umami-event="zabkomapka-open" data-umami-event-place="hero" target="_blank" rel="noopener">Otwórz Żabkomapkę</a>
+            <a class="button secondary" href="#funkcje">Co potrafi</a>
+          </div>
+          <p class="fine">Działa w przeglądarce na telefonie i komputerze, bez konta i bez logowania. Wersja na Androida będzie wkrótce w Google Play.</p>
+        </div>
+        <div class="hero-media phone">
+          <img src="photos/zabkomapka/mapa.jpg" alt="Mapa Żabek w Warszawie w Żabkomapce" width="540" height="960" fetchpriority="high">
+        </div>
+      </section>
+
+      <section class="section" id="funkcje">
+        <div class="section-head">
+          <h2>Co potrafi</h2>
+          <p class="section-intro">Prosty dziennik Żabek dla tych, które chcą zaliczyć wszystkie.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>🐸 Mapa wszystkich Żabek</h3>
+            <p>Ponad 13&nbsp;600 sklepów z adresami i godzinami otwarcia. Od razu widać, które już odwiedziłaś, a które czekają.</p>
+          </div>
+          <div class="card">
+            <h3>✅ Odhaczanie wizyt</h3>
+            <p>Jedno kliknięcie „Byłam tu teraz”. Możesz dopisać zakupy, żabsy, alkohol, notatkę albo starszą wizytę z inną datą.</p>
+          </div>
+          <div class="card">
+            <h3>🚶 Spacery z GPS</h3>
+            <p>Zapisuje trasę i dystans, także przy zgaszonym ekranie na Androidzie. Może przypomnieć o Żabce, w której jeszcze nie byłaś.</p>
+          </div>
+          <div class="card">
+            <h3>🏙️ Dzielnice Warszawy</h3>
+            <p>Każda z 18 dzielnic zielenieje razem z postępem. Cała zaliczona dzielnica daje odznakę, np. „Wola zaliczona”.</p>
+          </div>
+          <div class="card">
+            <h3>🏆 Wyzwania i statystyki</h3>
+            <p>Na przykład 10 Żabek w jeden dzień albo Żabki w 5 miastach. Do tego wizyty dzień po dniu, ulubione sklepy i podsumowanie roku.</p>
+          </div>
+          <div class="card">
+            <h3>👯 Wspólna mapa</h3>
+            <p>Wyślij link przyjaciółce i odhaczajcie razem. Przy każdej wizycie widać, kto ją zapisał. Nie trzeba zakładać konta.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Jak to wygląda</h2>
+        </div>
+        <div class="phones">
+          <figure><img src="photos/zabkomapka/mapa.jpg" alt="Mapa Żabek" width="540" height="960" loading="lazy" decoding="async"><figcaption>Mapa</figcaption></figure>
+          <figure><img src="photos/zabkomapka/zabka.jpg" alt="Karta sklepu z przyciskiem Byłam tu teraz" width="540" height="960" loading="lazy" decoding="async"><figcaption>Karta Żabki</figcaption></figure>
+          <figure><img src="photos/zabkomapka/statystyki.jpg" alt="Statystyki wizyt" width="540" height="960" loading="lazy" decoding="async"><figcaption>Statystyki</figcaption></figure>
+          <figure><img src="photos/zabkomapka/wspolna-mapa.jpg" alt="Wspólna mapa z przyjaciółką" width="540" height="960" loading="lazy" decoding="async"><figcaption>Wspólna mapa</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="callout">
+          <div>
+            <h2>Zacznij odhaczać</h2>
+            <p>Bez konta i bez reklam. Wizyty i trasy zostają na Twoim telefonie. Na serwer trafiają tylko wizyty ze wspólnej mapy i Twoja lokalizacja, jeśli sama ją udostępnisz. Apka jest nieoficjalna i nie jest związana z Żabka Polska.</p>
+          </div>
+          <a class="button" href="https://zabkomapka.vercel.app/?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=zabkomapka" data-umami-event="zabkomapka-open" data-umami-event-place="footer" target="_blank" rel="noopener">Otwórz Żabkomapkę</a>
+        </div>
+        <p class="fine"><a href="https://zabkomapka.vercel.app/privacy.html" target="_blank" rel="noopener">Polityka prywatności</a></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span><a href="gallery.html">Gallery</a> · <a href="https://github.com/dzienisz" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" rel="noopener">LinkedIn</a></span>
+    </footer>
+  </div>
+</body>
+</html>
