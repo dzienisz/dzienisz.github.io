@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffdfa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131816" media="(prefers-color-scheme: dark)">
+  <title>ZUREQ Shopper - search independent online shops</title>
+  <meta name="description" content="ZUREQ Shopper for iPhone, Chrome and Firefox: search 13,000+ independent online shops in your own words, check live prices and stock, watch prices and jump straight to the shop's checkout.">
+  <link rel="canonical" href="https://dzienko.dev/zureq-shopper.html">
+  <link rel="icon" type="image/jpeg" href="/icons/zureq-shopper.jpg">
+  <meta name="apple-itunes-app" content="app-id=6831694457">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ZUREQ Shopper - search independent online shops">
+  <meta property="og:description" content="Search 13,000+ independent shops, check live prices and open the shop's own checkout.">
+  <meta property="og:url" content="https://dzienko.dev/zureq-shopper.html">
+  <meta property="og:site_name" content="dzienko.dev">
+  <meta property="og:image" content="https://dzienko.dev/photos/zureq-shopper/og.png">
+  <meta property="og:image:width" content="1400">
+  <meta property="og:image:height" content="560">
+  <meta property="og:image:alt" content="ZUREQ Shopper">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@dzienko">
+  <meta name="twitter:creator" content="@dzienko">
+  <meta name="twitter:title" content="ZUREQ Shopper - search independent online shops">
+  <meta name="twitter:description" content="Search 13,000+ independent shops, check live prices and open the shop's own checkout.">
+  <meta name="twitter:image" content="https://dzienko.dev/photos/zureq-shopper/og.png">
+  <link rel="stylesheet" href="site.css">
+  <style>
+    .app-title { display: flex; align-items: center; gap: 0.75rem; }
+    .app-title img { width: 3.5rem; height: 3.5rem; border-radius: 0.75rem; }
+    .phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .phones figure { margin: 0; }
+    .phones img {
+      width: 100%; height: auto; aspect-ratio: 6 / 13; object-fit: cover;
+      border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    }
+    .phones figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.875rem; text-align: center; }
+    .hero-media.phone { display: grid; place-items: center; padding: 1.5rem; background: var(--green-soft); }
+    .hero-media.phone img { width: min(100%, 280px); height: auto; object-fit: contain; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+    .fine { color: var(--muted); font-size: 0.875rem; }
+    @media (max-width: 920px) {
+      .phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-media.phone img { aspect-ratio: auto; }
+    }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6faaedb9-c397-47cc-8526-5fbbb8944d24" data-domains="dzienko.dev"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/">Kamil Dzieniszewski <span>Warsaw, Poland</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="projects.html">Work</a>
+        <a href="ai.html">AI</a>
+        <a href="talks.html">Talks</a>
+        <a href="cv.pdf">CV</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Free app · iPhone, Chrome and Firefox</p>
+          <h1 class="app-title"><img src="icons/zureq-shopper.jpg" alt="" width="56" height="56">ZUREQ Shopper</h1>
+          <p class="lead">Search 13,000+ independent online shops in your own words. Check the live price and stock, then jump straight to the shop's checkout.</p>
+          <div class="actions">
+            <a class="button" href="https://apps.apple.com/app/zureq-shopper/id6831694457" data-umami-event="zureq-app-store" data-umami-event-place="hero" target="_blank" rel="noopener">Download on the App Store</a>
+            <a class="button secondary" href="https://chromewebstore.google.com/detail/zureq-shopper/lgmpclicbbpjabhihbmpjdokopeiofpj?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=zureq-shopper" data-umami-event="cws-click" data-umami-event-extension="zureq-shopper" data-umami-event-page="zureq-shopper" target="_blank" rel="noopener">Add to Chrome</a>
+            <a class="button secondary" href="https://addons.mozilla.org/firefox/addon/zureq-shopper/" data-umami-event="zureq-firefox" data-umami-event-place="hero" target="_blank" rel="noopener">Add to Firefox</a>
+          </div>
+          <p class="fine">Needs iOS 17 or newer. In English and Polish. Sign in with a free ZUREQ account; the free plan includes 200 searches a month.</p>
+        </div>
+        <div class="hero-media phone">
+          <img src="photos/zureq-shopper/search.jpg" alt="Search results in ZUREQ Shopper on iPhone" width="600" height="1300" fetchpriority="high">
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-head">
+          <h2>What it does</h2>
+          <p class="section-intro">A shopping search for the shops that marketplaces leave out.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>🔎 Search in your own words</h3>
+            <p>Type what you need the way you would say it. Results come from 13,000+ independent shops on the ZUREQ network, not from one marketplace.</p>
+          </div>
+          <div class="card">
+            <h3>🌍 Pick your market</h3>
+            <p>Search one country or the whole EU. Most shops today are in the US, Poland and Austria.</p>
+          </div>
+          <div class="card">
+            <h3>⚡ Live price and stock</h3>
+            <p>Open a product and the app asks the shop for the current price, net price, stock and variants.</p>
+          </div>
+          <div class="card">
+            <h3>⭐ Watchlist</h3>
+            <p>Star a product and refresh its price whenever you like. The list shows how the price moved since you added it.</p>
+          </div>
+          <div class="card">
+            <h3>🧾 Shopping list</h3>
+            <p>Add several things to find, pick one offer for each and get checkout links grouped by shop.</p>
+          </div>
+          <div class="card">
+            <h3>🛒 Checkout at the shop</h3>
+            <p>Buy opens the shop's own checkout in your browser. You pay the shop directly; the app never sees your card.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>How it looks</h2>
+        </div>
+        <div class="phones">
+          <figure><img src="photos/zureq-shopper/search.jpg" alt="Search results" width="600" height="1300" loading="lazy" decoding="async"><figcaption>Search</figcaption></figure>
+          <figure><img src="photos/zureq-shopper/product.jpg" alt="Product with live price and stock" width="600" height="1300" loading="lazy" decoding="async"><figcaption>Live price</figcaption></figure>
+          <figure><img src="photos/zureq-shopper/watchlist.jpg" alt="Watchlist with price changes" width="600" height="1300" loading="lazy" decoding="async"><figcaption>Watchlist</figcaption></figure>
+          <figure><img src="photos/zureq-shopper/list.jpg" alt="Shopping list with checkout per shop" width="600" height="1300" loading="lazy" decoding="async"><figcaption>Shopping list</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="callout">
+          <div>
+            <h2>Try it</h2>
+            <p>No ads and no tracking in the app. Your watchlist, lists and history stay on your device. ZUREQ Shopper is an independent project built on the public <a href="https://zureq.io" target="_blank" rel="noopener">ZUREQ</a> API; it is not made by ZUREQ.</p>
+          </div>
+          <div class="actions">
+            <a class="button" href="https://apps.apple.com/app/zureq-shopper/id6831694457" data-umami-event="zureq-app-store" data-umami-event-place="footer" target="_blank" rel="noopener">Download on the App Store</a>
+            <a class="button secondary" href="https://chromewebstore.google.com/detail/zureq-shopper/lgmpclicbbpjabhihbmpjdokopeiofpj?utm_source=dzienko.dev&amp;utm_medium=referral&amp;utm_campaign=zureq-shopper" data-umami-event="cws-click" data-umami-event-extension="zureq-shopper" data-umami-event-page="zureq-shopper" target="_blank" rel="noopener">Add to Chrome</a>
+            <a class="button secondary" href="https://addons.mozilla.org/firefox/addon/zureq-shopper/" data-umami-event="zureq-firefox" data-umami-event-place="footer" target="_blank" rel="noopener">Add to Firefox</a>
+          </div>
+        </div>
+        <p class="fine"><a href="https://github.com/dzienisz/zureq-ios/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy policy</a></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>dzienko.dev</span>
+      <span><a href="gallery.html">Gallery</a> · <a href="https://github.com/dzienisz" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/dzieniszewski/" target="_blank" rel="noopener">LinkedIn</a></span>
+    </footer>
+  </div>
+</body>
+</html>
